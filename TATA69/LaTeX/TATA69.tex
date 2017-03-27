@@ -69,7 +69,7 @@ Gå mot origo längs $y=x$
 
 Olika värden från olika riktningar \newline
 Innanför varje liten cirkel kring origo har f värden nära 0 och nära $\frac{1}{2}$.
-Vi säger därför att gränsvärde ej existerar. Se \ref{fig1}
+Vi säger därför att gränsvärde ej existerar. Se \ref{fig:1}
 
 \begin{figure}[ht] 
 \begin{tikzpicture}
@@ -85,7 +85,7 @@ Vi säger därför att gränsvärde ej existerar. Se \ref{fig1}
    \tkzDefPoint(0.2,0.2){A}
    \tkzDrawCircle(O,A)
   \end{tikzpicture}
-  \caption{Graf i 2D} \label{fig1}
+  \caption{Graf i 2D} \label{fig:1}
 \end{figure}
 
 \newpage
@@ -111,7 +111,6 @@ Skrivs
 \]
 
 Vanliga räkneregler för gränsvärden (summa, produkt, instängning) gäller också för flervarregränsvärden
-
 Undersökning/beräkning av gränsvärden
 
 \begin{itemize}
@@ -134,7 +133,7 @@ Undersökning/beräkning av gränsvärden
    \node[above left,blue] at (1.5,1.5) {$\rho$};
    \node[above right] at (3,3) {(x,y)};
   \end{tikzpicture}
-  \caption{Graf för polära koordinater} \label{fig2}
+  \caption{Graf för polära koordinater} \label{fig:2}
 \end{figure}
 
 \[
@@ -179,6 +178,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 	\bar{f}(\bar{x}) \rightarrow \bar{b} \text{ då } \abs{\bar{x}} \rightarrow \infty \text{ om } \forall \epsilon > 0 \quad \exists \omega \text{ så att } \abs{\bar{f}(\bar{x}) - \bar{b}} < \epsilon \text{ om } \abs{\bar{x}} > \omega
 \]
 
+\newpage
 \paragraph{Exempel 4}
 
 \begin{equation} \label{eq:4}
@@ -187,23 +187,26 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 
 \underline{OBS!} 2-variablefunktioner som uttryckta i polärakoordinater inte beror på $\varphi$ har rotationssymetriska grafer kring z-axeln
 
+\begin{figure}[ht]
 \usetikzlibrary{3d}
 \begin{tikzpicture}
-\draw[thick,->] (0,0,0) -- (0,0,2) node[anchor=north east]{$x$};
-\draw[thick,->] (0,0,0) -- (2,0,0) node[anchor=north west]{$y$};
-\draw[thick,->] (0,0,0) -- (0,2,0) node[anchor=south]{$z$};
+\draw[thick,->] (0,0,0) -- (0,0,1.5) node[anchor=north east]{$x$};
+\draw[thick,->] (0,0,0) -- (1.5,0,0) node[anchor=north west]{$y$};
+\draw[thick,->] (0,0,0) -- (0,1.5,0) node[anchor=south]{$z$};
 \foreach \p in {1,...,360} {
 	\draw[red] ({sin(45)*sin(\p)},{cos(45)},{sin(45)*cos(\p)}) -- ({sin(45)*sin(\p)},{cos(45)},{sin(45)*cos(\p)});
 }
-\draw[blue] (0,0,0) -- (0,4,4);
-\draw[blue] (0,0,0) -- (0,1.5,-4);
+\draw[blue] (0,0,0) -- (0,2,2);
+\draw[blue] (0,0,0) -- (0,0.5,-1.5);
 \end{tikzpicture}
+\caption{Exempel på rotationssymmetri} \label{fig:3}
+\end{figure}
 
 \(
 z = \sqrt{x^2+y^2} = \rho
 \)
 
-\subsubsection{3-variabler}
+\subsubsection{3-variabler mot origo}
 \paragraph{Exempel 5}
 
 \begin{equation}
@@ -227,6 +230,66 @@ z = \sqrt{x^2+y^2} = \rho
 
 \[
 	\leq \frac{\sqrt{x^2+y^2+z^2}}{x^2+y^2+z^2} = \sqrt{x^2+y^2+z^2} \rightarrow 0 \text{ då } (x,y,z) \rightarrow (0,0,0)
+\]
+
+\newpage
+\subsection{Rymdpolärakoordianter}
+
+\begin{figure}[ht]
+\usetikzlibrary{3d}
+\begin{tikzpicture}
+\draw[thick,->] (0,0,0) -- (0,0,5) node[anchor=north east]{$x$};
+\draw[thick,->] (0,0,0) -- (5,0,0) node[anchor=north west]{$y$};
+\draw[thick,->] (0,0,0) -- (0,5,0) node[anchor=south]{$z$};
+\draw[dashed]
+	(0,4,0) --
+	(4,4,4) coordinate (p) --
+	(4,0,4) coordinate (q);
+\draw[thick,red]
+	(0,0,0) coordinate (o)-- (q);
+\draw[dashed] 
+	(0,0,4) coordinate (x) -- (q) -- (4,0,0);
+\draw[thick,blue] (o) -- (p);
+\draw[green] let
+	\p0 = (o),
+	\p1 = (0,0,2),
+	\p2 = (2,0,2),
+	\n1 = {atan2(\p1)},
+    \n2 = {\n1 + 103},
+    \n3 = {1cm},
+    \n4 = {(\n1 + \n2) / 2}
+  in (o) +(\n1:\n3) arc[radius = \n3, start angle = \n1, end angle = \n2];
+\draw[purple] let
+	\p0 = (o),
+	\p1 = (0,0,2),
+	\p2 = (2,0,2),
+	\n1 = {atan2(2,0)},
+    \n2 = {atan2(2,2)},
+    \n3 = {1cm},
+    \n4 = {(\n1 + \n2) / 2}
+  in (o) +(\n1:\n3) arc[radius = \n3, start angle = \n1, end angle = \n2];
+\node[fill,circle,inner sep=1.5pt,label={above right:$(x,y,z)$}] at (p) {};
+\node[left,blue] at (2,2,2) {$r$};
+\node[right,red] at (1,0,1) {$r\sin(\theta)$};
+\node[above,green] at (1,0,2.5) {$\varphi$};
+\node[above left,purple] at (0.7,1,0) {$\theta$};
+\end{tikzpicture}
+\caption{Rymdpolära koordinater} \label{fig:4}
+\end{figure}
+
+\[
+	\def\arraystretch{1.1}
+	\begin{blockarray}{r@{\;}l}
+	\begin{block}{r@{\;}l\}}
+		x & = r \sin(\theta) \cos(\varphi) \\[\jot]
+		y & = r \sin(\theta) \sin(\varphi) \\[\jot]
+		z & = r \cos(\theta) \\[\jot]
+	\end{block}
+	r & = \sqrt{x^2+y^2+z^2} \text{, } r > 0 \\[\jot]
+	0 & \leq \varphi \leq 2\pi \\[\jot]
+	0 & \leq \theta \leq \pi \\[\jot]
+	r & \sin(\theta) = \rho
+	\end{blockarray}
 \]
 
 \newpage
