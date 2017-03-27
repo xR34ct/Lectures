@@ -229,7 +229,10 @@ z = \sqrt{x^2+y^2} = \rho
 \]
 
 \[
-	\leq \frac{\sqrt{x^2+y^2+z^2}}{x^2+y^2+z^2} = \sqrt{x^2+y^2+z^2} \rightarrow 0 \text{ då } (x,y,z) \rightarrow (0,0,0)
+\begin{split}
+	\leq \frac{\sqrt{x^2+y^2+z^2}}{x^2+y^2+z^2} = \sqrt{x^2+y^2+z^2} \rightarrow 0 \text{ då } (x,y,z) \rightarrow (0,0,0) \\
+	\Rightarrow \lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} = 0
+\end{split}
 \]
 
 \newpage
@@ -291,6 +294,35 @@ z = \sqrt{x^2+y^2} = \rho
 	r & \sin(\theta) = \rho
 	\end{blockarray}
 \]
+
+För gränsvärden där \((x,y,z) \rightarrow (0,0,0) \iff r \rightarrow 0\)
+
+\newpage
+\paragraph{Exemepl 5 med rymdpolära koordinater}
+
+\[
+\begin{split}
+	\lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} \overset{\mathrm{rymdpol.koord}}{=} \\
+	= \lim_{r \rightarrow 0} \frac{r^3 \sin^2(\theta) \cos(\theta) \sin(\varphi) \cos(\varphi)}{r^2+r^2 \cos^2(\theta)} = \\
+	= \lim_{r \rightarrow 0} \overbrace{r}^{\rightarrow 0} \underbrace{\frac{\sin^2(\theta) \cos(\theta) \sin(\varphi) \cos(\varphi)}{1+\cos^2(\theta)}}_\text{begränsad, nämnare \(\geq 1 \) ingen risk för /0}
+\end{split}
+\]
+
+\subsubsection*{Cylindriska koordinater}
+
+Polära koordinater i (x,y) och vanliga i z
+
+\[
+	\def\arraystretch{1.1}
+	\begin{blockarray}{r@{\;}l}
+	\begin{block}{r@{\;}l\}}
+		x & = r \cos(\varphi) \\[\jot]
+		y & = r \sin(\varphi) \\[\jot]
+		z & = z \\[\jot]
+	\end{block}
+	\end{blockarray}
+\]
+
 
 \newpage
 \begin{appendix}
