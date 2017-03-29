@@ -15,6 +15,12 @@
 \usepackage{xcolor}
 \usepackage{amssymb}
 \usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xparse}
+\NewDocumentEnvironment{spmatrix}{ m }
+  {\mathop\bgroup\begin{pmatrix}}
+  {\end{pmatrix}\egroup_{\textstyle\mathstrut #1}}
 
 \usetkzobj{all}
 
@@ -26,24 +32,35 @@
 	pdftitle={TATA69 Föreläsningar},
 	colorlinks}
 
-\begin{document}
-\numberwithin{equation}{section}
-
 \title{TATA69 Föreläsningar}
 \author{Adnan Avdagic\\
 	Linköpings Universitet\\
-	\texttt{adnan@avdagic.net}}
+	\texttt{forelasningar@avdagic.net}}
 \date{\today}
-\maketitle
 
-\newpage
+\begin{document}
+\pagenumbering{Alph}
+\numberwithin{equation}{section}
+\begin{titlepage}
+\thispagestyle{empty}
+\maketitle
+\end{titlepage}
 
 \tableofcontents
+\pagenumbering{arabic}
+\thispagestyle{empty}
 
 \newpage
-\section{Abstract}
-
-\newpage
+\cleardoublepage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\setcounter{section}{1}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textit{Adnan Avdagic}}
+\lhead{Föreläsning \thesection}
+\rfoot{\rightmark}
+\cfoot{Sida \thepage}
 \noindent
 \section{Föreläsning 2}
 \subsection{Gränsvärden för flervarre}
@@ -548,7 +565,7 @@ Om \(\overline{\Delta x} = (\Delta x_{1},...,\Delta x_{n}) \in \mathbb{R}^n\) oc
 
 \subsubsection*{Exempel 5}
 
-Bestäm rörelseenergin och uppskatta felet för massan \(m = 1.0 \pm 0.1\si{\kilogram}\) med hastighet \(v = 4.0 \pm 0.2\si{\metre\per\second}\). \newline
+Bestäm rörelseenergin och uppskatta felet för massan \(m = 1.0 \pm 0.1\si{\kilogram}\) med hastigheten \(v = 4.0 \pm 0.2\si{\metre\per\second}\). \newline
 Formel för rörelseenergi: \(E = \frac{mv^2}{2} \si{\joule}\) \newline
 Utan fel: \(E = \frac{1*1.4^2}{2} = 8.0 \si{\joule}\) \newline
 Fel: 
@@ -561,6 +578,245 @@ Fel:
 \]
 
 \newpage
+\section{Föreläsning 4}
+\subsection{Kedjeregeln}
+
+\subsubsection*{Envarre}
+
+\underline{Exempel} \[\frac{d}{dx} e^{x^2} = e^{x^2}2x\]
+
+\underline{Allmänt} \[f(g(x)) = \underbrace{f^{\prime}(g(x))}_{\text{yttre}} \underbrace{g^{\prime}(x)}_{\text{inre}} \]
+
+\paragraph{Generalisering till flervarre}
+
+\[
+	\underbrace{f(g(x))}_{\text{envarre}} \Rightarrow \left\{\begin{array}{rcl}
+	\overset{(1)}{\Rightarrow} f(g(\bar{x})) \\
+	\overset{(2)}{\Rightarrow} f(\bar{g}(x))
+	\end{array}\right\}
+	\overset{(3)}{\Rightarrow} f(\bar{g}(\bar{x})) \Rightarrow \bar{f}(\bar{g}(\bar{x}))
+\]
+
+\paragraph{Förklaring av pilar}
+\begin{enumerate}
+	\item \subsubsection*{Exempel 1}
+	\[
+		\frac{\partial}{\partial x} e^{x^2 y} = e^{x^2 y}*\underbrace{2xy}_{\text{inre m.a.p }x}
+		\frac{\partial}{\partial y} e^{x^2 y} = e^{x^2 y}*\underbrace{x^2}_{\text{inre m.a.p }y}
+	\]
+	\subsubsection*{Allmänt}
+	\[
+		\left\{\begin{array}{rcl}
+		\frac{\partial}{\partial x} f(g(x,y)) = f^{\prime}(g(x,y))g_{x}^{\prime}(x,y) \\
+		\frac{\partial}{\partial y} f(g(x,y)) = f^{\prime}(g(x,y))g_{y}^{\prime}(x,y)
+		\end{array}\right.
+	\]
+	Motsvarande för \(\geq\) 3 variabler
+	\subsubsection*{Exempel 2}
+	Visa att \(xh_{x}^{\prime} - 2yh_{y}^{\prime} = 0 \quad \forall\) 2 variabel funktioner \(h(x,y)\) 
+	på formen \(h(x,y) = f(x^2y)\) där \(f\) är en envariabelfunktion. Lösn:
+	\[
+		xh_{x}^{\prime} - 2yh_{y}^{\prime} = xf^{\prime}(x^2y)2xy - 2yf^{\prime}(x^2y)x = 0 \quad \forall f
+	\]
+	
+	\newpage
+	\item
+	\[
+	\begin{split}
+		\frac{d}{dx}(f(\bar{g}(x))) = \frac{d}{dx}(f(g_{1}(x),g_{2}(x))) \overset{\text{def av }\frac{d}{dx}}{=} \\
+		= \lim_{l \rightarrow 0} \frac{f(\overbrace{g_{1}(x+l)}^{s+h},\overbrace{g_{2}(x+l)}^{t+k}) - 
+		f(\overbrace{g_{1}(x)}^{s},\overbrace{g_{2}(x)}^{t})}{l} \underset{\text{diff.bar}}{=} \\
+		= \lim_{l \rightarrow 0} \frac{f_{s}^{\prime}(s,t)h+f_{t}^{\prime}(s,t)k+\sqrt{h^2+k^2}\rho(h,k)}{l} = 
+	\end{split}
+	\]
+	\[
+		= \left/ \begin{array}{rcl}
+			h=g_{1}(x+l)-g_{1}(x) \rightarrow 0 \text{ då } l \rightarrow 0 \text{ om \(g_{1}\) är kontinuerlig} \\
+			k=g_{2}(x+l)-g_{1}(x) \rightarrow 0 \text{ då } l \rightarrow 0 \text{ om \(g_{2}\) är kontinuerlig}
+		\end{array}\right/ =
+	\]
+	\[
+		= \lim_{l \rightarrow 0} \left(
+		 f_{s}^{\prime}(s,t)\overbrace{\frac{g_{1}(x+l)-g_{1}(x)}{l}}^{\rightarrow g_{1}^{\prime}(x)}+
+		 f_{t}^{\prime}(s,t)\overbrace{\frac{g_{2}(x+l)-g_{2}(x)}{l}}^{\rightarrow g_{2}^{\prime}(x)}\pm
+		 \sqrt{\underbrace{\left(\frac{h}{l}\right)^2+\left(\frac{k}{l}\right)^2}
+		 _{\rightarrow (g_{1}^{\prime}(x))^2+(g_{2}^{\prime}(x))^2 \text{ begränsad}}}
+		 \overbrace{\rho(h,k)}^{\rightarrow 0} 
+		\right) =
+	\]
+	\[
+	\begin{split}
+		= f_{s}^{\prime}(s,t)g_{1}^{\prime}(x) + f_{t}^{\prime}(s,t)g_{2}^{\prime}(x) \\
+		\text{eller } \frac{df}{dx} = f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime}
+	\end{split}
+	\]
+	\item \subsubsection*{Fås av 1 \& 2}
+	\[
+	\begin{split}
+		\frac{\partial}{\partial x}f(\overbrace{g_{1}(x,y)}^{s},\overbrace{g_{2}(x,y)}^{t}) = f_{s}^{\prime}s_{x}^{\prime} +
+		f_{t}^{\prime}t_{x}^{\prime} \\
+		\frac{\partial}{\partial y}f(g_{1}(x,y),g_{2}(x,y)) = f_{s}^{\prime}s_{y}^{\prime} + f_{t}^{\prime}t_{y}^{\prime}
+	\end{split}
+	\]
+	\subsubsection*{Matrisform}
+	\[
+	\underbrace{\begin{pmatrix} f_{x}^{\prime} & f_{y}^{\prime} \end{pmatrix}}_{\text{derivator av }f(x,y)} =
+	\underbrace{\begin{pmatrix} f_{s}^{\prime} & f_{t}^{\prime} \end{pmatrix}}_{\text{derivator av }f(s,t)}
+	\begin{pmatrix} s_{x}^{\prime} & s_{y}^{\prime} \\ t_{x}^{\prime} & t_{y}^{\prime} \end{pmatrix}
+	\]
+	Motsvarande för \(\geq\) 3 variabler
+\end{enumerate}
+
+\newpage
+\paragraph{Exempel} Lös den partiella differentialekvationen
+\begin{equation} \label{eq:4.1}
+	f_{x}^{\prime} - f_{y}^{\prime} = y-x
+\end{equation}
+med bivillkoret \begin{equation}\label{eq:4.2}f(x,0) = x^2\end{equation}
+\[
+\begin{split}
+	\text{Ledning: inför nya variabler } \left\{\begin{array}{rcl}
+	s = x+y \\ t = xy
+	\end{array}\right.
+\end{split}
+\]
+\[
+\begin{split}
+	\text{Kedjeregeln } \left\{\begin{array}{rcl}
+		f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime} = 
+		f_{s}^{\prime}\times1 + f_{t}^{\prime}y \\
+		f_{s}^{\prime}s_{y}^{\prime} + f_{t}^{\prime}t_{y}^{\prime} =
+		f_{s}^{\prime}\times1 + f_{t}^{\prime}x
+	\end{array}\right.
+	\text{sätt in i \eqref{eq:4.1}} \\
+	\Rightarrow (f_{s}^{\prime}+f_{t}^{\prime}y) - (f_{s}^{\prime}+f_{t}^{\prime}x) = y-x
+	\Rightarrow f_{t}^{\prime}(y-x) = y-x \text{, ska gälla alla } (x,y) \\
+	\Rightarrow f_{t}^{\prime} = 1 \Rightarrow f_{t} = t + \underbrace{g(s)}_{godtycklig}
+	\Rightarrow \underline{f(x,y) = xy + g(x,y)} \text{ [alla lösnignar på \eqref{eq:4.1}]}
+\end{split}
+\]
+Bivillkoret \eqref{eq:4.2} ger oss \(f(x,0) = x \times 0 + g(x) = x^2 \Rightarrow g(x+0) = x^2 \Rightarrow\)
+Lösnignen blir \(f(x,y) = xy + (x+y)^2\)
+
+\subsubsection{Linjärt variabelbyte}
+
+\[
+\left\{\begin{array}{rcl}
+	s = ax + by \\
+	t = cx + dy
+\end{array}\right.
+\Rightarrow \begin{spmatrix}{X_{\underbar{f}}}s \\ t\end{spmatrix} =
+\begin{spmatrix}{T^{-1}}a & b \\ c & d\end{spmatrix}
+\begin{spmatrix}{X_{\underbar{e}}}x \\ y\end{spmatrix}
+\]
+
+Matris för kedjeregeln
+
+\[
+\begin{pmatrix} s_{x}^{\prime} & s_{y}^{\prime} \\ t_{x}^{\prime} & t_{y}^{\prime} \end{pmatrix} =
+\begin{pmatrix}a & b \\ c & d\end{pmatrix} = T^{-1} \text{ !}
+\]
+
+\subsubsection{Byte till polära koordinater}
+
+\[
+\left\{\begin{array}{rcl}
+	x = \rho\cos(\varphi) \\
+	t = \rho\sin(\varphi)
+\end{array}\right.
+\text{Enklast med \(\rho\) \& \(\varphi\) derivator i vänsterled i kedjeregeln}
+\]
+
+\[
+\left\{\begin{array}{rcl}
+	f_{\rho}^{\prime} = f_{x}^{\prime}x_{\rho}^{\prime} + f_{y}^{\prime}y_{\rho}^{\prime} =
+	f_{x}^{\prime}\cos(\varphi) + f_{y}^{\prime}\sin(\varphi) \\
+	f_{\varphi}^{\prime} = f_{x}^{\prime}x_{\varphi}^{\prime} + f_{y}^{\prime}y_{\varphi}^{\prime} =
+	f_{x}^{\prime}(-\rho\sin(\varphi)) + f_{y}^{\prime}\rho\cos(\varphi)
+\end{array}\right.
+\]
+
+Matrisform
+
+\[
+	\begin{pmatrix}f_{\rho}^{\prime} & f_{\varphi}^{\prime}\end{pmatrix} =
+	\begin{pmatrix}f_{x}^{\prime} & f_{y}^{\prime}\end{pmatrix}
+	\begin{pmatrix}x_{\rho}^{\prime} & x_{\varphi}^{\prime} \\
+	y_{\rho}^{\prime} & y_{\varphi}^{\prime}\end{pmatrix} =
+	\begin{pmatrix}f_{x}^{\prime} & f_{y}^{\prime}\end{pmatrix}
+	\begin{pmatrix}\cos(\varphi) & \sin(\varphi) \\
+	-\rho\sin(\varphi) & \rho\cos(\varphi)\end{pmatrix}
+\]
+
+\newpage
+
+\paragraph{Exempel} 
+Bestäm alla \(f(x,y)\) som uppfyller
+\begin{equation}
+	xf_{xy}^{\prime\prime} - yf_{yy}^{\prime\prime} - f_{y}^{\prime} = 0
+\end{equation}
+
+\[
+\text{Ledning: inför }
+\left\{\begin{array}{rcl}
+	u = x \\
+	v = xy
+\end{array}\right.
+\]
+
+Översätt ekvationen till u \& v. Kedjeregeln
+\[
+\left\{\begin{array}{rcl}
+	f_{x}^{\prime} = f_{u}^{\prime}u_{x}^{\prime} + f_{v}^{\prime}v_{x}^{\prime} = f_{u}^{\prime} + yf_{v}^{\prime} \\
+	f_{y}^{\prime} = f_{u}^{\prime}u_{y}^{\prime} + f_{v}^{\prime}v_{y}^{\prime} = xf_{v}^{\prime} 
+\end{array}\right.
+\]
+
+Operator skrivsätt
+\[
+\left\{\begin{array}{rcl}
+	\frac{\partial}{\partial x} = \frac{\partial}{\partial u} + y\frac{\partial}{\partial v}\\
+	\frac{\partial}{\partial y} = x\frac{\partial}{\partial v}
+\end{array}\right.
+\left\{\begin{array}{rcl}
+	(\text{ })_{x}^{\prime} = (\text{ })_{u}^{\prime} + (\text{ })_{v}^{\prime} \\
+	(\text{ })_{y}^{\prime} = x(\text{ })_{v}^{\prime}
+\end{array}\right.
+\]
+\[
+	f_{yy}^{\prime\prime} = (f_{y}^{\prime})_{y}^{\prime} = (xf_{v}^{\prime})_{y}^{\prime} = x(f_{v}^{\prime})_{y}^{\prime} = x \times x(f_{v}^{\prime})_{v}^{\prime} = x^2 f_{vv}^{\prime\prime}
+\]
+\[
+	f_{xy}^{\prime\prime} = (f_{x}^{\prime})_{y}^{\prime} = (f_{u}^{\prime} + yf_{v}^{\prime})_{y}^{\prime} =
+	(f_{u}^{\prime})_{y}^{\prime} + f_{v}^{\prime} + y(f_{v}^{\prime})_{y}^{\prime} =
+	xf_{uv}^{\prime\prime} + f_{v}^{\prime} + yxf_{vv}^{\prime\prime}
+\]
+
+Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
+
+\[
+\begin{split}
+	x(xf_{uv}^{\prime\prime}+f_{v}^{\prime}+yxf_{vv}^{\prime\prime}) - y(x^2f_{vv}^{\prime\prime}) - xf_{v}^{\prime} = 0 \\
+	x^2 f_{uv}^{\prime\prime}+xf_{v}^{\prime}+yx^2f_{vv}^{\prime\prime} - yx^2f_{vv}^{\prime\prime} - xf_{v}^{\prime} = 0
+\end{split}
+\]
+\[
+\begin{split}
+	\Rightarrow x^2f_{uv}^{\prime\prime} = 0, \quad \forall (x,y) 
+	\Rightarrow f_{uv}^{\prime\prime} = 0 \iff (f_{u}^{\prime})_{v}^{\prime} \\
+	\Rightarrow f_{u}^{\prime} = g(u) \text{ , godtycklig funktion }g(u) \\
+	\Rightarrow f = G(u) + h(v) \text{ , godtycklig funktion }h(v)
+\end{split}
+\]
+\[
+	\text{\underline{Svar:} } f(x,y) = G(x) + h(xy) \text{ , }g=G^{\prime}\text{  }g\text{\&}h\text{ godtyckliga funktioner}
+\]
+
+\newpage
+\fancyhf{}
+\rhead{\textit{Adnan Avdagic}}
+\lhead{Appendix}
+\pagenumbering{gobble}
 \section{Appendix}
 \begin{appendix}
 	\listoffigures
@@ -568,3 +824,4 @@ Fel:
 \end{appendix}
 
 \end{document}
+
