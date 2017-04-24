@@ -553,8 +553,8 @@ För \(\geq\) 2 variabler gäller
 
 \subsubsection{Linjär avbildning}
 
-Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk = f_{x(a,b)}^{\prime}h + f_{y(a,b)}^{\prime}k\), kallas \underline{differentialen} av \(f\) i (a,b) \\
-ofta skrivs variablerna \(h=dx\) \& \(k=dy\) så \(df_{(a,b)}(dx,dy) = f_{x(a,b)}^{\prime}dx + f_{y(a,b)}^{\prime}dy\) eller kort \(df = f_{x}^{\prime}dx + f_{y}^{\prime}dy\)
+Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk = f_{x}^{\prime}(a,b)h + f_{y}^{\prime}(a,b)k\), kallas \underline{differentialen} av \(f\) i (a,b) \\
+ofta skrivs variablerna \(h=dx\) \& \(k=dy\) så \(df_{(a,b)}(dx,dy) = f_{x}^{\prime}(a,b)dx + f_{y}^{\prime}(a,b)dy\) eller kort \(df = f_{x}^{\prime}dx + f_{y}^{\prime}dy\)
 
 \paragraph{Exempel \eqref{eq:3.1} omskrivet}
 
@@ -604,8 +604,10 @@ Fel:
 \begin{enumerate}
 	\item \subsubsection*{Exempel 1}
 	\[
-		\frac{\partial}{\partial x} e^{x^2 y} = e^{x^2 y}*\underbrace{2xy}_{\text{inre m.a.p }x}
+	\begin{split}
+		\frac{\partial}{\partial x} e^{x^2 y} = e^{x^2 y}*\underbrace{2xy}_{\text{inre m.a.p }x} \\
 		\frac{\partial}{\partial y} e^{x^2 y} = e^{x^2 y}*\underbrace{x^2}_{\text{inre m.a.p }y}
+	\end{split}
 	\]
 	\subsubsection*{Allmänt}
 	\[
@@ -619,7 +621,7 @@ Fel:
 	Visa att \(xh_{x}^{\prime} - 2yh_{y}^{\prime} = 0 \quad \forall\) 2 variabel funktioner \(h(x,y)\) 
 	på formen \(h(x,y) = f(x^2y)\) där \(f\) är en envariabelfunktion. Lösn:
 	\[
-		xh_{x}^{\prime} - 2yh_{y}^{\prime} = xf^{\prime}(x^2y)2xy - 2yf^{\prime}(x^2y)x = 0 \quad \forall f
+		xh_{x}^{\prime} - 2yh_{y}^{\prime} = xf^{\prime}(x^2y)2xy - 2yf^{\prime}(x^2y)x^2 = 0 \quad \forall f
 	\]
 	
 	\newpage
@@ -693,9 +695,9 @@ med bivillkoret \begin{equation}\label{eq:4.2}f(x,0) = x^2\end{equation}
 	\end{array}\right.
 	\text{sätt in i \eqref{eq:4.1}} \\
 	\Rightarrow (f_{s}^{\prime}+f_{t}^{\prime}y) - (f_{s}^{\prime}+f_{t}^{\prime}x) = y-x
-	\Rightarrow f_{t}^{\prime}(y-x) = y-x \text{, ska gälla alla } (x,y) \\
+	\Rightarrow f_{t}^{\prime}\times(y-x) = y-x \text{, ska gälla alla } (x,y) \\
 	\Rightarrow f_{t}^{\prime} = 1 \Rightarrow f_{t} = t + \underbrace{g(s)}_{godtycklig}
-	\Rightarrow \underline{f(x,y) = xy + g(x,y)} \text{ [alla lösnignar på \eqref{eq:4.1}]}
+	\Rightarrow \underline{f(x,y) = xy + g(x,y)} \text{ [alla lösningar på \eqref{eq:4.1}]}
 \end{split}
 \]
 Bivillkoret \eqref{eq:4.2} ger oss \(f(x,0) = x \times 0 + g(x) = x^2 \Rightarrow g(x+0) = x^2 \Rightarrow\)
