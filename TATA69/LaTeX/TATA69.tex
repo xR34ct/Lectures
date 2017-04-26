@@ -192,7 +192,8 @@ Viktigt för gränsvärden: \( (x,y) \rightarrow (0,0) \iff \rho \rightarrow 0 \
 \paragraph{Exempel \eqref{eq:2.3} med polära koordinater}
 
 \[
-	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = \lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
+	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = 
+	\lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
 \]
 
 \subsubsection{Oändlighet i envarre och flervarre}
@@ -211,7 +212,8 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 \paragraph{Exempel 4}
 
 \begin{equation} \label{eq:2.4}
-	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = \lim_{\rho \rightarrow \infty} \overbrace{\frac{1}{\rho}}^{\rightarrow 0} \underbrace{\sin(\varphi)}_\text{Begränsad} = 0
+	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = 
+	\lim_{\rho \rightarrow \infty} \overbrace{\frac{1}{\rho}}^{\rightarrow 0} \underbrace{\sin(\varphi)}_\text{Begränsad} = 0
 \end{equation}
 
 \underline{OBS!} 2-variabelfunktioner som uttryckta i polärakoordinater inte beror på $\varphi$ har rotationssymmetriska grafer kring z-axeln
@@ -514,7 +516,8 @@ Bestäm alla \(f(x,y,z)\) som uppfyller
 \subsection{Differentierbarhet}
 \subsubsection*{Envarre}
 
-Om \(f_{a}^{\prime} = \lim_{h \rightarrow 0} \frac{f(a+h) - f(a)}{h} \quad \exists\) (dvs \(f\) deriverbar i \(a\)) så finns talet \(f_{a}^{\prime} = A\) sådant att \(\frac{f(a+h) - f(a)}{h}-A = \frac{1}{h}(f(a+h)-f(a)-Ah) = \rho(h) \rightarrow 0\) \newline \newline
+Om \(f_{a}^{\prime} = \lim_{h \rightarrow 0} \frac{f(a+h) - f(a)}{h} \quad \exists\) (dvs \(f\) deriverbar i \(a\)) så finns talet \(f_{a}^{\prime} = A\) sådant att \(\frac{f(a+h) - f(a)}{h}-A = 
+\frac{1}{h}(f(a+h)-f(a)-Ah) = \rho(h) \rightarrow 0\) \newline \newline
 Vi vet att \(f \in C^1 \Rightarrow f\) deriverbar \(\Rightarrow f\) kontinuerlig 
 
 \subsubsection*{Flervarre}
@@ -542,10 +545,12 @@ För \(\geq\) 2 variabler gäller
 \begin{enumerate}
 	\item s.56-57 i boken
 	\item \(
-				f_{x}^{\prime}(a,b) = \lim_{h \rightarrow 0} \frac{f(a+h,b) - f(a,b)}{h} \overset{f \text{ diff.bar med }k=0}{=} \lim_{h \rightarrow 0} \frac{Ah + B*0 + \sqrt{h^2 + 0^2}\rho(h,0)}{h} = \lim_{h \rightarrow 0} A  + \underbrace{\frac{\sqrt{h^2}}{h}}_{\pm \text{ 1 begränsad}} \underbrace{\frac{\rho(h,0)}{h}}_{\rightarrow 0} = A \quad \exists
+				f_{x}^{\prime}(a,b) = \lim_{h \rightarrow 0} \frac{f(a+h,b) - f(a,b)}{h} \overset{f \text{ diff.bar med }k=0}{=} \lim_{h \rightarrow 0} \frac{Ah + B*0 + \sqrt{h^2 + 0^2}\rho(h,0)}{h} = 
+				\lim_{h \rightarrow 0} A  + \underbrace{\frac{\sqrt{h^2}}{h}}_{\pm \text{ 1 begränsad}} \underbrace{\frac{\rho(h,0)}{h}}_{\rightarrow 0} = A \quad \exists
 			\)
 	\item \(
-				f(a+h,b+k) = f(a,b) + \underbrace{Ah}_{\rightarrow 0} + \underbrace{Bk}_{\rightarrow 0} + \underbrace{\sqrt{h^2 + k^2}}_{\rightarrow 0}\underbrace{\rho(h,k)}_{\rightarrow 0} \rightarrow f(a,b) \text{ då } (h,k) \rightarrow (0,0) \Rightarrow f \text{ kontinuerlig}
+				f(a+h,b+k) = f(a,b) + \underbrace{Ah}_{\rightarrow 0} + \underbrace{Bk}_{\rightarrow 0} + \underbrace{\sqrt{h^2 + k^2}}_{\rightarrow 0}\underbrace{\rho(h,k)}_{\rightarrow 0} \rightarrow f(a,b) 
+				\text{ då } (h,k) \rightarrow (0,0) \Rightarrow f \text{ kontinuerlig}
 			\)
 	\item Motexempel finns i boken s.51
 	\item Motexempel \(f(x,y) = \abs{x}\) i \((0,0)\), kontinuerlig men \(f_{x}^{\prime}(x,y) \quad \nexists\)
@@ -555,7 +560,8 @@ För \(\geq\) 2 variabler gäller
 
 \subsubsection{Linjär avbildning}
 
-Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk = f_{x}^{\prime}(a,b)h + f_{y}^{\prime}(a,b)k\), kallas \underline{differentialen} av \(f\) i (a,b) \\
+Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk = 
+f_{x}^{\prime}(a,b)h + f_{y}^{\prime}(a,b)k\), kallas \underline{differentialen} av \(f\) i (a,b) \\
 ofta skrivs variablerna \(h=dx\) \& \(k=dy\) så \(df_{(a,b)}(dx,dy) = f_{x}^{\prime}(a,b)dx + f_{y}^{\prime}(a,b)dy\) eller kort \(df = f_{x}^{\prime}dx + f_{y}^{\prime}dy\)
 
 \paragraph{Exempel \eqref{eq:3.1} omskrivet}
@@ -566,7 +572,9 @@ ofta skrivs variablerna \(h=dx\) \& \(k=dy\) så \(df_{(a,b)}(dx,dy) = f_{x}^{\p
 
 \subsubsection*{Feluppskattning med \(df\)}
 
-Om \(\overline{\Delta x} = (\Delta x_{1},...,\Delta x_{n}) \in \mathbb{R}^n\) och \(f\) är differentierbar fås \(f(\overline{x} + \overline{\Delta x}) - f(\overline{x}) = f_{x_{1}}^{\prime}\Delta x_{1} + ... + f_{x_{n}}^{\prime}\Delta x_{n} + \underbrace{\rho(\Delta x_{1},...,\Delta x_{n})\sqrt{(\Delta x_{1})^2 + ... + (\Delta x_{n})^2}}_{\text{Restterm}} \approx df(\overline{\Delta x})\) 
+Om \(\overline{\Delta x} = (\Delta x_{1},...,\Delta x_{n}) \in \mathbb{R}^n\) och \(f\) är differentierbar fås 
+\(f(\overline{x} + \overline{\Delta x}) - f(\overline{x}) = 
+f_{x_{1}}^{\prime}\Delta x_{1} + ... + f_{x_{n}}^{\prime}\Delta x_{n} + \underbrace{\rho(\Delta x_{1},...,\Delta x_{n})\sqrt{(\Delta x_{1})^2 + ... + (\Delta x_{n})^2}}_{\text{Restterm}} \approx df(\overline{\Delta x})\) 
 
 \subsubsection*{Exempel 5}
 
