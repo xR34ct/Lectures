@@ -69,7 +69,7 @@
 \subsection{Gränsvärden för flervarre}
 
 \paragraph{Exempel 1} \flushleft
-\begin{equation} \label{eq:1}
+\begin{equation} \label{eq:2.1}
 	f(x,y) = \frac{\sin(x^4+y^2)}{x^4+y^2} \text{, ej definierad i origo}
 \end{equation}
 
@@ -81,7 +81,7 @@ $$\lim_{x,y \rightarrow 0,0} \frac{\sin(x^4+y^2)}{x^4+y^2}$$
 då fås \(\displaystyle \lim_{t \rightarrow 0} \frac{\sin t}{t} = 1,\) (standard gränsvärde) \newline
 
 \paragraph{Exempel 2} \flushleft
-\begin{equation} \label{eq:2}
+\begin{equation} \label{eq:2.2}
 	f(x,y) = \frac{x^3+xy}{x^2+y^2} \text{, ej definierad i origo}
 \end{equation}
 
@@ -96,7 +96,7 @@ Gå mot origo längs $y=x$
 
 Olika värden från olika riktningar \newline
 Innanför varje liten cirkel kring origo har f värden nära 0 och nära $\frac{1}{2}$.
-Vi säger därför att gränsvärde ej existerar. Se \ref{fig:1}
+Vi säger därför att gränsvärde ej existerar. Se \ref{fig:2.1}
 
 \begin{figure}[ht] 
 \begin{tikzpicture}
@@ -112,13 +112,15 @@ Vi säger därför att gränsvärde ej existerar. Se \ref{fig:1}
    \tkzDefPoint(0.2,0.2){A}
    \tkzDrawCircle(O,A)
   \end{tikzpicture}
-  \caption{Graf i 2D} \label{fig:1}
+  \caption{Graf i 2D} \label{fig:2.1}
 \end{figure}
 
 \newpage
 \subsubsection{Definition}
 
-Funktionen \(\bar{f}\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) har gränsvärdet \(\bar{b} \in \mathbb{R}^m\) då \(\bar{x} \rightarrow \bar{a} \in \mathbb{R}^n\) om \(\forall \epsilon >0 \quad \exists \delta >0\) så att \(|\bar{f}(x)-\bar{b}|<\epsilon\) om \(0<|\bar{x}-\bar{a}|<\delta\) och \(\bar{x}\in D_f\). 
+Funktionen \(\bar{f}\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) har gränsvärdet \(\bar{b} \in \mathbb{R}^m\) då 
+\(\bar{x} \rightarrow \bar{a} \in \mathbb{R}^n\) om \(\forall \epsilon >0 \quad \exists \delta >0\) 
+så att \(|\bar{f}(x)-\bar{b}|<\epsilon\) om \(0<|\bar{x}-\bar{a}|<\delta\) och \(\bar{x}\in D_f\). 
 Skrivs 
 \[
 \lim_{\bar{x} \rightarrow \bar{a}} \bar{f}(\bar{x})=\bar{b}
@@ -126,7 +128,7 @@ Skrivs
 
 \newpage
 \paragraph{Exempel 3}
-\begin{equation} \label{eq:3}
+\begin{equation} \label{eq:2.3}
 	f(x,y)=\frac{x^3}{x^2+y^2} \text{, ej definierad i origo}
 \end{equation}
 
@@ -141,8 +143,8 @@ Vanliga räkneregler för gränsvärden (summa, produkt, instängning) gäller o
 Undersökning/beräkning av gränsvärden
 
 \begin{itemize}
-\item Om test av värden längs olika riktningar eller olika kurvor ger olika resultat så saknas gränsvärde, se \eqref{eq:2}
-\item Sådana test kan \underline{INTE} visa att gränsvärde existerar, andra metoder behövs, som \eqref{eq:1} eller \eqref{eq:3}, eller polära koordinater
+\item Om test av värden längs olika riktningar eller olika kurvor ger olika resultat så saknas gränsvärde, se \eqref{eq:2.2}
+\item Sådana test kan \underline{INTE} visa att gränsvärde existerar, andra metoder behövs, som \eqref{eq:2.1} eller \eqref{eq:2.3}, eller polära koordinater
 \end{itemize}
 
 \begin{figure}[ht] 
@@ -160,7 +162,7 @@ Undersökning/beräkning av gränsvärden
    \node[above left,blue] at (1.5,1.5) {$\rho$};
    \node[above right] at (3,3) {(x,y)};
   \end{tikzpicture}
-  \caption{Graf för polära koordinater} \label{fig:2}
+  \caption{Graf för polära koordinater} \label{fig:2.2}
 \end{figure}
 
 \[
@@ -178,19 +180,19 @@ Viktigt för gränsvärden: \( (x,y) \rightarrow (0,0) \iff \rho \rightarrow 0 \
 
 \newpage
 
-\paragraph{Exempel \eqref{eq:3} med polära koordinater}
-
-\[
-	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = \lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
-\]
-
-\paragraph{Exempel \eqref{eq:2} med polära koordinater}
+\paragraph{Exempel \eqref{eq:2.2} med polära koordinater}
 
 \[
 \begin{split}
 \lim_{(x,y) \rightarrow 0} \frac{x^3+xy}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3 \cos^3(\varphi) + \rho^2 \cos(\varphi) \sin(\varphi)}{\rho^2} = \\
 =\lim_{\rho \rightarrow 0} (\overbrace{\rho \cos^3(\varphi)}^{\rightarrow 0}+\underbrace{\cos(\varphi) \sin(\varphi)}_\text{vinkelberoende}) \Rightarrow \text{gränsvärde existerar ej}
 \end{split}
+\]
+
+\paragraph{Exempel \eqref{eq:2.3} med polära koordinater}
+
+\[
+	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = \lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
 \]
 
 \subsubsection{Oändlighet i envarre och flervarre}
@@ -208,7 +210,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 \newpage
 \paragraph{Exempel 4}
 
-\begin{equation} \label{eq:4}
+\begin{equation} \label{eq:2.4}
 	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = \lim_{\rho \rightarrow \infty} \overbrace{\frac{1}{\rho}}^{\rightarrow 0} \underbrace{\sin(\varphi)}_\text{Begränsad} = 0
 \end{equation}
 
@@ -226,7 +228,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 \draw[blue] (0,0,0) -- (0,2,2);
 \draw[blue] (0,0,0) -- (0,0.5,-1.5);
 \end{tikzpicture}
-\caption{Exempel på rotationssymmetri} \label{fig:3}
+\caption{Exempel på rotationssymmetri} \label{fig:2.3}
 \end{figure}
 
 \(
@@ -234,9 +236,9 @@ z = \sqrt{x^2+y^2} = \rho
 \)
 
 \subsubsection{3-variabler mot origo}
-\paragraph{Exempel 5}
+\paragraph{Exempel 5} 
 
-\begin{equation}
+\begin{equation} \label{eq:2.5}
 	\lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} = \text{ ???}
 \end{equation}
 
@@ -304,7 +306,7 @@ z = \sqrt{x^2+y^2} = \rho
 \node[above,green] at (1,0,2.5) {$\varphi$};
 \node[above left,purple] at (0.7,1,0) {$\theta$};
 \end{tikzpicture}
-\caption{Rymdpolära koordinater} \label{fig:4}
+\caption{Rymdpolära koordinater} \label{fig:2.4}
 \end{figure}
 
 \[
@@ -325,7 +327,7 @@ z = \sqrt{x^2+y^2} = \rho
 För gränsvärden där \((x,y,z) \rightarrow (0,0,0) \iff r \rightarrow 0\)
 
 \newpage
-\paragraph{Exempel 5 med rymdpolära koordinater}
+\paragraph{Exempel \eqref{eq:2.5} med rymdpolära koordinater}
 
 \[
 \begin{split}
@@ -397,7 +399,7 @@ Motsvarande för y:
    \node[below right,blue] at (b) {(x+h,y)};
    \node[above left,blue] at (c) {(x,y+k)};
   \end{tikzpicture}
-  \caption{Grafisk visning av hur f ändras i x- \& y-riktningen} \label{fig:5}
+  \caption{Grafisk visning av hur f ändras i x- \& y-riktningen} \label{fig:3.1}
 \end{figure}
 
 \paragraph{Exempel 2}
@@ -677,7 +679,10 @@ Fel:
 \begin{equation} \label{eq:4.1}
 	f_{x}^{\prime} - f_{y}^{\prime} = y-x
 \end{equation}
-med bivillkoret \begin{equation}\label{eq:4.2}f(x,0) = x^2\end{equation}
+med bivillkoret 
+\begin{equation}\label{eq:4.2}
+	f(x,0) = x^2
+\end{equation}
 \[
 \begin{split}
 	\text{Ledning: inför nya variabler } \left\{\begin{array}{rcl}
