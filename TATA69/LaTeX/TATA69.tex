@@ -19,6 +19,7 @@
 \usepackage{lastpage}
 \usepackage{xparse}
 \usepackage{coffee4}
+\usepackage{framed}
 
 \NewDocumentEnvironment{spmatrix}{ m }
   {\mathop\bgroup\begin{pmatrix}}
@@ -28,6 +29,15 @@
 
 \DeclarePairedDelimiter \abs{\lvert}{\rvert}
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
+
+\let\oldsqrt\sqrt
+\def\sqrt{\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{%
+\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+
 
 \hypersetup{
 	pdfauthor={Adnan Avdagic},
@@ -820,8 +830,8 @@ Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
 \]
 \[
 \begin{split}
-	\Rightarrow x^2f_{uv}^{\prime\prime} = 0, \quad \forall (x,y) 
-	\Rightarrow f_{uv}^{\prime\prime} = 0 \iff (f_{u}^{\prime})_{v}^{\prime} \\
+	\Rightarrow x^2f_{uv}'' = 0, \quad \forall (x,y) 
+	\Rightarrow f_{uv}'' = 0 \iff (f_{u}')_{v}' \\
 	\Rightarrow f_{u}^{\prime} = g(u) \text{ , godtycklig funktion }g(u) \\
 	\Rightarrow f = G(u) + h(v) \text{ , godtycklig funktion }h(v)
 \end{split}
@@ -829,6 +839,188 @@ Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
 \[
 	\text{\underline{Svar:} } f(x,y) = G(x) + h(xy) \text{ , }g=G^{\prime}\text{  }g\text{\&}h\text{ godtyckliga funktioner}
 \]
+
+\newpage
+\section{Föreläsning 5}
+
+\subsection{Gradienter}
+
+\subsubsection{Definition}
+
+\underline{Gradienten} av \(f(x,y)\) är \underline{vektorn} \(\nabla f =\) grad \(f = (f'_{x},f'_{y})\) \newline
+För \(g(x,y,z)\) är \(\nabla g = (g'_{x},g'_{y},g'_{z})\) och motsvarande för \(\geq\) 4 variabler \newline
+
+\underline{Hessianen} av \(f(x,y)\) resp \(g(x,y,z)\) är \underline{matrisen} 
+\[Hf=
+\begin{pmatrix}
+f''_{xx} && f''_{xy} \\
+f''_{yx} && f''_{yy}
+\end{pmatrix}\] 
+\[\text{resp } Hg = 
+\begin{pmatrix}
+g''_{xx} && g''_{xy} && g''_{xz} \\
+g''_{yx} && g''_{yy} && g''_{yz} \\
+g''_{zx} && g''_{zy} && g''_{zz}
+\end{pmatrix}\]
+
+symmetriska om \(f,g \in C^2\), mer om \(H\) i samband med max/min-problem.
+
+\subsubsection{Hur tolkar man gradienter i 2D \& 3D?}
+
+\subsubsection*{Kurvor i 2D}
+
+Tangenter och normaler (allmänt)
+
+Tangentvektor \(\bar{T} = (v_1,v_2)\) \newline
+Normalvektor \(\bar{T} = k(v_2,-v_1)\) ty ger \newline
+
+\[\bar{T} \bullet \bar{N} = v_1kv_2 - v_2kv_1 = 0 \Rightarrow \text{ortogonala}\]
+
+Ekvivalent för tangentlinje i \((x,y)\) är på tangenten \(\iff\) \newline
+
+\[\underbrace{(x-a,y-b)}_{\text{Parallell med }\bar{T}} \bullet \bar{N} = 0 \iff v_2x - v_1y = \underbrace{v_2a - v_1b}_{Konstant}\]
+
+\[
+	\text{Parameterform} 
+	\left\{\begin{array}{rcl}
+		x=a+tv_2 \\
+		y=b+tv_2
+	\end{array}\right.
+	\text{ , } t \in \mathbb{R} \text{ parameter}
+\]
+
+Ekvation för normallinjen: \((x,y)\) är på normalen \(\iff\)
+\[
+	\underbrace{(x-a,y-b)}_{\text{Parallell med }\bar{N}} \times (v_1,v_2) = 0 \iff v_1x + v_2y = \underbrace{v_1a + v_2b}_{Konstant}
+\]
+
+\[
+	\text{Parameterform} 
+	\left\{\begin{array}{rcl}
+		x=a+tv_1 \\
+		y=b-tv_2
+	\end{array}\right.
+	\text{ , } t \in \mathbb{R}
+\]
+
+\newpage
+\begin{enumerate}
+\item Kurvor på parameterform
+\subsubsection*{Ex}
+\[
+	\left\{\begin{array}{rcl}
+		x=1-t \\
+		y=2+t
+	\end{array}\right.
+	\iff (x,y) = (1,2) + t(-1,1) \quad \text{[rät linje]}
+\]
+
+\subsubsection*{Ex}
+\[\bar{r}(t) = \Big(x(t),y(t)\Big) = \Big(\cos{t}, \sin{t}\Big) \quad \text{[enhetscirkeln]}\]
+\[\text{Två punkter på kurvan } \bar{r}(t) \quad \& \quad \bar{r}(t+\Delta t)\]
+\[\begin{split}
+	\text{Låt } \Delta t \rightarrow 0 \Rightarrow \bar{T}(t) = r'(t) = 
+	\lim_{\Delta t \rightarrow 0} \frac{\bar{r}(t+\Delta t) - \bar{r}}{\Delta t} = \Big(x'(t),y'(t)\Big) \\
+	= \text{ ger tangentvektorn till kurvan, exempelvis har enhetscirkeln } \\
+\end{split}\]
+\[\bar{T}(t) = \Big(x'(t),y'(t)\Big) = \Big( -\sin{t},\cos{t} \Big)\]
+
+\item Nivåkurvor \(f(x,y) = C\)
+\paragraph{}
+Om \(f(x,y) = C\) parametriseras med t som \(\Big(x(t),y(t)\Big)\) ger kedjeregeln 
+\[
+	0 = \frac{d}{dt} \overbrace{f\Big(x(t),y(t)\Big)}^{\text{konstant = C}} = f'_xx'(t)+f'_yy'(t) =
+	\underbrace{\Big(f'_x,f'_y\Big)}_{\nabla f} \bullet \underbrace{\Big(x'(t),y'(t)\Big)}_{\bar{T}}
+\]
+\[\Rightarrow \nabla f \text{ är normalvektor till nivåkurvan}\] 
+
+\subsubsection*{Ex}
+Enhetscirkeln \(\Big[f(x,y)=x^2+y^2=1\Big]\) har \(\nabla f = \Big(2x,2y\Big) = 2\Big(x,y\Big)\)
+
+\item
+\subsubsection*{Grafer}
+
+\(y=h(x)\) kan föras på 
+\begin{itemize}
+\item parameterform: \(t=x\) ger \(\Big(x,y\Big) = \Big(t,h(t)\Big) \) 
+\(\Rightarrow \bar{T} = \Big(x',y'\Big) = \Big(t,h(t)\Big)\)
+
+\item nivåkurveform: sätt \(f(x,y) = y-h(x) = 0\) \newline
+\(\Rightarrow \bar{N} = \nabla f = \Big(f'_x,f'_y\Big) = \Big(-h'(x),1\Big)\)
+\end{itemize}
+\end{enumerate}
+
+\subsection{Nivåytor i 3D}
+
+\[g(x,y,z) = C\]
+
+Med kedjeregeln visas på liknande sätt som för nivåkurvor att
+
+\begin{framed}
+\[
+	\nabla g = \Big(g'_x,g'_y,g'_z\Big) \text{ är } \bar{N} \text{ till nivåytan}
+\]
+\end{framed}
+
+\subsubsection*{Ex}
+
+Enhetssfären \(g(x,y,z) = x^2 + y^2 + z^2 = 1\) har \(\bar{N} = \nabla g = (2x,2y,2z)\) \newline
+I punkten \(P:\left(\frac{2}{3},\frac{1}{3},\frac{2}{3}\right)\) är 
+\(\bar{N} = \left(2\times\frac{2}{3},2\times\frac{1}{3},2\times\frac{2}{3}\right)\) och tangentplanet i P är \newline
+\(\left(x-\frac{2}{3},y-\frac{1}{3},z-\frac{2}{3}\right) = \bar{N} = 0 \iff 2x+y+2z = 3\) \newline
+
+En graf \(z = f(x,y)\) kan skrivas som nivåytan \(g(x,y,z) = f(x,y) - z = 0\) \newline
+\(\Rightarrow \bar{N}\) är \(\nabla g = (g'_x,g'_y,g'_z) = (f'_x,f'_y,-1) \)
+
+\subsubsection*{Ex}
+
+\[z = f(x,y) = x^2 + y^2\]
+\[f'_x = 2x\]
+\[f'_y = 2y\]
+har i punkten \((1,2,5)\)
+\[\bar{N} = \Big(f'_x(1,2),f'_y(1,2),-1\Big) = \Big(2,4,-1\Big)\]
+
+\subsubsection{Definition}
+\underline{Riktningsderivatan} av \(f(x,y)\) i punkten \((a,b)\) och riktning \(\bar{v} = (v_1,v_2)\) där 
+\(\abs{\bar{v}} = \sqrt{v^2_1+v^2_2} = 1\) är 
+\[f'_{\bar{v}}(a,b) = \lim_{t \rightarrow 0}\frac{f(a+tv_1,b+tv_2)-f(a,b)}{t}\]
+
+Mäter hur \(f\) ändras i \(\bar{v}\):s riktning \newline
+\Big(\(\abs{\bar{v}} > 1\) behövs för att \(f'_{\bar{v}}\) inte ska bero på \(\bar{v}\):s längd \Big)
+Partiella derivator är specialfall t.ex. \(\bar{v} = \bar{e_1} = (1,0)\) ger \(f'_{\bar{v}} = f'_x\)
+Motsvarande gäller för \(\geq\) 3 variabler
+
+\newpage
+\subsubsection{Sats}
+\begin{framed}
+\[\text{f differentierbar }\Rightarrow
+f'_{\bar{v}} = \nabla f \bullet \bar{v}\]
+\end{framed}
+
+\subsubsection*{Ex}
+\[ \bar{v} = (1,0) \Rightarrow f'_{\bar{v}} = (f'_x,f'_y) \bullet (1,0) = f'_x \]
+
+\subsubsection*{Ex}
+\[ f(x,y,z) = xy^2z^3 \Rightarrow \nabla f = (f'_x,f'_y,f'_z) = (y^2z^3,2xyz^3,3xy^2z^2) \]
+
+I punkten \((a,b,c) = (2,-1,1)\) och i riktningen \(\bar{v} = \frac{1}{\sqrt{5}}(1,0,2)\) från punkten är 
+
+\[f'_{\bar{v}}(2,-1,1) = \nabla f(a,b,c) \bullet \bar{v} = (1,-4,6) \bullet \frac{1}{\sqrt{5}}(1,0,2) 
+= \frac{1 \times 1 - 4 \times 0 + 6 \times 2}{\sqrt{5}} = \frac{13}{\sqrt{5}}\]
+
+\subsubsection{Allmänt}
+
+\[
+	f'_{\bar{v}} = \nabla f \bullet \bar{v} = \abs{\nabla f} \underbrace{\abs{\bar{v}}}_{=1} \cos{\alpha}
+\]
+
+Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nabla f \Rightarrow\)
+
+\begin{framed}
+\[\nabla f \text{pekar i den riktning } f \text{ växer snabbast i} \]
+\end{framed}
+
+\(f'_{\bar{v}} = 0\) då \(\bar{v}\) är en tangent till nivåkurvan/ytan
 
 \newpage
 \fancyhf{}
