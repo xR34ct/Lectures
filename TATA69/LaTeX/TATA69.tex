@@ -20,6 +20,7 @@
 \usepackage{xparse}
 \usepackage{coffee4}
 \usepackage{framed}
+\usepackage{letltxmacro}
 
 \NewDocumentEnvironment{spmatrix}{ m }
   {\mathop\bgroup\begin{pmatrix}}
@@ -31,12 +32,16 @@
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
 
 \let\oldsqrt\sqrt
-\def\sqrt{\mathpalette\DHLhksqrt}
-\def\DHLhksqrt#1#2{%
-\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{
+\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
 \advance\dimen0-0.2\ht0
-\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
 {\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
+\makeatother
 
 
 \hypersetup{
@@ -51,7 +56,7 @@
 \date{\today}
 
 \begin{document}
-\pagenumbering{Alph}
+\hypersetup{pageanchor=false}
 \numberwithin{equation}{section}
 \begin{titlepage}
 \maketitle
@@ -59,8 +64,9 @@
 \thispagestyle{empty}
 \end{titlepage}
 
+\hypersetup{pageanchor=true}
+\thispagestyle{empty}
 \tableofcontents
-\pagenumbering{arabic}
 \thispagestyle{empty}
 
 \newpage
@@ -78,7 +84,7 @@
 \section{Föreläsning 2}
 \subsection{Gränsvärden för flervarre}
 
-\paragraph{Exempel 1} \flushleft
+\subsubsection{Exempel 1} \flushleft
 \begin{equation} \label{eq:2.1}
 	f(x,y) = \frac{\sin(x^4+y^2)}{x^4+y^2} \text{, ej definierad i origo}
 \end{equation}
@@ -90,7 +96,7 @@ $$\lim_{x,y \rightarrow 0,0} \frac{\sin(x^4+y^2)}{x^4+y^2}$$
 //sätt $t= \displaystyle x^4+y^2$, ${t \rightarrow 0}$ då ${(x,y) \rightarrow (0,0)}$// \newline
 då fås \(\displaystyle \lim_{t \rightarrow 0} \frac{\sin t}{t} = 1,\) (standard gränsvärde) \newline
 
-\paragraph{Exempel 2} \flushleft
+\subsubsection{Exempel 2} \flushleft
 \begin{equation} \label{eq:2.2}
 	f(x,y) = \frac{x^3+xy}{x^2+y^2} \text{, ej definierad i origo}
 \end{equation}
@@ -137,7 +143,7 @@ Skrivs
 \]
 
 \newpage
-\paragraph{Exempel 3}
+\subsubsection{Exempel 3}
 \begin{equation} \label{eq:2.3}
 	f(x,y)=\frac{x^3}{x^2+y^2} \text{, ej definierad i origo}
 \end{equation}
@@ -206,7 +212,7 @@ Viktigt för gränsvärden: \( (x,y) \rightarrow (0,0) \iff \rho \rightarrow 0 \
 	\lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
 \]
 
-\subsubsection{Oändlighet i envarre och flervarre}
+\subsection{Oändlighet i envarre och flervarre}
 \subsubsection*{Envarre}
 x kan gå mot $\pm\infty$
 \subsubsection*{Flervarre}
@@ -219,7 +225,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 \]
 
 \newpage
-\paragraph{Exempel 4}
+\subsubsection{Exempel 4}
 
 \begin{equation} \label{eq:2.4}
 	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = 
@@ -247,8 +253,8 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 z = \sqrt{x^2+y^2} = \rho
 \)
 
-\subsubsection{3-variabler mot origo}
-\paragraph{Exempel 5} 
+\subsection{3-variabler mot origo}
+\subsubsection{Exempel 5} 
 
 \begin{equation} \label{eq:2.5}
 	\lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} = \text{ ???}
@@ -365,7 +371,7 @@ Polära koordinater i (x,y) och vanliga i z
 \section{Föreläsning 3}
 \subsection{Partiella derivator}
 
-\paragraph{Exempel 1}
+\subsubsection{Exempel 1}
 
 \begin{equation} \label{eq:3.1}
 	f(x,y) = x^2y + x\sin(y)
@@ -414,7 +420,7 @@ Motsvarande för y:
   \caption{Grafisk visning av hur f ändras i x- \& y-riktningen} \label{fig:3.1}
 \end{figure}
 
-\paragraph{Exempel 2}
+\subsubsection{Exempel 2}
 
 3 variabler
 
@@ -468,7 +474,7 @@ motsvarande för \(\geq 3\) varianter \newline
 
 \newpage
 
-\paragraph{Exempel 3}
+\subsubsection{Exempel 3}
 
 Bestäm alla \(f(x,y,z)\) som uppfyller
 
@@ -512,7 +518,7 @@ Bestäm alla \(f(x,y,z)\) som uppfyller
 \end{split}
 \]
 
-\paragraph{Exempel 4}
+\subsubsection{Exempel 4}
 
 \[
 \begin{split}
@@ -586,7 +592,7 @@ Om \(\overline{\Delta x} = (\Delta x_{1},...,\Delta x_{n}) \in \mathbb{R}^n\) oc
 \(f(\overline{x} + \overline{\Delta x}) - f(\overline{x}) = 
 f_{x_{1}}^{\prime}\Delta x_{1} + ... + f_{x_{n}}^{\prime}\Delta x_{n} + \underbrace{\rho(\Delta x_{1},...,\Delta x_{n})\sqrt{(\Delta x_{1})^2 + ... + (\Delta x_{n})^2}}_{\text{Restterm}} \approx df(\overline{\Delta x})\) 
 
-\subsubsection*{Exempel 5}
+\subsubsection{Exempel 5}
 
 Bestäm rörelseenergin och uppskatta felet för massan \(m = 1.0 \pm 0.1\si{\kilogram}\) med hastigheten \(v = 4.0 \pm 0.2\si{\metre\per\second}\). \newline
 Formel för rörelseenergi: \(E = \frac{mv^2}{2} \si{\joule}\) \newline
@@ -693,7 +699,7 @@ Fel:
 \end{enumerate}
 
 \newpage
-\paragraph{Exempel} Lös den partiella differentialekvationen
+\subsubsection{Exempel 1} Lös den partiella differentialekvationen
 \begin{equation} \label{eq:4.1}
 	f_{x}^{\prime} - f_{y}^{\prime} = y-x
 \end{equation}
@@ -724,7 +730,7 @@ med bivillkoret
 \end{split}
 \]
 Bivillkoret \eqref{eq:4.2} ger oss \(f(x,0) = x \times 0 + g(x) = x^2 \Rightarrow g(x+0) = x^2 \Rightarrow\)
-Lösnignen blir \(f(x,y) = xy + (x+y)^2\)
+Lösningen blir \(f(x,y) = xy + (x+y)^2\)
 
 \subsubsection{Linjärt variabelbyte}
 
@@ -778,7 +784,7 @@ Matrisform
 
 \newpage
 
-\paragraph{Exempel} 
+\subsubsection{Exempel 2} \label{eq:4.3}
 Bestäm alla \(f(x,y)\) som uppfyller
 \begin{equation}
 	xf_{xy}^{\prime\prime} - yf_{yy}^{\prime\prime} - f_{y}^{\prime} = 0
@@ -962,7 +968,7 @@ Med kedjeregeln visas på liknande sätt som för nivåkurvor att
 \]
 \end{framed}
 
-\subsubsection*{Ex}
+\subsubsection{Exempel 1}
 
 Enhetssfären \(g(x,y,z) = x^2 + y^2 + z^2 = 1\) har \(\bar{N} = \nabla g = (2x,2y,2z)\) \newline
 I punkten \(P:\left(\frac{2}{3},\frac{1}{3},\frac{2}{3}\right)\) är 
@@ -972,7 +978,7 @@ I punkten \(P:\left(\frac{2}{3},\frac{1}{3},\frac{2}{3}\right)\) är
 En graf \(z = f(x,y)\) kan skrivas som nivåytan \(g(x,y,z) = f(x,y) - z = 0\) \newline
 \(\Rightarrow \bar{N}\) är \(\nabla g = (g'_x,g'_y,g'_z) = (f'_x,f'_y,-1) \)
 
-\subsubsection*{Ex}
+\subsubsection{Exempel 2}
 
 \[z = f(x,y) = x^2 + y^2\]
 \[f'_x = 2x\]
@@ -997,10 +1003,10 @@ Motsvarande gäller för \(\geq\) 3 variabler
 f'_{\bar{v}} = \nabla f \bullet \bar{v}\]
 \end{framed}
 
-\subsubsection*{Ex}
+\subsubsection{Exempel 3}
 \[ \bar{v} = (1,0) \Rightarrow f'_{\bar{v}} = (f'_x,f'_y) \bullet (1,0) = f'_x \]
 
-\subsubsection*{Ex}
+\subsubsection{Exempel 4}
 \[ f(x,y,z) = xy^2z^3 \Rightarrow \nabla f = (f'_x,f'_y,f'_z) = (y^2z^3,2xyz^3,3xy^2z^2) \]
 
 I punkten \((a,b,c) = (2,-1,1)\) och i riktningen \(\bar{v} = \frac{1}{\sqrt{5}}(1,0,2)\) från punkten är 
@@ -1023,6 +1029,177 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 \(f'_{\bar{v}} = 0\) då \(\bar{v}\) är en tangent till nivåkurvan/ytan
 
 \newpage
+\section{Föreläsning 7}
+\subsection{Implicita funktioner}
+
+Givet ett uttryck \(F(x,y)=C\) (en ekvation eller en nivåyta), under vilka krav kan \(y\) lösas ut som en funktion av ? \newline
+Betyder att till varje x måste det svara \underline{precis ett} \(y\)
+
+\subsubsection{Exempel 1}
+\begin{equation} \label{eq:6.1}
+	F(x,y) = 3x-y = 1 \Rightarrow y = 3x-1 = g(x) \text{ , går bra } \forall x \in \mathbb{R}
+\end{equation}
+
+\subsubsection{Exempel 2}
+\begin{equation} \label{eq:6.2}
+	F(x,y) = 3x-y = 0 \Rightarrow y^2 = x \Rightarrow y = \pm \sqrt{x} \text{ , } x \geq 0
+\end{equation}
+två värden på y för varje x, \underline{inte en funktion}
+
+\begin{figure}[ht] 
+\begin{tikzpicture}
+   \tkzInit[xmax=4,ymax=4,xmin=-4,ymin=-4]
+   \tkzAxeXY
+   \draw[scale=1,domain=0:5,smooth,variable=\x,green]  plot (\x,{(\x)^(1/2)});
+   \draw[scale=1,domain=0:5,smooth,variable=\x,green]  plot (\x,{-(\x)^(1/2)});
+   \tkzDefPoint(0,0){O} \tkzDefPoint(3,1.73){P} \tkzDefPoint(3,-1.73){Q}
+   \draw[blue] (O) circle (0.5);
+   \draw[red] (P) circle (0.5);
+   \draw[purple] (Q) circle (0.5);
+   \node[above left,blue] at (-0.5,0.5) {\(M_3\)};
+   \node[above left,red] at (2.5,2.23) {\(M_1\)};
+   \node[above left,purple] at (2.5,-1.23) {\(M_2\)};
+  \end{tikzpicture}
+  \caption{Grafisk visning av \eqref{eq:6.2}} \label{fig:6.1}
+\end{figure}
+
+På t.ex \(M_1\) är \(y = \sqrt{x} = g(x)\) medan på t.ex \(M_2\) är \(y = -\sqrt{x}\) \newline
+Går ej på \(M_3\), problem indikeras av att \(\nabla F = \Big(F'_x,F'_y\Big) = \Big(1,-2y\Big)\) är parallell med \(x\)-axeln i \((0,0) \in M_3\) (kurvan vänder i \(x\)-led där) \newline
+Alltså: \(F'_y = 0\) ger problem
+
+\subsubsection{Exempel 3}
+\begin{equation} \label{eq:6.3}
+\begin{split}
+	F(x,y) = x-y^3 = 0 \\
+	\nabla F = (1,-3y^2)
+\end{split}
+\end{equation}
+
+Här kan vi lösa ut 
+
+\[y = \sqrt[3]{x} = x^\frac{1}{3} = g(x) \quad \forall x \in \mathbb{R}\]
+trots att 
+\[F'_y = -3^2 = 0\]
+i origo (men kurvan vänder ej). Dock är
+\[g'(x) = \frac{1}{3x^\frac{2}{3}}\]
+ej definierad i origo så \(g(x)\) är ingen \(C^1\)-funktion av \(x\) kring \(x = 0\) \newline
+Man kan visa
+
+\subsection{Implicita funktionssatsen}
+\(y\) kan lösas ut som \(y = g(x)\) med \(g \in C^1\) ur \(F(x,y) = C\) , där \(F \in C^1\) , lokalt kring \((a,b)\) på kurvan om \(F'_g(a,b) \neq 0\)
+
+\paragraph{Kommentarer}
+\begin{itemize}
+\item Med \underline{lokalt} menas på någon (eventuellt liten) mängd kring \((a,b)\) på nivåkurvan. I \eqref{eq:6.2} \& \eqref{eq:6.3} ger \((a,b) = (0,0)\) problem, 
+ingen \(g\) finns i \eqref{eq:6.2} \& \(g \notin C^1\) i \eqref{eq:6.3} men \(F \in C^1\).
+\item Motsvarande gäller att \(x\) kan lösas ut som \(x = h(y)\) om \(F'_x(a,b) \neq 0\)
+\item Med \underline{implicit} menas att satsen bara säger att funktionen \(g\) finns, inte hur \(g\) beräknas \newline
+\Bigg(
+men i \eqref{eq:6.1}: \(g(x) = 3x-1\) , i \eqref{eq:6.2} \(g(x) = \sqrt{x}\) på \(M_1\) , \(g(x) = -\sqrt{x}\) på \(M_2\) och i \eqref{eq:6.3} \(g(x) = \sqrt[3]{x}\) , alla explicit skrivna
+\Bigg)
+\end{itemize}
+
+\newpage
+\subsubsection{Exempel 4}
+\begin{equation} \label{eq:6.4}
+	F(x,y) = x^3y^2 + y^5\sin{x} + y + 2x = 2 \quad , F \in C^\infty
+\end{equation}
+\(F(1,0) = 2 \Rightarrow (a,b) = (1,0)\) på nivåkurvan
+
+Vi klarar inte att lösa ut y \underline{explicit}, \(y = g(x) = ???\) liksom va fan femtegradare!!
+
+\[F'_y = 2x^3 + 5y^4\sin{x} + 1 \Rightarrow F'_y(1,0) = 1 \neq 0\]
+från sats: y kan lösas ut \underline{implicit} som \(y = g(x)\) där \(g \in C^1\) lokalt kring \((1,0)\)
+Trots att \(g(x)\) är okänd kan vi få ut \(g'(x)\) på två olika sätt
+
+\subsubsection*{Alternativ 1 (kedjeregeln)}
+\begin{equation}\label{eq:6.5}
+\begin{split}
+	0 = \frac{d}{dx} \underbrace{F\Big(x,\overbrace{g(x)}^y\Big)}_{=2} = \frac{\partial F}{\partial x} \underbrace{\frac{dx}{dx}}_{=1} + \frac{\partial F}{\partial y} \underbrace{\frac{dy}{dx}}_{g'(x)} = F'_x + F'_yg'(x)  \Rightarrow \\
+	\Rightarrow g'(x) = - \frac{F'_x}{F'_y} = - \frac{3x^2y^2 + y^5\cos{x} + 2}{2x^3 + 5y^4\sin{x} + 1} \Rightarrow g'(x) = - \frac{2}{1} = -2 \
+\end{split}
+\end{equation}
+\[\nabla F = \Big( F'_x,F'_y \Big) = \Big(2,1\Big)\]
+
+\subsubsection*{Alternativ 2 (implicit derivering)}
+\[
+	y = g(x) \Rightarrow x^3g(x)^2 + g(x)^5\sin{x} + g(x) + 2x = 2 = \text{ konstant } \forall x \text{ på intervall kring } x = 1
+\]
+Derivera \(g(x) \Rightarrow\)
+\begin{equation} \label{eq:6.6}
+	3x^2g(x)^2 + 2x^3g(x)g'(x) + 5g(x)^4g'(x)\sin{x} + g(x)^5\cos{x} + g'(x) + 2 = 0 
+\end{equation}
+Lös ut \(g'(x)\), ger samma som i \eqref{eq:6.5} Även \(g''(x)\) kan beräknas genom implicit derivering av \eqref{eq:6.6}
+
+\subsection{3 variabler, 1 funktion}
+
+Ur \(F(x,y,z) = C\) \Big(\(F \in C^1\) , nivåyta geometriskt\Big) kan t.ex. \(z\) lösas ut som en \(C^1\)-funktion av \(x \& y\) , \(z = g(x,y)\) , 
+lokalt kring \((a,b,c)\) på ytan om \(F'_z(a,b,c) \neq 0\) \Big(\(\nabla F\) ej parallell med \(xy\)-planet\Big)
+
+\paragraph{Implicit derivering/kedjeregeln}
+
+\[
+	0 = \frac{\partial}{\partial x} \underbrace{F(x,y,\overbrace{g(x,y)}^z)}_{=C} = F'_x \times 1 + F'_y \times 0 + F'_zg'_x \Rightarrow g'_x = - \frac{F'_x}{F'_z} \text{ pss } g'_y = - \frac{F'_y}{F'_z}
+\]
+Motsvarande om \(x\) eller \(y\) ska lösas ut
+
+\subsubsection{Exempel 5}
+\begin{equation} \label{eq:6.7}
+	F(x,y,z) = x^2z\cos{y} + e^{z + 3y - x} = 2 \text{ , nivåyta } F \in C^1
+\end{equation}
+\[
+	F(1,0,1) = 1^2 \times 1\cos{0} + e ^{1+0-1} = 2 \Rightarrow (1,0,1) \text{ på ytan}
+\]
+\[
+	F'_y = - x^2z\sin{y} + 3e^{z+3y-x} \Rightarrow F'_y(1,0,1) = 3 \neq 0
+\]
+\(\Rightarrow y\) kan lösas ut som \(y = g(x,z)\) ur \(F(x,y,z) = 2\) kring \((1,0,1)\) på ytan \(g \in C^1\) med \(g(1,1) = 0\)
+\[
+	g'_x = - \frac{F'_x}{F'_y} = - \frac{2xz\cos{y} - e^{z+3y-x}}{- x^2z\sin{y} + 3e^{z+3y-x}} \overset{\mathrm{i (1,0,1)}}{=} - \frac{2-1}{3} = - \frac{1}{3}
+\]
+\[
+	g'_z = - \frac{F'_x}{F'_y} = - \frac{x^2\cos{y} + e^{z+3y-x}}{- x^2z\sin{y} + 3e^{z+3y-x}} \overset{\mathrm{i (1,0,1)}}{=} - \frac{2}{3}
+\]
+
+\subsection{3 variabler, 2 funktioner}
+
+\[
+\text{Ekvationssystem }
+\left\{\begin{array}{rcl}
+	F(x,y,z) = C_1 \\
+	G(x,y,z) = C_2
+\end{array}\right.
+\]
+
+är geometriskt skärningen mellan två nivåytor, dvs en kurva \(\gamma\). \newline
+\(\gamma\) kan lokalt kring en punkt \(P \in \gamma\) parametriseras med t.ex. \(x: \bar{r}(t) = \bar{r}(x) = \Big(x,h(x),j(x)\Big)\) om tangenten \newline
+\(\bar{T} = \nabla F \times \nabla G\) har \(x\)-komponent
+
+\[\begin{bmatrix}
+	F'_y & F'_z \\
+	G'_y & G'_z
+\end{bmatrix}\neq 0\]
+
+Algebraiskt tolkat kan då \(y = h(x) \& z = j(x)\) lösas ut ur systemet som en funktion av \(x\) (lokalt kring \(P\))
+
+\subsubsection{Exempel 6} 
+\begin{equation}\label{eq:6.8}
+	\begin{Bmatrix}
+		F(x,y,z) = x^4 + yz = 1 & F(-1,0,2) = 1 \\
+		G(x,y,z) = x^2e^yz = 2 & G(-1,0,2) = 2
+	\end{Bmatrix} \Rightarrow
+\end{equation}
+\[\Rightarrow P = (-1,0,2) \text{ på skärningskurvan } \gamma\]
+\[\nabla F = (4x^3,z,y) \overset{P}{=} (-4,2,0) \quad\&\quad \nabla G = (2xe^yz,x^2e^yz,x^2e^y) \overset{P}{=} (-4,2,1)\]
+\(\Rightarrow \bar{T} = \nabla F \times \nabla G = (2,4,0)\) är tangent till \(\gamma\) i \(P\) \newline
+\(x\)-komponent av \(\bar{T}\) är \(2 \neq 0 \Rightarrow\) kring \(P\) (som har \(x = -1\)) kan både \(y \& z\) lösas ut som \(C^1\) funktioner \(y = h(x) \& z = j(x)\) på \(\gamma\). \newline
+Om \(\gamma\) skrivs \(\bar{r}(x) = \Big(x,h(x),j(x)\Big)\) är \(\bar{r}'(x) = \Big(1,h'(x),j'(x)\Big)\) vilket ger att \(\bar{r}'(-1) = \Big(1,h'(-1),j'(-1)\Big)\) är en tangentvektor till \(\gamma\) i \(P \Rightarrow\) \newline
+\(\Rightarrow\) parallell med \((2,4,0) = 2(1,2,0) \Rightarrow h'(-1) = 2 \quad\&\quad j'(-1) = 0\) \newline
+\underline{OBS!} \(z\)-komponent av \(\bar{r} = 0 \Rightarrow z\) ingen bra parameter för \(\gamma\) kring \(P\)
+
+
+
+\newpage
 \fancyhf{}
 \rhead{\textit{Adnan Avdagic}}
 \lhead{Appendix}
@@ -1032,6 +1209,4 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 	\listoffigures
 	\listoftables
 \end{appendix}
-
 \end{document}
-
