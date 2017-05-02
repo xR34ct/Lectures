@@ -1046,12 +1046,12 @@ Givet ett uttryck \(F(x,y)=C\) (en ekvation eller en nivåyta), under vilka krav
 Betyder att till varje x måste det svara \underline{precis ett} \(y\)
 
 \subsubsection{Exempel 1}
-\begin{equation} \label{eq:6.1}
+\begin{equation} \label{eq:8.1}
 	F(x,y) = 3x-y = 1 \Rightarrow y = 3x-1 = g(x) \text{ , går bra } \forall x \in \mathbb{R}
 \end{equation}
 
 \subsubsection{Exempel 2}
-\begin{equation} \label{eq:6.2}
+\begin{equation} \label{eq:8.2}
 	F(x,y) = 3x-y = 0 \Rightarrow y^2 = x \Rightarrow y = \pm \sqrt{x} \text{ , } x \geq 0
 \end{equation}
 två värden på y för varje x, \underline{inte en funktion}
@@ -1070,7 +1070,7 @@ två värden på y för varje x, \underline{inte en funktion}
    \node[above left,red] at (2.5,2.23) {\(M_1\)};
    \node[above left,purple] at (2.5,-1.23) {\(M_2\)};
   \end{tikzpicture}
-  \caption{Grafisk visning av \eqref{eq:6.2}} \label{fig:6.1}
+  \caption{Grafisk visning av \eqref{eq:8.2}} \label{fig:6.1}
 \end{figure}
 
 På t.ex \(M_1\) är \(y = \sqrt{x} = g(x)\) medan på t.ex \(M_2\) är \(y = -\sqrt{x}\) \newline
@@ -1078,7 +1078,7 @@ Går ej på \(M_3\), problem indikeras av att \(\nabla F = \Big(F'_x,F'_y\Big) =
 Alltså: \(F'_y = 0\) ger problem
 
 \subsubsection{Exempel 3}
-\begin{equation} \label{eq:6.3}
+\begin{equation} \label{eq:8.3}
 \begin{split}
 	F(x,y) = x-y^3 = 0 \\
 	\nabla F = (1,-3y^2)
@@ -1100,18 +1100,18 @@ Man kan visa
 
 \paragraph{Kommentarer}
 \begin{itemize}
-\item Med \underline{lokalt} menas på någon (eventuellt liten) mängd kring \((a,b)\) på nivåkurvan. I \eqref{eq:6.2} \& \eqref{eq:6.3} ger \((a,b) = (0,0)\) problem, 
-ingen \(g\) finns i \eqref{eq:6.2} \& \(g \notin C^1\) i \eqref{eq:6.3} men \(F \in C^1\).
+\item Med \underline{lokalt} menas på någon (eventuellt liten) mängd kring \((a,b)\) på nivåkurvan. I \eqref{eq:8.2} \& \eqref{eq:8.3} ger \((a,b) = (0,0)\) problem, 
+ingen \(g\) finns i \eqref{eq:8.2} \& \(g \notin C^1\) i \eqref{eq:8.3} men \(F \in C^1\).
 \item Motsvarande gäller att \(x\) kan lösas ut som \(x = h(y)\) om \(F'_x(a,b) \neq 0\)
 \item Med \underline{implicit} menas att satsen bara säger att funktionen \(g\) finns, inte hur \(g\) beräknas \newline
 \Bigg(
-men i \eqref{eq:6.1}: \(g(x) = 3x-1\) , i \eqref{eq:6.2} \(g(x) = \sqrt{x}\) på \(M_1\) , \(g(x) = -\sqrt{x}\) på \(M_2\) och i \eqref{eq:6.3} \(g(x) = \sqrt[3]{x}\) , alla explicit skrivna
+men i \eqref{eq:8.1}: \(g(x) = 3x-1\) , i \eqref{eq:8.2} \(g(x) = \sqrt{x}\) på \(M_1\) , \(g(x) = -\sqrt{x}\) på \(M_2\) och i \eqref{eq:8.3} \(g(x) = \sqrt[3]{x}\) , alla explicit skrivna
 \Bigg)
 \end{itemize}
 
 \newpage
 \subsubsection{Exempel 4}
-\begin{equation} \label{eq:6.4}
+\begin{equation} \label{eq:8.4}
 	F(x,y) = x^3y^2 + y^5\sin{x} + y + 2x = 2 \quad , F \in C^\infty
 \end{equation}
 \(F(1,0) = 2 \Rightarrow (a,b) = (1,0)\) på nivåkurvan
@@ -1123,7 +1123,7 @@ från sats: y kan lösas ut \underline{implicit} som \(y = g(x)\) där \(g \in C
 Trots att \(g(x)\) är okänd kan vi få ut \(g'(x)\) på två olika sätt
 
 \subsubsection*{Alternativ 1 (kedjeregeln)}
-\begin{equation}\label{eq:6.5}
+\begin{equation}\label{eq:8.5}
 \begin{split}
 	0 = \frac{d}{dx} \underbrace{F\Big(x,\overbrace{g(x)}^y\Big)}_{=2} = \frac{\partial F}{\partial x} \underbrace{\frac{dx}{dx}}_{=1} + \frac{\partial F}{\partial y} \underbrace{\frac{dy}{dx}}_{g'(x)} = F'_x + F'_yg'(x)  \Rightarrow \\
 	\Rightarrow g'(x) = - \frac{F'_x}{F'_y} = - \frac{3x^2y^2 + y^5\cos{x} + 2}{2x^3 + 5y^4\sin{x} + 1} \Rightarrow g'(x) = - \frac{2}{1} = -2 \
@@ -1136,10 +1136,10 @@ Trots att \(g(x)\) är okänd kan vi få ut \(g'(x)\) på två olika sätt
 	y = g(x) \Rightarrow x^3g(x)^2 + g(x)^5\sin{x} + g(x) + 2x = 2 = \text{ konstant } \forall x \text{ på intervall kring } x = 1
 \]
 Derivera \(g(x) \Rightarrow\)
-\begin{equation} \label{eq:6.6}
+\begin{equation} \label{eq:8.6}
 	3x^2g(x)^2 + 2x^3g(x)g'(x) + 5g(x)^4g'(x)\sin{x} + g(x)^5\cos{x} + g'(x) + 2 = 0 
 \end{equation}
-Lös ut \(g'(x)\), ger samma som i \eqref{eq:6.5} Även \(g''(x)\) kan beräknas genom implicit derivering av \eqref{eq:6.6}
+Lös ut \(g'(x)\), ger samma som i \eqref{eq:8.5} Även \(g''(x)\) kan beräknas genom implicit derivering av \eqref{eq:8.6}
 
 \subsection{3 variabler, 1 funktion}
 
@@ -1154,7 +1154,7 @@ lokalt kring \((a,b,c)\) på ytan om \(F'_z(a,b,c) \neq 0\) \Big(\(\nabla F\) ej
 Motsvarande om \(x\) eller \(y\) ska lösas ut
 
 \subsubsection{Exempel 5}
-\begin{equation} \label{eq:6.7}
+\begin{equation} \label{eq:8.7}
 	F(x,y,z) = x^2z\cos{y} + e^{z + 3y - x} = 2 \text{ , nivåyta } F \in C^1
 \end{equation}
 \[
@@ -1193,7 +1193,7 @@ Motsvarande om \(x\) eller \(y\) ska lösas ut
 Algebraiskt tolkat kan då \(y = h(x) \& z = j(x)\) lösas ut ur systemet som en funktion av \(x\) (lokalt kring \(P\))
 
 \subsubsection{Exempel 6} 
-\begin{equation}\label{eq:6.8}
+\begin{equation}\label{eq:8.8}
 	\begin{Bmatrix}
 		F(x,y,z) = x^4 + yz = 1 & F(-1,0,2) = 1 \\
 		G(x,y,z) = x^2e^yz = 2 & G(-1,0,2) = 2
