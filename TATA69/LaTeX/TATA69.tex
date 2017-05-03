@@ -645,7 +645,7 @@ Fel:
 	Motsvarande för \(\geq\) 3 variabler
 	\subsubsection*{Exempel 2}
 	Visa att \(xh_{x}^{\prime} - 2yh_{y}^{\prime} = 0 \quad \forall\) 2 variabel funktioner \(h(x,y)\) 
-	på formen \(h(x,y) = f(x^2y)\) där \(f\) är en envariabelfunktion. Lösn:
+	på formen \(h(x,y) = f(x^2y)\) där \(f\) är en envariabelfunktion. Lösning:
 	\[
 		xh_{x}^{\prime} - 2yh_{y}^{\prime} = xf^{\prime}(x^2y)2xy - 2yf^{\prime}(x^2y)x^2 = 0 \quad \forall f
 	\]
@@ -1036,8 +1036,76 @@ Kommer snart!
 \newpage
 \section{Föreläsning 7}
 
-Kommer snart!
+\subsection{Kurvor \& ytor i \(\mathbb{R}^3\) på parameterform}
 
+Funktioner av typen \(\mathbb{R} \rightarrow \mathbb{R}^m\) kallas \underline{kurvor} i \(\mathbb{R}^m\). För \(m=3\) är \(\bar{r}(t) = \Big(x(t),y(t),z(t)\Big)\) en kurva i rummet, variabeln t kallas \underline{parametern} \newline
+
+Tangentvektorn är \(\bar{r}'(t) = \Big(x'(t),y'(t),z'(t)\Big)\) (som i 2D). Funktioner av typen \(\mathbb{R}^2 \rightarrow \mathbb{R}^3\) beskriver \underline{ytor i rummet} på parameterform 
+\(\bar{r}(s,t) = \Big(x(s,t),y(s,t),z(s,t)\Big)\), s,t parametrar
+
+\subsubsection{Exempel 1 [Plan på parameterform]}
+
+\[
+	\bar{r}(s,t) = 1+s+t,2-s,3t) = \underbrace{(1,2,0)}_{\text{en punkt i planet}} + \overbrace{s(1,-1,0) + t(1,0,3)}^{\text{vektorer parallella med planet}}
+\]
+\(\frac{\partial \bar{r}}{\partial s}\) och \(\frac{\partial \bar{r}}{\partial t}\) är tangentvektorer till ytan, och spänner upp tangentplanet vars normal 
+\(\bar{N} = \frac{\partial \bar{r}}{\partial s} \times \frac{\partial \bar{r}}{\partial t}\)
+För planet i ex ovan är \(\frac{\partial \bar{r}}{\partial s} = (1,-1,0) \quad\&\quad \frac{\partial \bar{r}}{\partial t} = (1,0,3)\)
+
+\subsubsection{Exempel 2}
+Enhetssfären \(x^2 + y^2 + z^2 = 1\) kan skrivas med rymdpolära vinklar \(\theta \quad\&\quad \varphi\) som parametrar
+\[
+	\bar{r}(\theta,\varphi) = \Big(x(\theta,\varphi),y(\theta,\varphi),z(\theta,\varphi)\Big) = \Big(\sin{\theta}\cos{\varphi},\sin{\theta}\sin{\varphi},\cos{\theta}\Big)
+\]
+Vi får
+\begin{align*}
+	\bar{N} = \bar{r}'_\theta \times \bar{r}'_\varphi &= \Big(\cos{\theta}\cos{\varphi},\cos{\theta}\sin{\varphi},-\sin{\theta}\Big) \times \Big(-\sin{\theta}\sin{\varphi},\sin{\theta}\cos{\varphi},0\Big) = \\
+	&= \Big(-\sin^2{\theta}\cos{\varphi},-\sin^2{\theta}\sin{\varphi},-\cos{\theta}\sin{\theta}\Big) = -\sin{\theta} \bar{r}(\theta,\varphi)
+\end{align*}
+
+\newpage
+\subsection{Funktionen \(\mathbb{R}^n \rightarrow \mathbb{R}^m\)}
+
+För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x_n))\Big)\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) definieras \underline{funktionalmatrisen} (Jacobi-matrisen)
+
+\[
+	\bar{f}'(\bar{x}) = \frac{\partial(f_1, \cdots ,f_m)}{\partial(x_1, \cdots ,x_n)} = 
+	\begin{pmatrix}
+		\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+		\vdots & & \vdots \\
+		\frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n}
+	\end{pmatrix} \text{ , m}\times\text{n matris}
+\]
+
+\subsubsection{Exempel 3}
+\[
+	\bar{f}'(\bar{x}) = \Big(f_1(x_1,x_2),f_3(x_1,x_2)\Big) = (x_1+x_2,x_1x_2) \Rightarrow \frac{\partial(f_1,f_2)}{\partial(x_1,x_2)} = 
+	\begin{pmatrix}
+		1 & 1 \\
+		x_2 & x_1
+	\end{pmatrix}
+\]
+
+\subsubsection{Exempel 4}
+Variabelbyte \((x,y) = (\rho\cos{\varphi},\rho\sin{\varphi})\) till polärakoordinater har matris
+\[
+	\frac{\partial(x,y)}{\partial(\rho,\varphi)} = 
+	\begin{pmatrix}
+		x'_\rho & x'_\varphi \\
+		y'_\rho & y'_\varphi
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\cos{\varphi} & -\rho\sin{\varphi}\\
+		\sin{\varphi} & \rho\cos{\varphi}\\
+	\end{pmatrix}
+\]
+
+\subsubsection{Exempel 5}
+En linjär avbildning \(\bar{f}(\bar{x}) = \overbrace{A}^{\text{konstant m}\times\text{n matris}}\underbrace{\bar{x}}_{\text{kolon}}\) har \(\bar{f}'(\bar{x}) = A\)
+\newline
+
+\underline{OBS!} För \(m=1 (\bar{f} = f)\) fås specialfallet \(\bar{f}'(\bar{x}) = (f'_{x_1}, \cdots ,f'_{x_n}) = \nabla f\)
 \newpage
 \section{Föreläsning 8}
 \subsection{Implicita funktioner}
