@@ -22,14 +22,17 @@
 \usepackage{framed}
 \usepackage{letltxmacro}
 
+\usetkzobj{all}
+
+
 \NewDocumentEnvironment{spmatrix}{ m }
   {\mathop\bgroup\begin{pmatrix}}
   {\end{pmatrix}\egroup_{\textstyle\mathstrut #1}}
 
-\usetkzobj{all}
 
 \DeclarePairedDelimiter \abs{\lvert}{\rvert}
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
+
 
 \let\oldsqrt\sqrt
 \makeatletter
@@ -68,6 +71,10 @@
 \thispagestyle{empty}
 \tableofcontents
 \thispagestyle{empty}
+
+
+
+
 
 \newpage
 \cleardoublepage
@@ -367,6 +374,11 @@ Polära koordinater i (x,y) och vanliga i z
 \end{array}\right.
 \]
 
+
+
+
+
+
 \newpage
 \section{Föreläsning 3}
 \subsection{Partiella derivator}
@@ -605,6 +617,10 @@ Fel:
 	\Rightarrow \text{ maxfel } \leq 8\abs{\Delta m} + 4\abs{\Delta v} = 8*0.1 + 4*0.2 = 1.6 \si{\joule} \Rightarrow E = 8.0 \pm 1.6 \si{\joule}
 \end{split}
 \]
+
+
+
+
 
 \newpage
 \section{Föreläsning 4}
@@ -846,6 +862,12 @@ Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
 	\text{\underline{Svar:} } f(x,y) = G(x) + h(xy) \text{ , }g=G^{\prime}\text{  }g\text{\&}h\text{ godtyckliga funktioner}
 \]
 
+
+
+
+
+
+
 \newpage
 \section{Föreläsning 5}
 
@@ -1028,15 +1050,28 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 
 \(f'_{\bar{v}} = 0\) då \(\bar{v}\) är en tangent till nivåkurvan/ytan
 
+
+
+
+
+
+
 \newpage
 \section{Föreläsning 6}
 
 Kommer snart!
 
+
+
+
+
+
+
+
 \newpage
 \section{Föreläsning 7}
 
-\subsection{Kurvor \& ytor i \(\mathbb{R}^3\) på parameterform}
+\subsection{Kurvor \& ytor i \texorpdfstring{\(\mathbb{R}^3\)}{R3} på parameterform}
 
 Funktioner av typen \(\mathbb{R} \rightarrow \mathbb{R}^m\) kallas \underline{kurvor} i \(\mathbb{R}^m\). För \(m=3\) är \(\bar{r}(t) = \Big(x(t),y(t),z(t)\Big)\) en kurva i rummet, variabeln t kallas \underline{parametern} \newline
 
@@ -1045,12 +1080,12 @@ Tangentvektorn är \(\bar{r}'(t) = \Big(x'(t),y'(t),z'(t)\Big)\) (som i 2D). Fun
 
 \subsubsection{Exempel 1 [Plan på parameterform]}
 
-\[
-	\bar{r}(s,t) = 1+s+t,2-s,3t) = \underbrace{(1,2,0)}_{\text{en punkt i planet}} + \overbrace{s(1,-1,0) + t(1,0,3)}^{\text{vektorer parallella med planet}}
-\]
+\begin{equation} \label{eq:7.1}
+	\bar{r}(s,t) = (1+s+t,2-s,3t) = \underbrace{(1,2,0)}_{\text{en punkt i planet}} + \overbrace{s(1,-1,0) + t(1,0,3)}^{\text{vektorer parallella med planet}}
+\end{equation}
 \(\frac{\partial \bar{r}}{\partial s}\) och \(\frac{\partial \bar{r}}{\partial t}\) är tangentvektorer till ytan, och spänner upp tangentplanet vars normal 
 \(\bar{N} = \frac{\partial \bar{r}}{\partial s} \times \frac{\partial \bar{r}}{\partial t}\)
-För planet i ex ovan är \(\frac{\partial \bar{r}}{\partial s} = (1,-1,0) \quad\&\quad \frac{\partial \bar{r}}{\partial t} = (1,0,3)\)
+För planet i \eqref{eq:7.1} är \(\frac{\partial \bar{r}}{\partial s} = (1,-1,0) \quad\&\quad \frac{\partial \bar{r}}{\partial t} = (1,0,3)\)
 
 \subsubsection{Exempel 2}
 Enhetssfären \(x^2 + y^2 + z^2 = 1\) kan skrivas med rymdpolära vinklar \(\theta \quad\&\quad \varphi\) som parametrar
@@ -1064,9 +1099,9 @@ Vi får
 \end{align*}
 
 \newpage
-\subsection{Funktionen \(\mathbb{R}^n \rightarrow \mathbb{R}^m\)}
+\subsection{Funktionen \texorpdfstring{\(\mathbb{R}^n \rightarrow \mathbb{R}^m\)}{Rn till Rm}}
 
-För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x_n))\Big)\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) definieras \underline{funktionalmatrisen} (Jacobi-matrisen)
+För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x_n)\Big)\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) definieras \underline{funktionalmatrisen} (Jacobi-matrisen)
 
 \[
 	\bar{f}'(\bar{x}) = \frac{\partial(f_1, \cdots ,f_m)}{\partial(x_1, \cdots ,x_n)} = 
@@ -1078,17 +1113,17 @@ För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x
 \]
 
 \subsubsection{Exempel 3}
-\[
-	\bar{f}'(\bar{x}) = \Big(f_1(x_1,x_2),f_3(x_1,x_2)\Big) = (x_1+x_2,x_1x_2) \Rightarrow \frac{\partial(f_1,f_2)}{\partial(x_1,x_2)} = 
+\begin{equation} \label{eq:7.3}
+	\bar{f}(\bar{x}) = \Big(f_1(x_1,x_2),f_2(x_1,x_2)\Big) = (x_1+x_2,x_1x_2) \Rightarrow \frac{\partial(f_1,f_2)}{\partial(x_1,x_2)} = 
 	\begin{pmatrix}
 		1 & 1 \\
 		x_2 & x_1
 	\end{pmatrix}
-\]
+\end{equation}
 
 \subsubsection{Exempel 4}
 Variabelbyte \((x,y) = (\rho\cos{\varphi},\rho\sin{\varphi})\) till polärakoordinater har matris
-\[
+\begin{equation} \label{eq:7.4}
 	\frac{\partial(x,y)}{\partial(\rho,\varphi)} = 
 	\begin{pmatrix}
 		x'_\rho & x'_\varphi \\
@@ -1099,13 +1134,170 @@ Variabelbyte \((x,y) = (\rho\cos{\varphi},\rho\sin{\varphi})\) till polärakoord
 		\cos{\varphi} & -\rho\sin{\varphi}\\
 		\sin{\varphi} & \rho\cos{\varphi}\\
 	\end{pmatrix}
-\]
+\end{equation}
+
 
 \subsubsection{Exempel 5}
 En linjär avbildning \(\bar{f}(\bar{x}) = \overbrace{A}^{\text{konstant m}\times\text{n matris}}\underbrace{\bar{x}}_{\text{kolon}}\) har \(\bar{f}'(\bar{x}) = A\)
 \newline
 
-\underline{OBS!} För \(m=1 (\bar{f} = f)\) fås specialfallet \(\bar{f}'(\bar{x}) = (f'_{x_1}, \cdots ,f'_{x_n}) = \nabla f\)
+\underline{OBS!} För \(m=1 \quad (\bar{f} = f)\) fås specialfallet \(\bar{f}'(\bar{x}) = (f'_{x_1}, \cdots ,f'_{x_n}) = \nabla f\) \newline
+
+Tidigare kedjeregeln för varje \(f_j\big(\bar{g}(\bar{x})\big)\) i \(\bar{f}\big(\bar{g}(\bar{x})\big) = (\bar{f} \bullet \bar{g})(\bar{x}) \Rightarrow\) \underline{den mest allmänna} kedjeregeln kan skrivas
+\[
+	\underbrace{(\bar{f} \bullet \bar{g})'(\bar{x})}_{m \times n} = \underbrace{\bar{f}'\big(\bar{g}(\bar{x})\big)}_{m \times p}\underbrace{\bar{g}'(\bar{x})}_{p \times n} \text{ Matris multiplikation}
+\]
+\[
+	\bar{x} \in \mathbb{R}^n \quad \bar{g}(\bar{x}) \in \mathbb{R}^p \quad \bar{f}\big(\bar{g}(\bar{x})\big) \in \mathbb{R}^m
+\]
+
+För \underline{\(m=n\)} har \(\bar{f}(\bar{x} \quad \mathbb{R}^n \rightarrow \mathbb{R}^n\) funktionaldeterminant (Jacobi-determinant)
+
+\[
+	\det\bar{f}'(\bar{x}) = \frac{d(f_1, \ldots ,f_n)}{d(x_1, \ldots ,x_n)} = 
+	\begin{vmatrix}
+		\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+		\vdots & & \vdots \\
+		\frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_n}{\partial x_n}
+	\end{vmatrix}
+\]
+
+I \eqref{eq:7.3} är \(\frac{d(f_1,f_2)}{d(x_1,x_2)} = 
+\begin{vmatrix}
+	1 & 1 \\
+	x_2 & x_1
+\end{vmatrix}
+= x_1-x_2\) och i \eqref{eq:7.4} \(\frac{d(x,y)}{d(\rho,\varphi)} = \rho\cos^2{\varphi} + \rho\sin^2{\varphi} = \rho\)
+
+\subsection{Linjärisering av \texorpdfstring{\(\bar{f}(\bar{x})\)}{f(x)}}
+
+Antag \(m=n=2\) och skriv \(\bar{f}(x,y) = 
+\begin{pmatrix}
+	u(x,y) \\
+	v(x,y)
+\end{pmatrix}\)
+som kolonn \newline
+
+Taylors formel för \(u \quad\&\quad v\) kring punkten \((a,b)\) ger
+
+\[
+\left/\begin{array}{rcl}
+	a+h = x, h = x-a \\
+	b+k = y, k = y-b
+\end{array}\right/
+\bar{f}(x,y) = 
+\begin{pmatrix}
+	u(a,b) + u'_x(a,b)(x-a) + u'_y(a,b)(y-b) + rest \\
+	\text{samma för v}
+\end{pmatrix} \approx
+\]
+\[
+\approx 
+\begin{pmatrix}
+	u(a,b) \\
+	v(a,b)
+\end{pmatrix}
++
+\begin{pmatrix}
+	u'_x(a,b) & u'_y(a,b) \\
+	v'_x(a,b) & v'_y(a,b)
+\end{pmatrix}
+\begin{pmatrix}
+	x-a \\
+	y-b
+\end{pmatrix}
+= \bar{f}(a,b) + f'(a,b)
+\begin{pmatrix}
+	x-a \\
+	y-b
+\end{pmatrix} =
+\]
+\[
+	= \underbrace{\overbrace{f'(a,b)}^{A}\overbrace{
+	\begin{pmatrix}
+		x \\
+		y
+	\end{pmatrix}}^{\bar{x}}}_{\text{linjär avbildning}}
+	+ \underbrace{\bar{f}(a,b) - f'(a,b)
+	\begin{pmatrix}
+		a \\
+		b
+	\end{pmatrix}}_{=\bar{C}\text{ konstant vektor}}
+	= A\bar{x} + \bar{C}
+\]
+linjärisering av \(\bar{f}\), gäller nära \((a,b)\). Motsvarande gäller godtyckliga \(m,n\)
+
+\newpage
+\subsection{Area/volym-skalning}
+2D:
+
+\begin{figure}[ht]
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+   \tkzInit[xmax=3,ymax=3,xmin=0,ymin=0]
+   \tkzAxeXY
+   \draw[pattern=north west lines, pattern color=red] (0,0) rectangle (2,2);
+   \node[above right, red] at (2,2) {\text{Area}\(=4\)};
+  \end{tikzpicture}
+  \caption{Arean innan skalning} \label{fig:7.1}
+\end{figure}
+
+Linjär avbildning \(\bar{f}(\bar{x}) = A\bar{x}\)
+
+\begin{figure}[ht]
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+   \draw [<->,thick] (0,3) node (yaxis) [above] {$y$} |- (3,0) node (xaxis) [right] {$x$};
+   \draw[pattern=north west lines, pattern color=blue] (0,0) -- (1.7,0.7) -- (2.7,2.7) -- (0.7,1.7) -- (0,0);
+   \node[above right, blue] at (2.7,2.7) {\text{Area}\(=\abs{\det{A}}\)};
+   \draw (0.7,1.7) node[circle,fill,inner sep=1pt,label=above:{\(\begin{pmatrix} a_{12} \\ a_{22} \end{pmatrix}\)}]{};
+   \draw (1.7,0.7) node[circle,fill,inner sep=1pt,label=right:{\(\begin{pmatrix} a_{11} \\ a_{21} \end{pmatrix}\)}]{};
+  \end{tikzpicture}
+  \caption{Arean efter skalning} \label{fig:7.2}
+\end{figure}
+
+3D: \(\abs{\det{A}} =\) volym av parallellepiped med \(A\):s kolonner som kanter \newline
+\(\abs{\det{A}}\) ger area/volym-skalning i 2D/3D
+
+\newpage
+Godtycklig funktion \(\bar{f}\)
+
+\begin{figure}[ht]
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+   \tkzInit[xmax=3,ymax=3,xmin=0,ymin=0]
+   \tkzAxeXY
+   \draw[pattern=north west lines, pattern color=green] (1,1) rectangle (2,2);
+   \node[above right, green] at (2,2) {\(\Omega\)};
+   \draw (1,1) node[circle,fill,inner sep=1pt,label=below left:{\((a,b)\)}]{};
+  \end{tikzpicture}
+  \caption{Arean innan skalning} \label{fig:7.3}
+\end{figure}
+
+Linjär avbildning, \(
+\begin{matrix}
+\bar{f} & [r\ddot{o}d] \\
+A\bar{x}+\bar{C} & [bl\dot{a}]
+\end{matrix}\) 
+
+\begin{figure}[ht]
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+   \draw [<->,thick] (0,3) node (yaxis) [above] {$y$} |- (3,0) node (xaxis) [right] {$x$};
+   \draw[pattern=north west lines, pattern color=red] (1,1) -- (1.6,1.1) -- (1.8,1.8) -- (1.1,1.6) -- (1,1);
+   \node[above,red] at (1.4,1.8) {\(\bar{f}(\Omega)\)};
+   \draw[pattern=north west lines, pattern color=blue] (1,1) -- (1.5,1.1) -- (1.9,1.8) -- (1.1,1.5) -- (1,1);
+   \node[below,blue] at (1.4,1) {\text{area\((\Omega)\abs{\det{A}}\)}};
+  \end{tikzpicture}
+  \caption{Arean efter skalning (+\(\bar{C}\) påverkar ej arean)} \label{fig:7.4}
+\end{figure}
+
+
+
+
+
+
+
 \newpage
 \section{Föreläsning 8}
 \subsection{Implicita funktioner}
@@ -1138,7 +1330,7 @@ två värden på y för varje x, \underline{inte en funktion}
    \node[above left,red] at (2.5,2.23) {\(M_1\)};
    \node[above left,purple] at (2.5,-1.23) {\(M_2\)};
   \end{tikzpicture}
-  \caption{Grafisk visning av \eqref{eq:8.2}} \label{fig:6.1}
+  \caption{Grafisk visning av \eqref{eq:8.2}} \label{fig:8.1}
 \end{figure}
 
 På t.ex \(M_1\) är \(y = \sqrt{x} = g(x)\) medan på t.ex \(M_2\) är \(y = -\sqrt{x}\) \newline
@@ -1258,7 +1450,7 @@ Motsvarande om \(x\) eller \(y\) ska lösas ut
 	G'_y & G'_z
 \end{bmatrix}\neq 0\]
 
-Algebraiskt tolkat kan då \(y = h(x) \& z = j(x)\) lösas ut ur systemet som en funktion av \(x\) (lokalt kring \(P\))
+Algebraiskt tolkat kan då \(y = h(x) \quad\&\quad z = j(x)\) lösas ut ur systemet som en funktion av \(x\) (lokalt kring \(P\))
 
 \subsubsection{Exempel 6} 
 \begin{equation}\label{eq:8.8}
@@ -1270,12 +1462,19 @@ Algebraiskt tolkat kan då \(y = h(x) \& z = j(x)\) lösas ut ur systemet som en
 \[\Rightarrow P = (-1,0,2) \text{ på skärningskurvan } \gamma\]
 \[\nabla F = (4x^3,z,y) \overset{P}{=} (-4,2,0) \quad\&\quad \nabla G = (2xe^yz,x^2e^yz,x^2e^y) \overset{P}{=} (-4,2,1)\]
 \(\Rightarrow \bar{T} = \nabla F \times \nabla G = (2,4,0)\) är tangent till \(\gamma\) i \(P\) \newline
-\(x\)-komponent av \(\bar{T}\) är \(2 \neq 0 \Rightarrow\) kring \(P\) (som har \(x = -1\)) kan både \(y \& z\) lösas ut som \(C^1\) funktioner \(y = h(x) \& z = j(x)\) på \(\gamma\). \newline
+\(x\)-komponent av \(\bar{T}\) är \(2 \neq 0 \Rightarrow\) kring \(P\) (som har \(x = -1\)) kan både \(y \quad\&\quad z\) lösas ut som \(C^1\) funktioner \(y = h(x) \quad\&\quad z = j(x)\) på \(\gamma\). \newline
 Om \(\gamma\) skrivs \(\bar{r}(x) = \Big(x,h(x),j(x)\Big)\) är \(\bar{r}'(x) = \Big(1,h'(x),j'(x)\Big)\) vilket ger att \(\bar{r}'(-1) = \Big(1,h'(-1),j'(-1)\Big)\) är en tangentvektor till \(\gamma\) i \(P \Rightarrow\) \newline
 \(\Rightarrow\) parallell med \((2,4,0) = 2(1,2,0) \Rightarrow h'(-1) = 2 \quad\&\quad j'(-1) = 0\) \newline
 \underline{OBS!} \(z\)-komponent av \(\bar{r} = 0 \Rightarrow z\) ingen bra parameter för \(\gamma\) kring \(P\)
 
 
+
+
+
+
+\section{Föreläsning 9}
+
+Kommer snart!
 
 \newpage
 \fancyhf{}
