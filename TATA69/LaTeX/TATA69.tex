@@ -21,6 +21,7 @@
 \usepackage{coffee4}
 \usepackage{framed}
 \usepackage{letltxmacro}
+\usepackage{varioref}
 
 \usetkzobj{all}
 
@@ -33,6 +34,7 @@
 \DeclarePairedDelimiter \abs{\lvert}{\rvert}
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
 
+\everymath{\displaystyle}
 
 \let\oldsqrt\sqrt
 \makeatletter
@@ -86,7 +88,7 @@
 \rhead{\textit{Adnan Avdagic}}
 \lhead{Föreläsning \thesection}
 \rfoot{\rightmark}
-\cfoot{Sida \thepage}
+\lfoot{Sida \thepage}
 \noindent
 \section{Föreläsning 2}
 \subsection{Gränsvärden för flervarre}
@@ -119,7 +121,7 @@ Gå mot origo längs $y=x$
 
 Olika värden från olika riktningar \newline
 Innanför varje liten cirkel kring origo har f värden nära 0 och nära $\frac{1}{2}$.
-Vi säger därför att gränsvärde ej existerar. Se \ref{fig:2.1}
+Vi säger därför att gränsvärde ej existerar. Se \vref{fig:2.1}
 
 \begin{figure}[ht] 
 \begin{tikzpicture}
@@ -734,18 +736,18 @@ med bivillkoret
 \begin{split}
 	\text{Kedjeregeln } \left\{\begin{array}{rcl}
 		f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime} = 
-		f_{s}^{\prime}\times1 + f_{t}^{\prime}y \\
+		f_{s}^{\prime}*1 + f_{t}^{\prime}y \\
 		f_{s}^{\prime}s_{y}^{\prime} + f_{t}^{\prime}t_{y}^{\prime} =
-		f_{s}^{\prime}\times1 + f_{t}^{\prime}x
+		f_{s}^{\prime}*1 + f_{t}^{\prime}x
 	\end{array}\right.
 	\text{sätt in i \eqref{eq:4.1}} \\
 	\Rightarrow (f_{s}^{\prime}+f_{t}^{\prime}y) - (f_{s}^{\prime}+f_{t}^{\prime}x) = y-x
-	\Rightarrow f_{t}^{\prime}\times(y-x) = y-x \text{, ska gälla alla } (x,y) \\
+	\Rightarrow f_{t}^{\prime}*(y-x) = y-x \text{, ska gälla alla } (x,y) \\
 	\Rightarrow f_{t}^{\prime} = 1 \Rightarrow f_{t} = t + \underbrace{g(s)}_{godtycklig}
 	\Rightarrow \underline{f(x,y) = xy + g(x,y)} \text{ [alla lösningar på \eqref{eq:4.1}]}
 \end{split}
 \]
-Bivillkoret \eqref{eq:4.2} ger oss \(f(x,0) = x \times 0 + g(x) = x^2 \Rightarrow g(x+0) = x^2 \Rightarrow\)
+Bivillkoret \eqref{eq:4.2} ger oss \(f(x,0) = x * 0 + g(x) = x^2 \Rightarrow g(x+0) = x^2 \Rightarrow\)
 Lösningen blir \(f(x,y) = xy + (x+y)^2\)
 
 \subsubsection{Linjärt variabelbyte}
@@ -834,7 +836,7 @@ Operator skrivsätt
 \end{array}\right.
 \]
 \[
-	f_{yy}^{\prime\prime} = (f_{y}^{\prime})_{y}^{\prime} = (xf_{v}^{\prime})_{y}^{\prime} = x(f_{v}^{\prime})_{y}^{\prime} = x \times x(f_{v}^{\prime})_{v}^{\prime} = x^2 f_{vv}^{\prime\prime}
+	f_{yy}^{\prime\prime} = (f_{y}^{\prime})_{y}^{\prime} = (xf_{v}^{\prime})_{y}^{\prime} = x(f_{v}^{\prime})_{y}^{\prime} = x * x(f_{v}^{\prime})_{v}^{\prime} = x^2 f_{vv}^{\prime\prime}
 \]
 \[
 	f_{xy}^{\prime\prime} = (f_{x}^{\prime})_{y}^{\prime} = (f_{u}^{\prime} + yf_{v}^{\prime})_{y}^{\prime} =
@@ -891,7 +893,7 @@ g''_{yx} && g''_{yy} && g''_{yz} \\
 g''_{zx} && g''_{zy} && g''_{zz}
 \end{pmatrix}\]
 
-symmetriska om \(f,g \in C^2\), mer om \(H\) i samband med max/min-problem.
+symmetriska om \(f,g \in C^2\), \newline mer om \(H\) i samband med max/min-problem. \vref{sec:Hessian}
 
 \subsubsection{Hur tolkar man gradienter i 2D \& 3D?}
 
@@ -994,7 +996,7 @@ Med kedjeregeln visas på liknande sätt som för nivåkurvor att
 
 Enhetssfären \(g(x,y,z) = x^2 + y^2 + z^2 = 1\) har \(\bar{N} = \nabla g = (2x,2y,2z)\) \newline
 I punkten \(P:\left(\frac{2}{3},\frac{1}{3},\frac{2}{3}\right)\) är 
-\(\bar{N} = \left(2\times\frac{2}{3},2\times\frac{1}{3},2\times\frac{2}{3}\right)\) och tangentplanet i P är \newline
+\(\bar{N} = \left(2*\frac{2}{3},2*\frac{1}{3},2*\frac{2}{3}\right)\) och tangentplanet i P är \newline
 \(\left(x-\frac{2}{3},y-\frac{1}{3},z-\frac{2}{3}\right) = \bar{N} = 0 \iff 2x+y+2z = 3\) \newline
 
 En graf \(z = f(x,y)\) kan skrivas som nivåytan \(g(x,y,z) = f(x,y) - z = 0\) \newline
@@ -1034,7 +1036,7 @@ f'_{\bar{v}} = \nabla f \bullet \bar{v}\]
 I punkten \((a,b,c) = (2,-1,1)\) och i riktningen \(\bar{v} = \frac{1}{\sqrt{5}}(1,0,2)\) från punkten är 
 
 \[f'_{\bar{v}}(2,-1,1) = \nabla f(a,b,c) \bullet \bar{v} = (1,-4,6) \bullet \frac{1}{\sqrt{5}}(1,0,2) 
-= \frac{1 \times 1 - 4 \times 0 + 6 \times 2}{\sqrt{5}} = \frac{13}{\sqrt{5}}\]
+= \frac{1 * 1 - 4 * 0 + 6 * 2}{\sqrt{5}} = \frac{13}{\sqrt{5}}\]
 
 \subsubsection{Allmänt}
 
@@ -1058,9 +1060,122 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 
 \newpage
 \section{Föreläsning 6}
+\subsection{Lokala max och min}
+\subsubsection{Definition}
+\(f(x,y)\) har ett lokalt minimum i \((a,b)\) om \(f(x,y) \geq f(a,b) \forall (x,y)\) i någon omgivning u av \((a,b)\). Om \((f,y) \geq f(a,b)\) i \(u \forall (x,y) = (a,b)\) har vi ett strängt lokalt minimum.
+Motsvarande för lokalt maximum och \(\geq 3\) variabler.
 
-Kommer snart!
+\subsubsection{Hur hittas lokala max \& min?}
+Om \(z=f(x,y)\) har lokalt min i \((a,b)\) \& \(L\) parallell med \(x\)-axeln \(\big(y=b=\)konstant på \(L \big)\) så har på \(L\) envaribelfunktionen \(g(x) = f(x,b)\) ett lokalt min i \(x=a \Rightarrow g'(a) = 0\) men 
+\(g'(a) = f'_x(a,b)\) \big(enligt def av derivator\big). Samma i \(y\)-led.
 
+\subsubsection{Sats}
+Om \(f(x,y) \in C^1\) har ett lokalt max eller min i \((a,b)\) så är
+
+$$
+\left\{\begin{array}{rcl}
+	f'_x(a,b) = 0 \\
+	f'_y(a,b) = 0
+\end{array}\right.
+\text{ , dvs }\nabla f(a,b) = (0,0)
+$$
+Motsvarande för $\geq 3$ variabler
+
+En punkt $\bar{a}$ där $\nabla f(\bar{a} = \bar{0}$ kallas \underline{stationär}. Den kan vara lok max, min eller sadelpunkt.
+
+\newpage
+\subsection{Avgör om max, min eller sadelpunkt (\texorpdfstring{$\bar{a}$}{a} stationär)?} \label{sec:Hessian}
+\paragraph{Envarre:} teckentabell eller tecken på $f'(a)$
+\paragraph{Flervarre:} tecken på $H f(\bar{a})$ , motiveras från Taylors formel
+
+Envariabel - maclaurin: 
+\begin{equation}\label{eq:6.1}
+	g(t) = g(0) + g'(0)t + t^2\frac{g''(0)}{2} + \cdots + t^{(p)}\frac{g^{(p)}(0)}{p!} + \overbrace{\mathcal{R}_p}^{rest} \Big(*\Big)
+\end{equation}
+Givet $f(x,y)$, sätt $g(t) = f(a+th,b+tk)$ ,  a,h,b,k konstanta \newline
+Kedjeregeln:
+
+\[
+\begin{split}
+g'(t) = f'_x * x'_t + f'_y * y'_t = f'_x * h + f'_y * k = \Bigg( h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y} \Bigg)f = (h,k) \nabla f \\
+\Rightarrow g''(t) = \Bigg( h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y} \Bigg)^2 f = h^2*f''_{xx} + 2hk*f''_{xy} + k^2*f''_{yy} = \\
+= (h,k)
+\underbrace{\begin{pmatrix}
+	f''{xx} & f''{yx} \\
+	f''{xy} & f''{yy} \\
+\end{pmatrix}}_{Hf}
+\begin{pmatrix}
+	h \\
+	k
+\end{pmatrix}
+\text{ \Big[$f''_{xy} = f''_{yx}$ om $f \in C^2$ \Big]}
+\end{split}
+\]
+\begin{equation} \label{eq:6.2}
+g^{(p)}(t) = \Bigg( h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y} \Bigg)^{(p)} f
+\end{equation}
+$t = 0 \Rightarrow (x,y) = (a,b) \& g(0) = f(a,b)$ \newline
+$t = 1 \Rightarrow (a+h,b+k) \& g(1) = f(a+h,b+k)$ in i \vref{eq:6.1}
+$\Rightarrow$ Taylors formel för $f(x,y) \in C^{p+1}$
+\[
+\begin{split}
+	f(a+h,b+k) = f(a,b) + (h,k) * \nabla f(a,b) + \frac{1}{2}(h,k)(Hf)(a,b)
+	\begin{pmatrix}
+		h \\
+		k
+	\end{pmatrix}
+	+ \cdots \\
+	+ \frac{1}{p!}\Big(h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y})^p * f(a,b) + \mathcal{R}_p \text{ , där man kan visa } \mathcal{R}_p = \mathcal{O}\left(\sqrt{h^2 + k^2}^{p+1}\right)
+\end{split}
+\]
+För $p=2$ och $n$ variabler, $\bar{a} = (a_1, \ldots ,a_n) , \bar{h} = (h_1, \ldots ,h_n) \left(\Rightarrow h^{-t} \text{ kolonn } \right)$ fås 
+$f(\bar{a}+\bar{h}) = f(\bar{a}) + \bar{h} * \nabla f(\bar{a}) + \underbrace{\frac{1}{2}\bar{h}(Hf)(\bar{a})h^{-t}}_{Q(h)} + \mathcal{O}\left(\abs{h^3}\right)$
+\newpage
+$Q(\bar{h})$ är en kvadratisk form (lin.alg). I $2$ variabler, se \eqref{eq:6.2}, i $3$ variabler:
+$$
+	Q(h,k,l) = h^2f''_{xx} + k^2f''_{yy} + l^2f''_{zz} + 2hkf''_{xy} + 2hlf''_{xz} + 2klf''_{yz}
+$$
+I stationär punkt $\bar{a} \Big(\nabla f(\bar{a}) = \bar{0}\Big)$
+$$
+	f(\bar{a}+\bar{h}) = f(\bar{a}) + \frac{1}{2}Q(\bar{h}) + \mathcal{O}(\abs{h^3}) \approx f(\bar{a}) + \frac{1}{2}Q(\bar{h}) \text{ om } \abs{\bar{h}} \text{ liten}
+$$
+$\Rightarrow Q(\bar{h})$ avgör $f$:s utseende nära stationär punkt. \newline Om t.ex. $Q(\bar{h}) = 0 \forall \bar{h} \neq 0$ är $f(\bar{a}+\bar{h}) = f(\bar{a}) \Rightarrow$ strängt lokalt min i $\bar{a}$
+
+\subsubsection{Fyra fall fås}
+\begin{enumerate}
+\item Q positivt definit $\Rightarrow$ strängt lokalt min
+$$
+	Q(\bar{h}) > 0 \quad\forall \bar{h} \neq 0
+$$
+\item Q negativt definit $\Rightarrow$ strängt lokalt max
+$$
+	Q(\bar{h}) > 0 \quad\forall \bar{h} \neq 0
+$$
+\item Q indefinit $\Rightarrow$ sadelpunkt
+$$
+	Q(\bar{h}) > 0 , \text{för vissa } \bar{h} \text{ \& } < 0 \text{ för andra}
+$$
+\item Q positivt semidefinit (motsv. neg semidefinit) 
+Ingen slutsats om max, min eller sadelpunkt kan dras
+$$
+	Q(\bar{h}) \geq 0 \quad\forall \bar{h} \text{ men } \exists\bar{h} \neq 0 \text{ med } Q(\bar{h}) = 0
+$$
+\end{enumerate}
+
+\newpage
+\subsubsection{Två metoder för att avgöra Q:s karaktär:}
+\begin{enumerate}
+\item Digonalisering. Spektralsatsen $\Rightarrow Hf = TDT^{-1}$, $T^{-1} = T^T$
+$$
+	D = 
+	\begin{pmatrix}
+		\lambda_1 & 0 & 0 \\
+		0 & \ddots & 0 \\
+		0 & 0 & \lambda_n
+	\end{pmatrix} 
+	, \lambda_j \text{ egenvärden till } Hf
+$$
+\end{enumerate}
 
 
 
@@ -1084,7 +1199,7 @@ Tangentvektorn är \(\bar{r}'(t) = \Big(x'(t),y'(t),z'(t)\Big)\) (som i 2D). Fun
 	\bar{r}(s,t) = (1+s+t,2-s,3t) = \underbrace{(1,2,0)}_{\text{en punkt i planet}} + \overbrace{s(1,-1,0) + t(1,0,3)}^{\text{vektorer parallella med planet}}
 \end{equation}
 \(\frac{\partial \bar{r}}{\partial s}\) och \(\frac{\partial \bar{r}}{\partial t}\) är tangentvektorer till ytan, och spänner upp tangentplanet vars normal 
-\(\bar{N} = \frac{\partial \bar{r}}{\partial s} \times \frac{\partial \bar{r}}{\partial t}\)
+\(\bar{N} = \frac{\partial \bar{r}}{\partial s} * \frac{\partial \bar{r}}{\partial t}\)
 För planet i \eqref{eq:7.1} är \(\frac{\partial \bar{r}}{\partial s} = (1,-1,0) \quad\&\quad \frac{\partial \bar{r}}{\partial t} = (1,0,3)\)
 
 \subsubsection{Exempel 2}
@@ -1409,7 +1524,7 @@ lokalt kring \((a,b,c)\) på ytan om \(F'_z(a,b,c) \neq 0\) \Big(\(\nabla F\) ej
 \paragraph{Implicit derivering/kedjeregeln}
 
 \[
-	0 = \frac{\partial}{\partial x} \underbrace{F(x,y,\overbrace{g(x,y)}^z)}_{=C} = F'_x \times 1 + F'_y \times 0 + F'_zg'_x \Rightarrow g'_x = - \frac{F'_x}{F'_z} \text{ pss } g'_y = - \frac{F'_y}{F'_z}
+	0 = \frac{\partial}{\partial x} \underbrace{F(x,y,\overbrace{g(x,y)}^z)}_{=C} = F'_x * 1 + F'_y * 0 + F'_zg'_x \Rightarrow g'_x = - \frac{F'_x}{F'_z} \text{ pss } g'_y = - \frac{F'_y}{F'_z}
 \]
 Motsvarande om \(x\) eller \(y\) ska lösas ut
 
@@ -1418,7 +1533,7 @@ Motsvarande om \(x\) eller \(y\) ska lösas ut
 	F(x,y,z) = x^2z\cos{y} + e^{z + 3y - x} = 2 \text{ , nivåyta } F \in C^1
 \end{equation}
 \[
-	F(1,0,1) = 1^2 \times 1\cos{0} + e ^{1+0-1} = 2 \Rightarrow (1,0,1) \text{ på ytan}
+	F(1,0,1) = 1^2 * 1\cos{0} + e ^{1+0-1} = 2 \Rightarrow (1,0,1) \text{ på ytan}
 \]
 \[
 	F'_y = - x^2z\sin{y} + 3e^{z+3y-x} \Rightarrow F'_y(1,0,1) = 3 \neq 0
