@@ -1175,9 +1175,132 @@ $$
 	\end{pmatrix} 
 	, \lambda_j \text{ egenvärden till } Hf
 $$
+$$
+	Q = \bar{h}*(Hf)*h^{-t} = \underbrace{\bar{h}TD}_{\hat{\bar{h}}}\underbrace{T^th^{-t}}_{\hat{\bar{h}}^t} = \hat{\bar{h}}D\hat{\bar{h}}^t = \lambda_1\hat{h}^2_1 + \lambda_2\hat{h}^2_2 + \ldots + \lambda_n\hat{h}^2_n
+$$
+
+\paragraph{De fyra fallen}
+\begin{enumerate}
+\item 
+$$ \lambda_j > 0, \quad \forall j \text{ pos.def} $$
+\item 
+$$ \lambda_j < 0, \quad \forall j \text{ neg.def} $$
+\item 
+$$ \exists\lambda_j > 0 \text{ \& } \exists\lambda_k < 0 \text{ indef} $$
+\item 
+$$ \lambda_j \geq 0, \quad \forall j \quad\exists\lambda_k = 0 \text{ pos.semidef} $$
 \end{enumerate}
 
+\paragraph{Exempel}
+\begin{equation}\label{eq:6.3}
+	Q(h,k,l) = h^2 + 2k^2 + 2l^2 + 2hk - 2hl + 2kl = 
+	\begin{pmatrix}
+		h & k & l
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 & 1 & -1 \\
+		1 & 2 & 1 \\
+		-1 & 1 & 2
+	\end{pmatrix}
+	\begin{pmatrix}
+		h \\
+		k \\
+		l
+	\end{pmatrix}
+\end{equation}
+$$
+	\det(Hf - \lambda I) = 0 \Rightarrow \cdots \Rightarrow \lambda_1 = 3, \lambda_{2,3} = 1 \pm \sqrt{2}
+$$
+$$
+	\Rightarrow Q = 
+	\begin{pmatrix}
+		\hat{h} & \hat{k} & \hat{l}
+	\end{pmatrix}
+	\begin{pmatrix}
+		3 & & \\
+		& 1+\sqrt{2} & \\
+		& & 1-\sqrt{2}
+	\end{pmatrix}
+	\begin{pmatrix}
+		\hat{h} \\
+		\hat{k} \\
+		\hat{l}
+	\end{pmatrix}
+	= 3\hat{h}^2 + (1+\sqrt{2})\hat{k}^2 + (1-\sqrt{2})\hat{l}^2
+$$
+$\lambda_1 > 0$ , $\lambda_2 > 0$ , $\lambda_3 < 0 \Rightarrow$ indefinit (egenvektorer behövs ej för att avgöra karaktär)
 
+\newpage
+\item Kvadratkomplettering
+$$
+	(a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc
+$$
+\eqref{eq:6.3}:
+\begin{align*}
+	Q &= \overbrace{h^2 + 2hk - 2hl}^{\text{in i en parentes}} + 2k^2 + 2l^2 + 2kl = \\
+	  &= (h+k-l)^2 + \underbrace{k^2 + 4kl}_{\text{in i en parentes}} + l^2 = \\
+	  &= \underline{+}(h+k-l)^2 \underline{+} (k+2l)^2 \underline{-} 3l^2
+\end{align*}
+tecken $+, +, -$, samma som på $\lambda_1$ , $\lambda_2$ , $\lambda_3 \Rightarrow$ indefinit
+
+\paragraph{De fyra fallen}
+\begin{enumerate}
+\item Bara $+ \Rightarrow$ pos.def
+\item Bara $- \Rightarrow$ pos.def
+\item $+$ \& $-$ (\&/eller 0) $\Rightarrow$ indef
+\item $+$ \& $0$ (färre $+$ än variabler) $\Rightarrow$ pos.semidef
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Exempel 1}
+Hitta alla stationära punkter till $f(x,y) = x^3 + 6xy + 3y^2 - 9x$ och avgör om de är max, min eller sadelpunkter.
+
+$$
+	\text{Stationära punkter: }
+	\left\{
+	\begin{align}
+	f'_x &= 3x^2 + 6y - 9 = 0 \quad [1] \\
+	f'_y &= 6x + 6y = 0 \quad [2]
+	\end{align}\right.
+$$
+$$
+	[2] \Rightarrow y = -x in i [1] \Rightarrow 3x^2 - 6x - 9 = 0 \Rightarrow \underbrace{x=3}_{y=-3} \text{ eller } \underbrace{x=1}_{y=1}
+$$
+
+Två stationära punkter: $(3,-3)$ \& $(-1,1)$ max/min?
+$$
+	f''_{xx} = 6x \quad f''_{xy} = 6 \quad f''_{yy} = 6
+$$
+\begin{align*}
+	I(3,-3): Q &= 
+	\begin{pmatrix}
+		h & k
+	\end{pmatrix}
+	\begin{pmatrix}
+		18 & 6 \\
+		6 & 6
+	\end{pmatrix}
+	\begin{pmatrix}
+		h \\ 
+		k
+	\end{pmatrix}
+	\Rightarrow \cdots \Rightarrow \lambda_{1,2} = 12 \pm 6\sqrt{2} > 0 \Rightarrow \text{pos.def} \Rightarrow \text{lok.min} \\
+	I(-1,1): Q &= 
+	\begin{pmatrix}
+		h & k
+	\end{pmatrix}
+	\begin{pmatrix}
+		-6 & 6 \\
+		6 & 6
+	\end{pmatrix}
+	\begin{pmatrix}
+		h \\ 
+		k
+	\end{pmatrix}
+	\Rightarrow \lambda_1 = 6\sqrt{2} > 0 \text{ \& } \lambda_2 = -6\sqrt{2} < 0 \Rightarrow \text{indef} \Rightarrow \text{sadelpunkt}
+\end{align*}
+
+\underline{Svar:} $(3,-3)$ är lokalt minimum \& $(-1,1)$ är en sadelpunkt
 
 
 
