@@ -2077,79 +2077,208 @@ $\begin{cases}
 
 \newpage
 \subsection{Integrationsordningar}
-Det finns $6$ olika integrationsordningar, ovan \vref{subsec:intordn} tog vi $z\rightarrow y\rightarrow x$. Med $z$ först har vi kvar projektionen $D_{xy}$ av $D$
+Det finns $6$ olika integrationsordningar, ovan \vref{subsec:intordn} tog vi $z\rightarrow y\rightarrow x$.
 
 \begin{enumerate}
+Med $z$ först har vi kvar projektionen $D_{xy}$ av $D$
+
 \item 
 $$
-z\rightarrow y\rightarrow x \text{ ger }
+z\rightarrow y\rightarrow x \text{ ger } (1)
 \begin{cases}
-\left.\begin{array}{rcl}
-0 \leq x \leq 1 \\
-x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
-0 \leq z \leq (y-x)^2
+&\left.\begin{array}{rcl}
+0 \leq &x \leq 1 \\
+x \leq &y \leq 1 \end{array}\right\}	D_{xy} \\
+&0 \leq z \leq (y-x)^2
+\end{cases}
+$$
+
+\item \label{eq:10.1}
+$$
+z\rightarrow x\rightarrow y \text{ ger } (2)
+\begin{cases} 
+&\left.\begin{array}{rcl}
+0 \leq &y \leq 1 \\
+0 \leq &x \leq y \end{array}\right\}	D_{xy} \\
+&0 \leq z \leq (y-x)^2
 \end{cases}
 $$
 
 
-\item 
-$$
-z\rightarrow y\rightarrow x \text{ ger }
-\begin{cases}
-\left.\begin{array}{rcl}
-0 \leq x \leq 1 \\
-x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
-0 \leq z \leq (y-x)^2
-\end{cases}
-$$
-
+Med $y$ först har vi kvar projektionen $D_{xz}$ av $D$ \newline
+$\begin{cases}
+z = (y-x)^2 \Rightarrow \sqrt{z} = \pm (y-x) \Rightarrow y = x+\sqrt{z} \\
+z = (1-x)^2 \Rightarrow x = 1 - \sqrt{z}
+\end{cases}$
 
 \item 
 $$
-z\rightarrow y\rightarrow x \text{ ger }
+y\rightarrow z\rightarrow x \text{ ger } (3)
 \begin{cases}
-\left.\begin{array}{rcl}
-0 \leq x \leq 1 \\
-x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
-0 \leq z \leq (y-x)^2
-\end{cases}
-$$
-
-
-\item 
-$$
-z\rightarrow y\rightarrow x \text{ ger }
-\begin{cases}
-\left.\begin{array}{rcl}
-0 \leq x \leq 1 \\
-x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
-0 \leq z \leq (y-x)^2
-\end{cases}
-$$
-
-
-\item 
-$$
-z\rightarrow y\rightarrow x \text{ ger }
-\begin{cases}
-\left.\begin{array}{rcl}
-0 \leq x \leq 1 \\
-x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
-0 \leq z \leq (y-x)^2
+&\left.\begin{array}{rcl}
+0 \leq &x \leq 1 \\
+x \leq &z \leq (1-x)^2 \end{array}\right\} D_{xz} \\
+&x+\sqrt{z} \leq y \leq 1
 \end{cases}
 $$
 
 \item 
 $$
-z\rightarrow y\rightarrow x \text{ ger }
+y\rightarrow x\rightarrow z \text{ ger } (4)
 \begin{cases}
-\left.\begin{array}{rcl}
-0 \leq x \leq 1 \\
-x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
-0 \leq z \leq (y-x)^2
+&\left.\begin{array}{rcl}
+0 \leq &z \leq 1 \\
+0 \leq &x \leq 1-\sqrt{z} \end{array}\right\} D_{xz} \\
+&x+\sqrt{z} \leq y \leq 1
+\end{cases}
+$$
+
+
+Med $x$ först har vi kvar projektionen $D_{yz}$ av $D$
+\item \label{eq:10.2}
+$$
+x\rightarrow z\rightarrow y \text{ ger } (5)
+\begin{cases}
+&\left.\begin{array}{rcl}
+0 \leq &y \leq 1 \\
+x \leq &z \leq y^2 \end{array}\right\}	D_{yz} \\
+&0 \leq x \leq y - \sqrt{z}
+\end{cases}
+$$
+
+\item 
+$$
+x\rightarrow y\rightarrow z \text{ ger } (6)
+\begin{cases}
+&\left.\begin{array}{rcl}
+0 \leq &z \leq 1 \\
+\sqrt{z} \leq &y \leq 1 \end{array}\right\}	D_{yz} \\
+&0 \leq x \leq y - \sqrt{z}
 \end{cases}
 $$
 \end{enumerate}
+
+\begin{figure}[ht]
+\resizebox{4cm}{4cm}{
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot[name path=f,domain=0:1,blue] {x};
+    \path[name path=axis] (axis cs:0,1) -- (axis cs:1,1);
+	\draw [red] (axis cs:0,1) -- (axis cs:1,1);
+	\draw [green] (axis cs:0,0) -> (axis cs:0,1);
+	\draw [green] (axis cs:0,0) -> (axis cs:1,0);
+    \addplot [
+        thick,
+        color=blue,
+        fill=blue, 
+        fill opacity=0.05
+    ]
+    fill between[
+        of=axis and f,
+        soft clip={domain=0:1},
+    ];
+    \node [rotate=48] at (axis cs:  .75,  .5) {$y=x$};
+    \node at (axis cs: .5,.95) {$y=1$};
+    \node at (axis cs: -.05,.95) {$y$};
+    \node at (axis cs: .95,.05) {$x$};
+	\end{axis}
+\end{tikzpicture}}
+  \caption{$D_{xy}$} \label{fig:10.3}
+\end{figure}
+
+\newpage
+\begin{figure}[ht]
+\resizebox{4cm}{4cm}{
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot[name path=f,domain=0:1,blue] {(1-x)^2};
+    \path[name path=axis] (axis cs:0,0) -- (axis cs:1,0);
+	\draw [red] (axis cs:0,0) -- (axis cs:1,0);
+	\draw [green] (axis cs:0,0) -> (axis cs:0,1);
+    \addplot [
+        thick,
+        color=blue,
+        fill=blue, 
+        fill opacity=0.05
+    ]
+    fill between[
+        of=axis and f,
+        soft clip={domain=0:1},
+    ];
+    \node [rotate=-48] at (axis cs:  .5,  .5) {$z=(1-x)^2$};
+    \node at (axis cs: .5,.05) {$x=1$};
+    \node at (axis cs: -.05,.95) {$z$};
+    \node at (axis cs: .95,.05) {$x$};
+	\end{axis}
+\end{tikzpicture}}
+  \caption{$D_{xz}$} \label{fig:10.4}
+\end{figure}
+
+\begin{figure}[ht]
+\resizebox{4cm}{4cm}{
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot[name path=f,domain=0:1,blue] {x^2};
+    \path[name path=axis] (axis cs:0,0) -- (axis cs:1,0);
+	\draw [red] (axis cs:1,0) -- (axis cs:1,1);
+	\draw [green] (axis cs:0,0) -> (axis cs:0,1);
+	\draw [green] (axis cs:0,0) -> (axis cs:1,0);
+    \addplot [
+        thick,
+        color=blue,
+        fill=blue, 
+        fill opacity=0.05
+    ]
+    fill between[
+        of=f and axis,
+        soft clip={domain=0:1},
+    ];
+    \node [rotate=48] at (axis cs: .5,.5) {$z=y^2$};
+    \node [rotate=90] at (axis cs: 1.05,.5) {$y=1$};
+    \node at (axis cs: -.05,.95) {$z$};
+    \node at (axis cs: .95,.05) {$y$};
+	\end{axis}
+\end{tikzpicture}}
+  \caption{$D_{yz}$} \label{fig:10.5}
+\end{figure}
+
+\newpage
+Test av \eqref{eq:10.2} 
+\begin{align*}
+	I &= \int_0^1 \int_0^{y^2} \int_0^{y-\sqrt{z}} z \,\mathrm{d}x\,\mathrm{d}\,\mathrm{d}z\,\mathrm{d}y =
+	\int_0^1 \int_0^{y^2} z \Big[x\Big]_0^{y-\sqrt{z}} \,\mathrm{d}z\,\mathrm{d}y=
+	\int_0^1 \int_0^{y^2} z(y-\sqrt{z}) \,\mathrm{d}z\,\mathrm{d}y = \\
+	&= \int_0^1 \Big[ \frac{z^2y}{2} - \frac{2z^{\frac{5}{2}}}{5} \Big]_0^{y^2} \,\mathrm{d}y =
+	\int_0^1 \Big( \frac{y^2}{2} - \frac{2y^5}{5} - \frac{0^2y}{2} - \frac{2*0^{\frac{5}{2}}}{5} \Big) \,\mathrm{d}y = \\
+	&= \int_0^1 \frac{y^5}{10} \,\mathrm{d}y = 
+	\Big[ \frac{y^6}{60} \Big] = \svar{\frac{1}{60}}
+\end{align*}
+
+Man kan också tänka att $D$ skivas upp. T.ex. för \underline{fixt} $y$ har vi skivan i figur \vref{fig:10.4}
+
+$$
+	\text{Ger } I = \int_0^1 \Big( \iint_{\hat{D}_{xz}} \,\mathrm{d}x\,\mathrm{d}z \Big)\,\mathrm{d}y
+$$
+
+$$
+	\hat{D}_{xz} : 
+	\begin{cases}
+		0 \leq x \leq y \\
+		0 \leq z \leq (y-x)^2
+	\end{cases}
+	\text{ ger } \eqref{eq:10.1}
+$$
+
+$$
+	\hat{D}_{xz} : 
+	\begin{cases}
+		0 \leq z \leq y^2 \\
+		0 \leq x \leq y-\sqrt{z}
+	\end{cases}
+	\text{ ger } \eqref{eq:10.2}
+$$
+
+
 
 
 \newpage
