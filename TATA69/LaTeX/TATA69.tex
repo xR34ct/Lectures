@@ -2,7 +2,7 @@
 
 \usepackage[swedish]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
+\usepackage[intlimits]{amsmath}
 \usepackage{hyperref}
 \usepackage{underscore}
 \usepackage{tikz}
@@ -22,9 +22,12 @@
 \usepackage{framed}
 \usepackage{letltxmacro}
 \usepackage{varioref}
+\usepackage{pgfplots}
 
 \usetkzobj{all}
 
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 
 \NewDocumentEnvironment{spmatrix}{ m }
   {\mathop\bgroup\begin{pmatrix}}
@@ -69,18 +72,19 @@
 \thispagestyle{empty}
 \end{titlepage}
 
-\hypersetup{pageanchor=true}
-\thispagestyle{empty}
-\tableofcontents
-\thispagestyle{empty}
 
+\cleardoublepage
+\pagenumbering{gobble}
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
 
 
 
 
 \newpage
+\hypersetup{pageanchor=true}
 \cleardoublepage
-\pagenumbering{Roman}
 \setcounter{page}{1}
 \setcounter{section}{1}
 \pagestyle{fancy}
@@ -90,7 +94,7 @@
 \rfoot{\rightmark}
 \lfoot{Sida \thepage}
 \noindent
-\section{Föreläsning 2}
+\section{Föreläsning II}
 \subsection{Gränsvärden för flervarre}
 
 \subsubsection{Exempel 1} \flushleft
@@ -209,7 +213,7 @@ Viktigt för gränsvärden: \( (x,y) \rightarrow (0,0) \iff \rho \rightarrow 0 \
 
 \[
 \begin{split}
-\lim_{(x,y) \rightarrow 0} \frac{x^3+xy}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3 \cos^3(\varphi) + \rho^2 \cos(\varphi) \sin(\varphi)}{\rho^2} = \\
+\lim_{(x,y) \rightarrow 0} \frac{x^3+xy}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3 \cos^3(\varphi) + \rho^2 \cos(\varphi) \sin(\varphi)}{\rho^2} = \\
 =\lim_{\rho \rightarrow 0} (\overbrace{\rho \cos^3(\varphi)}^{\rightarrow 0}+\underbrace{\cos(\varphi) \sin(\varphi)}_\text{vinkelberoende}) \Rightarrow \text{gränsvärde existerar ej}
 \end{split}
 \]
@@ -217,7 +221,7 @@ Viktigt för gränsvärden: \( (x,y) \rightarrow (0,0) \iff \rho \rightarrow 0 \
 \paragraph{Exempel \eqref{eq:2.3} med polära koordinater}
 
 \[
-	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = 
+	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = 
 	\lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
 \]
 
@@ -237,7 +241,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 \subsubsection{Exempel 4}
 
 \begin{equation} \label{eq:2.4}
-	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = 
+	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = 
 	\lim_{\rho \rightarrow \infty} \overbrace{\frac{1}{\rho}}^{\rightarrow 0} \underbrace{\sin(\varphi)}_\text{Begränsad} = 0
 \end{equation}
 
@@ -358,7 +362,7 @@ För gränsvärden där \((x,y,z) \rightarrow (0,0,0) \iff r \rightarrow 0\)
 
 \[
 \begin{split}
-	\lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} \overset{\mathrm{rymdpol.koord}}{=} \\
+	\lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} \overset{\,\mathrm{rymdpol.koord}}{=} \\
 	= \lim_{r \rightarrow 0} \frac{r^3 \sin^2(\theta) \cos(\theta) \sin(\varphi) \cos(\varphi)}{r^2+r^2 \cos^2(\theta)} = \\
 	= \lim_{r \rightarrow 0} \overbrace{r}^{\rightarrow 0} \underbrace{\frac{\sin^2(\theta) \cos(\theta) \sin(\varphi) \cos(\varphi)}{1+\cos^2(\theta)}}_\text{begränsad, nämnare \(\geq 1 \) ingen risk för /0}
 \end{split}
@@ -382,7 +386,7 @@ Polära koordinater i (x,y) och vanliga i z
 
 
 \newpage
-\section{Föreläsning 3}
+\section{Föreläsning III}
 \subsection{Partiella derivator}
 
 \subsubsection{Exempel 1}
@@ -592,12 +596,12 @@ För \(\geq\) 2 variabler gäller
 
 Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk = 
 f_{x}^{\prime}(a,b)h + f_{y}^{\prime}(a,b)k\), kallas \underline{differentialen} av \(f\) i (a,b) \\
-ofta skrivs variablerna \(h=dx\) \& \(k=dy\) så \(df_{(a,b)}(dx,dy) = f_{x}^{\prime}(a,b)dx + f_{y}^{\prime}(a,b)dy\) eller kort \(df = f_{x}^{\prime}dx + f_{y}^{\prime}dy\)
+ofta skrivs variablerna \(h=\,\mathrm{d}x\) \& \(k=\,\mathrm{d}y\) så \(df_{(a,b)}(\,\mathrm{d}x,\,\mathrm{d}y) = f_{x}^{\prime}(a,b)\,\mathrm{d}x + f_{y}^{\prime}(a,b)\,\mathrm{d}y\) eller kort \(df = f_{x}^{\prime}\,\mathrm{d}x + f_{y}^{\prime}\,\mathrm{d}y\)
 
 \paragraph{Exempel \eqref{eq:3.1} omskrivet}
 
 \[
-	f(x,y) = x^2y + x\sin(y) \Rightarrow df = (2xy+\sin(y))dx + (x^2+x\cos(y))dy
+	f(x,y) = x^2y + x\sin(y) \Rightarrow df = (2xy+\sin(y))\,\mathrm{d}x + (x^2+x\cos(y))\,\mathrm{d}y
 \]
 
 \subsubsection*{Feluppskattning med \(df\)}
@@ -625,12 +629,12 @@ Fel:
 
 
 \newpage
-\section{Föreläsning 4}
+\section{Föreläsning IV}
 \subsection{Kedjeregeln}
 
 \subsubsection*{Envarre}
 
-\underline{Exempel} \[\frac{d}{dx} e^{x^2} = e^{x^2}2x\]
+\underline{Exempel} \[\frac{d}{\,\mathrm{d}x} e^{x^2} = e^{x^2}2x\]
 
 \underline{Allmänt} \[f(g(x)) = \underbrace{f^{\prime}(g(x))}_{\text{yttre}} \underbrace{g^{\prime}(x)}_{\text{inre}} \]
 
@@ -672,7 +676,7 @@ Fel:
 	\item
 	\[
 	\begin{split}
-		\frac{d}{dx}(f(\bar{g}(x))) = \frac{d}{dx}(f(g_{1}(x),g_{2}(x))) \overset{\text{def av }\frac{d}{dx}}{=} \\
+		\frac{d}{\,\mathrm{d}x}(f(\bar{g}(x))) = \frac{d}{\,\mathrm{d}x}(f(g_{1}(x),g_{2}(x))) \overset{\text{def av }\frac{d}{\,\mathrm{d}x}}{=} \\
 		= \lim_{l \rightarrow 0} \frac{f(\overbrace{g_{1}(x+l)}^{s+h},\overbrace{g_{2}(x+l)}^{t+k}) - 
 		f(\overbrace{g_{1}(x)}^{s},\overbrace{g_{2}(x)}^{t})}{l} \underset{\text{diff.bar}}{=} \\
 		= \lim_{l \rightarrow 0} \frac{f_{s}^{\prime}(s,t)h+f_{t}^{\prime}(s,t)k+\sqrt{h^2+k^2}\rho(h,k)}{l} = 
@@ -696,7 +700,7 @@ Fel:
 	\[
 	\begin{split}
 		= f_{s}^{\prime}(s,t)g_{1}^{\prime}(x) + f_{t}^{\prime}(s,t)g_{2}^{\prime}(x) \\
-		\text{eller } \frac{df}{dx} = f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime}
+		\text{eller } \frac{df}{\,\mathrm{d}x} = f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime}
 	\end{split}
 	\]
 	\item \subsubsection*{Fås av 1 \& 2}
@@ -755,7 +759,7 @@ Lösningen blir \(f(x,y) = xy + (x+y)^2\)
 \[
 \left\{\begin{array}{rcl}
 	s = ax + by \\
-	t = cx + dy
+	t = cx + \,\mathrm{d}y
 \end{array}\right.
 \Rightarrow \begin{spmatrix}{X_{\underbar{f}}}s \\ t\end{spmatrix} =
 \begin{spmatrix}{T^{-1}}a & b \\ c & d\end{spmatrix}
@@ -871,7 +875,7 @@ Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
 
 
 \newpage
-\section{Föreläsning 5}
+\section{Föreläsning V}
 
 \subsection{Gradienter}
 
@@ -1059,7 +1063,7 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 
 
 \newpage
-\section{Föreläsning 6}
+\section{Föreläsning VI}
 \subsection{Lokala max och min}
 \subsubsection{Definition}
 \(f(x,y)\) har ett lokalt minimum i \((a,b)\) om \(f(x,y) \geq f(a,b) \forall (x,y)\) i någon omgivning u av \((a,b)\). Om \((f,y) \geq f(a,b)\) i \(u \forall (x,y) = (a,b)\) har vi ett strängt lokalt minimum.
@@ -1307,7 +1311,7 @@ $$
 
 
 \newpage
-\section{Föreläsning 7}
+\section{Föreläsning VII}
 
 \subsection{Kurvor \& ytor i \texorpdfstring{\(\mathbb{R}^3\)}{R3} på parameterform}
 
@@ -1537,7 +1541,7 @@ A\bar{x}+\bar{C} & [bl\dot{a}]
 
 
 \newpage
-\section{Föreläsning 8}
+\section{Föreläsning VIII}
 \subsection{Implicita funktioner}
 
 Givet ett uttryck \(F(x,y)=C\) (en ekvation eller en nivåyta), under vilka krav kan \(y\) lösas ut som en funktion av ? \newline
@@ -1623,7 +1627,7 @@ Trots att \(g(x)\) är okänd kan vi få ut \(g'(x)\) på två olika sätt
 \subsubsection*{Alternativ 1 (kedjeregeln)}
 \begin{equation}\label{eq:8.5}
 \begin{split}
-	0 = \frac{d}{dx} \underbrace{F\Big(x,\overbrace{g(x)}^y\Big)}_{=2} = \frac{\partial F}{\partial x} \underbrace{\frac{dx}{dx}}_{=1} + \frac{\partial F}{\partial y} \underbrace{\frac{dy}{dx}}_{g'(x)} = F'_x + F'_yg'(x)  \Rightarrow \\
+	0 = \frac{d}{\,\mathrm{d}x} \underbrace{F\Big(x,\overbrace{g(x)}^y\Big)}_{=2} = \frac{\partial F}{\partial x} \underbrace{\frac{\,\mathrm{d}x}{\,\mathrm{d}x}}_{=1} + \frac{\partial F}{\partial y} \underbrace{\frac{\,\mathrm{d}y}{\,\mathrm{d}x}}_{g'(x)} = F'_x + F'_yg'(x)  \Rightarrow \\
 	\Rightarrow g'(x) = - \frac{F'_x}{F'_y} = - \frac{3x^2y^2 + y^5\cos{x} + 2}{2x^3 + 5y^4\sin{x} + 1} \Rightarrow g'(x) = - \frac{2}{1} = -2 \
 \end{split}
 \end{equation}
@@ -1663,10 +1667,10 @@ Motsvarande om \(x\) eller \(y\) ska lösas ut
 \]
 \(\Rightarrow y\) kan lösas ut som \(y = g(x,z)\) ur \(F(x,y,z) = 2\) kring \((1,0,1)\) på ytan \(g \in C^1\) med \(g(1,1) = 0\)
 \[
-	g'_x = - \frac{F'_x}{F'_y} = - \frac{2xz\cos{y} - e^{z+3y-x}}{- x^2z\sin{y} + 3e^{z+3y-x}} \overset{\mathrm{i (1,0,1)}}{=} - \frac{2-1}{3} = - \frac{1}{3}
+	g'_x = - \frac{F'_x}{F'_y} = - \frac{2xz\cos{y} - e^{z+3y-x}}{- x^2z\sin{y} + 3e^{z+3y-x}} \overset{\,\mathrm{i (1,0,1)}}{=} - \frac{2-1}{3} = - \frac{1}{3}
 \]
 \[
-	g'_z = - \frac{F'_x}{F'_y} = - \frac{x^2\cos{y} + e^{z+3y-x}}{- x^2z\sin{y} + 3e^{z+3y-x}} \overset{\mathrm{i (1,0,1)}}{=} - \frac{2}{3}
+	g'_z = - \frac{F'_x}{F'_y} = - \frac{x^2\cos{y} + e^{z+3y-x}}{- x^2z\sin{y} + 3e^{z+3y-x}} \overset{\,\mathrm{i (1,0,1)}}{=} - \frac{2}{3}
 \]
 
 \subsection{3 variabler, 2 funktioner}
@@ -1710,9 +1714,242 @@ Om \(\gamma\) skrivs \(\bar{r}(x) = \Big(x,h(x),j(x)\Big)\) är \(\bar{r}'(x) = 
 
 
 
-\section{Föreläsning 9}
+
+\section{Föreläsning IX}
+\subsection{Dubbelintegraler}
+Skivformeln för volymen \newline
+Volymen av en tunn skiva ges av $dV = A(x)\,\mathrm{d}x$, den hela volymen ges av $V = \int_a^b dV$
+
+\subsubsection{Exempel}
+Låt D vara mängden $\left\{\begin{array}{rcl} 0 \leq x \leq 2 \\ 0 \leq y \leq x^2\end{array}\right.$ D kan också skrivas $\left\{\begin{array}{rcl} 0 \leq y \leq 4 \\ \sqrt{y} \leq x \leq 2\end{array}\right.$
+
+\begin{figure}[ht] 
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot[name path=f,domain=0:2,blue] {x^2};
+	\path[name path=axis] (axis cs:0,0) -- (axis cs:2,0);
+	\draw [red] (axis cs:0,0) -- (axis cs:2,0);
+	\addplot [
+        thick,
+        color=blue,
+        fill=blue, 
+        fill opacity=0.05
+	]
+    fill between[
+        of=f and axis,
+        soft clip={domain=0:2},
+    ];
+    \node [rotate=48] at (axis cs:  1.15,  2) {$y=x^2$};
+    \node [rotate=90] at (axis cs:  2.05,  2) {$x=2$};
+	\end{axis}
+\end{tikzpicture}
+  \caption{$D=\left\{(x,y) \ | \ 0 \leq x \leq 2 \ , \ 0 \leq y \leq x^2\right\}$} \label{fig:9.1}
+\end{figure}
+
+\newpage
+Låt $f(x,y) = xy^2$ \newline
+Vad blir volymen mellan ytan $z = xy^2$ och $xy$-planet ovanför D?
+
+\begin{figure}[ht] 
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot[name path=f,domain=0:1,blue] {x^2};
+    \path[name path=axis] (axis cs:0,0) -- (axis cs:1,0);
+	\draw [red] (axis cs:0,0) -- (axis cs:1,0);
+    \addplot [
+        thick,
+        color=blue,
+        fill=blue, 
+        fill opacity=0.05
+    ]
+    fill between[
+        of=f and axis,
+        soft clip={domain=0:1},
+    ];
+    \node [rotate=48] at (axis cs:  .7,  .59) {$z=xy^2$};
+    \node [rotate=90] at (axis cs:  1.05,  .25) {$y=x^2$};
+    \node at (axis cs: 0.8,0.2) {$A(x)$};
+	\end{axis}
+\end{tikzpicture}
+  \caption{2D representation av en skiva} \label{fig:9.2}
+\end{figure}
+
+$$
+	A(x) = \int_0^{x^2}xy^2 \,\mathrm{d}y = x \int_0^{x^2} y^2 \,\mathrm{d}y = x\left[\frac{y^3}{3}\right]^{x^2}_0 = x \frac{x^6}{3} = \frac{x^7}{3}
+$$
+
+$$
+	\text{Volymen }V = \int_0^2 A(x)\,\mathrm{d}x = \int_0^2 \frac{x^7}{3} \,\mathrm{d}x = \left[\frac{x^8}{24}\right]_0^2 = \frac{256}{24} = \frac{32}{3}
+$$
+Vi skriver dubbelintegralen av $xy$ över D
+$$
+	V = \int_0^2\left(\int_0^{x^2} xy^2 \,\mathrm{d}y \right)\,\mathrm{d}x = \iint_D xy^2 \,\mathrm{d}x\,\mathrm{d}y = \int_0^4 \left( \int_{\sqrt{2}}^2 xy^2 \,\mathrm{d}x \right) \,\mathrm{d}y
+$$
+
+\subsubsection{Skiva i \texorpdfstring{$y$}{y}-led}
+
+$$
+	A(y) \int_{\sqrt{y}}^2 xy^2 \,\mathrm{d}x = y^2 \int_{\sqrt{y}}^2 x \,\mathrm{d}x = y^2 \left[\frac{x^2}{2}\right]_{\sqrt{2}}^2 = y^2\left(2- \frac{y}{2}\right) = 2y^2 - \frac{y^3}{2}
+$$
+$$
+	V = \int_0^4 A(y) \,\mathrm{d}y = \int_0^4 \left(2- \frac{y}{2}\right)\,\mathrm{d}y = \left[\frac{2y^3}{3} - \frac{y^4}{8}\right]_0^4 = \frac{128}{3} - \frac{258}{8} = \frac{32}{3}
+$$
+Samma svar såklart!
+
+\newpage
+\subsection{Översikt, definition av dubbelintegraler}
+Att integrera en variable i taget kallas \underline{upprepade enkelintegraler}
+\subsubsection{Steg 1}
+
+\begin{figure}[ht] 
+\begin{tikzpicture}
+   \tkzInit[xmax=5,ymax=5,xmin=-1,ymin=-1]
+   \tkzAxeXY
+   \draw (1,1) rectangle (5,4);
+   \draw[blue] (1,1) rectangle (2,3);
+   \draw[red] (2,1) rectangle (3.5,2);
+   \node[above] at (5,4) {$\triangle$};
+\end{tikzpicture}
+  \caption{Visar på en yta med mindre ytor i} \label{fig:9.3}
+\end{figure}
+
+$\triangle =$ axelparallell rektangel \newline
+Dela in $\triangle$ i små rektanglar $\triangle_1,\ldots,\triangle_n$ \newline
+
+En trappfunktion $\phi$ på $\triangle_1,\ldots,\triangle_n$ är konstant på varje $\triangle_j \,:\, \phi(x,y) = C_j$ på $\triangle_j$. Då kan dubbelintegralen av $\phi$ över $\triangle$ definieras som volymen (med tecken)
+$$
+	\iint_\triangle \phi(x,y) \,\mathrm{d}x\,\mathrm{d}y = I(\phi) = C_1A(\triangle_1) + \ldots + C_nA(\triangle_n)
+$$
+
+\newpage
+\subsubsection{Steg 2} \label{sec:Steg 2}
+Om $\phi_1 \leq f \leq \phi_2$ på $\triangle$, $\phi_1, \, \phi_2$ trappfunktioner, så kallas $I(\phi_1)$ en undersumma till $f$ på $\triangle$ och $I(\phi_2)$ en översumma. 
+$f$ kallas \underline{integrerbar} över $\triangle$ om $\forall \epsilon > 0 \, \exists$ sådana $\phi_1, \, \phi_2$ med $I(\phi_2) - I(\phi_1) < \epsilon$.
+Man kan bevisa att då finns ett unikt tal $k$ så att $I(\phi_1) \leq k \leq I(\phi_2) \forall$ sådana $\phi_1, \, \phi_2, \, k$ kallas dubbelintegralen av $f$ över $\triangle$, skrivs
+$$
+	k = \iint_\triangle f(x,y) \,\mathrm{d}x\,\mathrm{d}y
+$$
+Kort sammanfattning:
+\begin{framed}
+	Man visar att $f$ kontinuerlig på $\triangle \Rightarrow f$ integrerbar över $\triangle$
+\end{framed}
+
+\subsubsection{Steg 3}
+$D$ är en godtycklig mängd, $D \subset \triangle$ \newline
+$$
+	\text{Sätt } f_D = 
+	\begin{cases}
+		f & \quad \text{på } D \\
+		0 & \quad \text{utanför } D \\
+  	\end{cases}
+  	\qaud \text{, normalt sett ej kontinuerlig på randen av } D
+$$
+$f$ är integrerbar över $D$ om $f_D$ är integrerbar över $\triangle$ och då definieras
+
+$$
+	\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \underbrace{\iint_\triangle f_D(x,y) \,\mathrm{d}x\,\mathrm{d}y}_{\text{definerat i \vref{sec:Steg 2}}}
+$$
+
+Man visar att $\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y \, \exists$ om $D$ begränsad, $f$ beror på $D$ $\Big( \abs{f(x,y)} \leq M \text{ på } D \Big)$ och $f$ kontinuerlig utom möjligen på en \underline{nollmängd};
+en mängd $N$ som $\forall \epsilon > 0$ kan täckas över med rektanglar med total area $< \epsilon$. T.ex. kan $N$ vara en vanlig kurva (som $D$:s rand). \newline
+
+Vanliga räknelagar gäller, t.ex. 
+
+$$
+	\iint_D \Big(f(x,y)+g(x,y)\Big) \,\mathrm{d}x\,\mathrm{d}y = \iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y + \iint_D g(x,y) \,\mathrm{d}x\,\mathrm{d}y
+$$
+
+\newpage
+\subsubsection{Exempel}
+Beräkna $I = \iint_D x\sin{xy} \,\mathrm{d}x\,\mathrm{d}y$   då $D: 
+\begin{cases}
+	0 \leq x \leq \frac{\pi}{2} \\
+	0 \leq y \leq 1 \\
+\end{cases}$
+
+Enklast att börja med att integrera över $y$
+
+\begin{align*}
+	I &= \int_0^{\frac{\pi}{2}} \left(\int_{y=0}^{y=1} x\sin{xy} \,\mathrm{d}y \right) \,\mathrm{d}x = \int_0^{\frac{\pi}{2}} \Bigg[ -\cos{xy} \Bigg]_{y=0}^{y=1} \,\mathrm{d}x = \\
+	  &= \int_0^{\frac{\pi}{2}} \Bigg( -\cos{x} + 1 \Bigg) \,\mathrm{d}x = \Bigg[ -\sin{x} + x \Bigg]_0^{\frac{\pi}{2}} = -1 + \frac{\pi}{2}
+\end{align*}
+
+\subsubsection{Exempel}
+Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mathrm{d}x$    $\int e^{y^2} \,\mathrm{d}y = ???$ Enklare att börja med $x$
+
+\begin{figure}[ht] 
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot[name path=f,domain=0:1,blue] {x^2};
+    \path[name path=axis] (axis cs:0,1) -- (axis cs:1,1);
+	\draw [red] (axis cs:0,1) -- (axis cs:1,1);
+	\draw [green] (axis cs:0,0) -- (axis cs:0,1);
+    \addplot [
+        thick,
+        color=blue,
+        fill=blue, 
+        fill opacity=0.05
+    ]
+    fill between[
+        of=axis and f,
+        soft clip={domain=0:1},
+    ];
+    \node [rotate=48] at (axis cs:  .75,  .5) {$y=x^2 \, | \, x=\sqrt{2}$};
+    \node at (axis cs:  .5, .95) {$y=1$};
+    \node at (axis cs: 0.5,0.5) {$D$};
+	\end{axis}
+\end{tikzpicture}
+  \caption{$D={(x,y) \, | \, 0 \leq y \leq 1 \, 0 \leq x \leq \sqrt{y}}$} \label{fig:9.4}
+\end{figure}
+
+\begin{align*}
+	\Rightarrow I &= \int_0^1 \left( \int_0^{\sqrt{y}} xe^{y^2} \,\mathrm{d}x \right) \,\mathrm{d}y = \int_0^1 e^{y^2} \left[\frac{x^2}{2}\right]_0^{\sqrt{2}} \,\mathrm{d}y = \\
+	              &= \int_0^1 e^{y^2} \frac{y}{2} \,\mathrm{d}y = \frac{1}{2} \int_0^1 ye^{y^2} \,\mathrm{d}y = \frac{1}{4} \Bigg[ e^{y^2} \Bigg]_0^1 = \frac{e-1}{4}
+\end{align*}
+
+\newpage
+\subsection{Definition}
+\underline{Arean} av en mängd $D$ i $xy$-planet är Arean$(D) = \iint_D \,\mathrm{d}x\,\mathrm{d}y$
+
+\subsubsection{Exempel}
+
+\begin{align*}
+	D: &
+	\begin{cases}
+	a \leq x \leq b \\
+	f(x) \leq y \leq g(x) \\
+\end{cases}
+\text{   , ger Area}(D) = \iint_D \,\mathrm{d}x\,\mathrm{d}y = \\
+&= \int_a^b \left( \int_{f(x)}^{g(x)} \,\mathrm{d}y \right) \,\mathrm{d}x = \int_a^b \Bigg[ y \Bigg]_{f(x)}^{g(x)} \,\mathrm{d}x = \\
+&= \underbrace{\int_a^b \Big(g(x) - f(x) \Big) \,\mathrm{d}x}_{\text{bekant från envarre}}
+\end{align*}
+
+
+
+
+
+
+
+\newpage
+\section{Föreläsning X}
 
 Kommer snart!
+
+
+
+
+\newpage
+\section{Föreläsning XI}
+
+Kommer snart!
+
+
+
+
+
+
+
+
 
 \newpage
 \fancyhf{}
