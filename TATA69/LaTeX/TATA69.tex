@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 
 \usepackage[swedish]{babel}
 \usepackage[utf8]{inputenc}
@@ -33,6 +33,7 @@
   {\mathop\bgroup\begin{pmatrix}}
   {\end{pmatrix}\egroup_{\textstyle\mathstrut #1}}
 
+\newcommand{\svar}[1]{\underline{\underline{#1}}}
 
 \DeclarePairedDelimiter \abs{\lvert}{\rvert}
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
@@ -50,6 +51,7 @@
 \LetLtxMacro{\oldsqrt}{\sqrt}
 \renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
 \makeatother
+
 
 
 \hypersetup{
@@ -1409,7 +1411,7 @@ I \eqref{eq:7.3} är \(\frac{\mathrm{d}(f_1,f_2)}{\mathrm{d}(x_1,x_2)} =
 	1 & 1 \\
 	x_2 & x_1
 \end{vmatrix}
-= x_1-x_2\) och i \eqref{eq:7.4} \(\frac{\mathrm{d}(x,y)}{\mathrm{d}(\rho,\varphi)} = \rho\cos^2{\varphi} + \rho\sin^2{\varphi} = \rho\)
+= x_1-x_2\) och i \eqref{eq:7.4} \(\frac{\mathrm{d}(x,y)}{\mathrm{d}(\rho,\varphi)} = \rho\cos^2{\varphi} + \rho\sin^2{\varphi} = \rho\) \label{Rho}
 
 \subsection{Linjärisering av \texorpdfstring{\(\bar{f}(\bar{x})\)}{f(x)}}
 
@@ -1469,7 +1471,7 @@ Taylors formel för \(u \quad\&\quad v\) kring punkten \((a,b)\) ger
 \]
 linjärisering av \(\bar{f}\), gäller nära \((a,b)\). Motsvarande gäller godtyckliga \(m,n\)
 
-\newpage
+%\newpage
 \subsection{Area/volym-skalning}
 2D:
 
@@ -1579,6 +1581,7 @@ På t.ex \(M_1\) är \(y = \sqrt{x} = g(x)\) medan på t.ex \(M_2\) är \(y = -\
 Går ej på \(M_3\), problem indikeras av att \(\nabla F = \Big(F'_x,F'_y\Big) = \Big(1,-2y\Big)\) är parallell med \(x\)-axeln i \((0,0) \in M_3\) (kurvan vänder i \(x\)-led där) \newline
 Alltså: \(F'_y = 0\) ger problem
 
+\newpage
 \subsubsection{Exempel 3}
 \begin{equation} \label{eq:8.3}
 \begin{split}
@@ -1789,7 +1792,7 @@ $$
 \subsubsection{Skiva i \texorpdfstring{$y$}{y}-led}
 
 $$
-	A(y) \int_{\sqrt{y}}^2 xy^2 \,\mathrm{d}x = y^2 \int_{\sqrt{y}}^2 x \,\mathrm{d}x = y^2 \left[\frac{x^2}{2}\right]_{\sqrt{2}}^2 = y^2\left(2- \frac{y}{2}\right) = 2y^2 - \frac{y^3}{2}
+	A(y) = \int_{\sqrt{y}}^2 xy^2 \,\mathrm{d}x = y^2 \int_{\sqrt{y}}^2 x \,\mathrm{d}x = y^2 \left[\frac{x^2}{2}\right]_{\sqrt{2}}^2 = y^2\left(2- \frac{y}{2}\right) = 2y^2 - \frac{y^3}{2}
 $$
 $$
 	V = \int_0^4 A(y) \,\mathrm{d}y = \int_0^4 \left(2- \frac{y}{2}\right)\,\mathrm{d}y = \left[\frac{2y^3}{3} - \frac{y^4}{8}\right]_0^4 = \frac{128}{3} - \frac{258}{8} = \frac{32}{3}
@@ -1847,7 +1850,7 @@ $$
 $f$ är integrerbar över $D$ om $f_D$ är integrerbar över $\triangle$ och då definieras
 
 $$
-	\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \underbrace{\iint_\triangle f_\mathrm{d}(x,y) \,\mathrm{d}x\,\mathrm{d}y}_{\text{definerat i \vref{sec:Steg 2}}}
+	\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \underbrace{\iint_\triangle f_\mathrm{d}(x,y) \,\mathrm{d}x\,\mathrm{d}y}_{\text{definierat i \vref{sec:Steg 2}}}
 $$
 
 Man visar att $\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y \, \exists$ om $D$ begränsad, $f$ beror på $D$ $\Big( \abs{f(x,y)} \leq M \text{ på } D \Big)$ och $f$ kontinuerlig utom möjligen på en \underline{nollmängd};
@@ -1908,8 +1911,8 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
 \end{align*}
 
 \newpage
-\subsection{Definition}
-\underline{Arean} av en mängd $D$ i $xy$-planet är Arean$(D) = \iint_D \,\mathrm{d}x\,\mathrm{d}y$
+\subsection{Definition} 
+\underline{Arean} av en mängd $D$ i $xy$-planet är Arean$(D) = \iint_D \,\mathrm{d}x\,\mathrm{d}y$ \label{subsec:Area}
 
 \subsubsection{Exempel}
 
@@ -1964,9 +1967,129 @@ Jämför med envarre: $\mathrm{d}x = \frac{\mathrm{d}x}{\mathrm{d}t}\,\mathrm{d}
 
 Belopp på determinant i flervarre för att vi alltid sätter gränser från undre till övre värde
 
-\subsection{Exempel}
+\subsubsection{Exempel}
 
+$$I = \iint_D \frac{\mathrm{d}x\,\mathrm{d}y}{5+x^2+y^2} \; , \; D=\Big\{(x,y) \, | \, x^2+y^2 \leq 3 \, x \leq 0 \, y \geq 0\Big\}$$
 
+$$\text{Byt till polära koordinater: } \left\{
+\begin{array}{rcl}
+	x = \rho\cos{\varphi} \\
+	y = \rho\sin{\varphi}
+\end{array}\right.
+\Rightarrow D\text{ övergår i } E$$
+
+$$E: 
+\begin{cases}
+	0 \leq \rho \leq \sqrt{3} \\
+	\frac{\pi}{2} \leq \varphi \leq \pi
+\end{cases} 
+\frac{\,\mathrm{d}x\,\mathrm{d}y}{\,\mathrm{d}\rho\,\mathrm{d}\varphi} = \text{se \vref{Rho}} = \rho $$
+
+\begin{align*}
+\Rightarrow I &= \iint_E \frac{1}{5+\rho^2}
+\begin{vmatrix}
+	\frac{\,\mathrm{d}x\,\mathrm{d}y}{\,\mathrm{d}\rho\,\mathrm{d}\varphi}
+\end{vmatrix}
+\,\mathrm{d}\rho\,\mathrm{d}\varphi = \int_\frac{\pi}{2}^\pi \left( \int_0^{\sqrt{3}} \frac{\rho}{5+\rho^2} \,\mathrm{d}\rho \right)\,\mathrm{d}\varphi = \\
+&= \int_\frac{\pi}{2}^\pi \left[ \frac{1}{2} \ln{5+\rho^2} \right]_0^{\sqrt{3}} \,\mathrm{d}\varphi = \int_\frac{\pi}{2}^\pi \left( \frac{1}{2} \ln{8} - \frac{1}{2} \ln{5} \right) \,\mathrm{d}\varphi = \\
+&= \frac{1}{2} \ln{\frac{8}{5}} \int_\frac{\pi}{2}^\pi \,\mathrm{d}\varphi = \frac{1}{2}\ln{\frac{8}{5}} \Big[\rho\Big]_\frac{\pi}{2}^\pi = \svar{\frac{\pi}{4}\ln{\frac{8}{5}}}
+\end{align*}
+
+\newpage
+\subsubsection{På en elipsskiva}
+
+$$\left(\frac{x-x_o}{a}\right)^2 + \left(\frac{y-y_o}{b}\right)^2 \leq 1$$
+
+\begin{figure}[ht]
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+   \tkzInit[xmax=5,ymax=4,xmin=-1,ymin=-1]
+   \tkzAxeXY
+   \draw[pattern=north west lines, pattern color=blue] (1.5,1.5) ellipse (2 and 1);
+  \end{tikzpicture}
+  \caption{Funktion i $xy$-planet} \label{fig:10.1}
+\end{figure}
+
+$$
+	\text{Variabelbytet }
+	\begin{cases}
+		u = \frac{x-x_o}{a} \\
+		v = \frac{y-y_o}{b}
+	\end{cases}
+	\text{, ger } u^2+y^2 \leq 1
+	\text{ och } \frac{\,\mathrm{d}(x,y)}{\,\mathrm{d}(u,v)} = \frac{1}{
+	\begin{pmatrix}
+		u'_x & u'_y \\
+		v'_x & v'_y
+	\end{pmatrix}} = \frac{1}{
+	\begin{pmatrix}
+		\frac{1}{a} & 0 \\
+		0 & \frac{1}{b}
+	\end{pmatrix}} = \frac{1}{\frac{1}{ab}} = ab
+$$
+
+\begin{figure}[ht]
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+   \tkzInit[xmax=2,ymax=2,xmin=-2,ymin=-2]
+   \tkzAxeX[label=$u$, above=10pt]
+   \tkzAxeY[label=$v$, right=10pt]
+   \draw[pattern=north west lines, pattern color=red] (0,0) circle (1);
+\end{tikzpicture}
+  \caption{Avbildat i $uv$-planet} \label{fig:10.2}
+\end{figure}
+
+$\,\mathrm{d}x\,\mathrm{d}y$ byts mot $ab\,\mathrm{d}u\,\mathrm{d}v$, sedan kan $u,v$ bytas mot polära $\frac{\,\mathrm{d}(u,v)}{\,\mathrm{d}(\rho,\varphi)} = \rho$
+
+\newpage
+\subsection{Trippelintegraler}
+
+$$\iiint_D f(x,y,z) \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$$
+
+definieras också med över- och undersummor. Ingen rent geometrisk tolkning i 3D ty behövs $4$ axlar för $x,y,z$ och $f$. 
+Fysikaliska tolkningar är att om $f(x,y,z)$ är en densitet/täthet (mass-,laddnigs-,...) så ger integralen det totala värdet på storheten (massa,laddning,...). \newline
+
+\underline{Volymen} av $D$ \underline{definieras} som
+$$\iiint_D \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z \text{  (som area i 2D, se \vref{subsec:Area})}$$
+
+Trippelintegraler och multipelintegraler
+$$\idotsint_D f(x_1,\ldots,x_n) \,\mathrm{d}x_1,\ldots,\,\mathrm{d}x_n \: ,\, n \geq 4$$
+kan beräknas med upprepade enkelintegraler
+
+\subsubsection{Exempel} \label{subsec:intordn}
+
+Beräkna $I = \iiint_D z \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ då $D$ ges av 
+$\begin{cases}
+	0 \leq x \leq 1 \\
+	x \leq y \leq 1 \\
+	0 \leq z \leq (y-x)^2
+\end{cases}$
+
+\begin{align*}
+	I &= \int_0^1 \left(\int_x^1 \left( \int_0^{(y-x)^2} z\,\mathrm{d}z\right)\,\mathrm{d}y\right)\,\mathrm{d}x = 
+	\int_0^1 \left(\int_x^1 \left[ \frac{z^2}{2} \right]_0^{(y-x)^2}\,\mathrm{d}y\right)\,\mathrm{d}x = \\
+	&= \int_0^1 \left(\left[\frac{(y-x)^5}{10}\right]_x^1\right)\,\mathrm{d}x = 
+	\int_0^1 \left(\frac{(1-x)^5}{10} - \frac{(x-x)^5}{10}\right)\,\mathrm{d}x = \\
+	&= \left[-\frac{(1-x)^6}{60}\right]_0^1 =
+	0 - \left(-\frac{1}{60}\right) =
+	\svar{\frac{1}{60}}
+\end{align*}
+
+\newpage
+\subsection{Integrationsordningar}
+Det finns $6$ olika integrationsordningar, ovan \vref{subsec:intordn} tog vi $z\rightarrow y\rightarrow x$. Med $z$ först har vi kvar projektionen $D_{xy}$ av $D$
+
+\begin{enumerate}
+\item 
+$$
+\begin{cases}
+\left.\begin{array}{rcl}
+0 \leq x \leq 1 \\
+x \leq y \leq 1 \end{array}\right\}	D_{xy} \\
+0 \leq z \leq ((y-x)^2
+\end{cases}
+$$
+\end{enumerate}
 
 
 \newpage
