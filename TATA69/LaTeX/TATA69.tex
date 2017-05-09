@@ -1262,10 +1262,10 @@ Hitta alla stationära punkter till $f(x,y) = x^3 + 6xy + 3y^2 - 9x$ och avgör 
 $$
 	\text{Stationära punkter: }
 	\left\{
-	\begin{align}
+	\begin{array}{rcl}
 	f'_x &= 3x^2 + 6y - 9 = 0 \quad [1] \\
 	f'_y &= 6x + 6y = 0 \quad [2]
-	\end{align}\right.
+	\end{array}\right.
 $$
 $$
 	[2] \Rightarrow y = -x in i [1] \Rightarrow 3x^2 - 6x - 9 = 0 \Rightarrow \underbrace{x=3}_{y=-3} \text{ eller } \underbrace{x=1}_{y=1}
@@ -1396,7 +1396,7 @@ Tidigare kedjeregeln för varje \(f_j\big(\bar{g}(\bar{x})\big)\) i \(\bar{f}\bi
 För \underline{\(m=n\)} har \(\bar{f}(\bar{x} \quad \mathbb{R}^n \rightarrow \mathbb{R}^n\) funktionaldeterminant (Jacobi-determinant)
 
 \[
-	\det\bar{f}'(\bar{x}) = \frac{d(f_1, \ldots ,f_n)}{d(x_1, \ldots ,x_n)} = 
+	\det\bar{f}'(\bar{x}) = \frac{\mathrm{d}(f_1, \ldots ,f_n)}{\mathrm{d}(x_1, \ldots ,x_n)} = 
 	\begin{vmatrix}
 		\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
 		\vdots & & \vdots \\
@@ -1404,12 +1404,12 @@ För \underline{\(m=n\)} har \(\bar{f}(\bar{x} \quad \mathbb{R}^n \rightarrow \m
 	\end{vmatrix}
 \]
 
-I \eqref{eq:7.3} är \(\frac{d(f_1,f_2)}{d(x_1,x_2)} = 
+I \eqref{eq:7.3} är \(\frac{\mathrm{d}(f_1,f_2)}{\mathrm{d}(x_1,x_2)} = 
 \begin{vmatrix}
 	1 & 1 \\
 	x_2 & x_1
 \end{vmatrix}
-= x_1-x_2\) och i \eqref{eq:7.4} \(\frac{d(x,y)}{d(\rho,\varphi)} = \rho\cos^2{\varphi} + \rho\sin^2{\varphi} = \rho\)
+= x_1-x_2\) och i \eqref{eq:7.4} \(\frac{\mathrm{d}(x,y)}{\mathrm{d}(\rho,\varphi)} = \rho\cos^2{\varphi} + \rho\sin^2{\varphi} = \rho\)
 
 \subsection{Linjärisering av \texorpdfstring{\(\bar{f}(\bar{x})\)}{f(x)}}
 
@@ -1842,12 +1842,12 @@ $$
 		f & \quad \text{på } D \\
 		0 & \quad \text{utanför } D \\
   	\end{cases}
-  	\qaud \text{, normalt sett ej kontinuerlig på randen av } D
+  	\quad \text{, normalt sett ej kontinuerlig på randen av } D
 $$
 $f$ är integrerbar över $D$ om $f_D$ är integrerbar över $\triangle$ och då definieras
 
 $$
-	\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \underbrace{\iint_\triangle f_D(x,y) \,\mathrm{d}x\,\mathrm{d}y}_{\text{definerat i \vref{sec:Steg 2}}}
+	\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \underbrace{\iint_\triangle f_\mathrm{d}(x,y) \,\mathrm{d}x\,\mathrm{d}y}_{\text{definerat i \vref{sec:Steg 2}}}
 $$
 
 Man visar att $\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y \, \exists$ om $D$ begränsad, $f$ beror på $D$ $\Big( \abs{f(x,y)} \leq M \text{ på } D \Big)$ och $f$ kontinuerlig utom möjligen på en \underline{nollmängd};
@@ -1918,7 +1918,7 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
 	\begin{cases}
 	a \leq x \leq b \\
 	f(x) \leq y \leq g(x) \\
-\end{cases}
+	\end{cases}
 \text{   , ger Area}(D) = \iint_D \,\mathrm{d}x\,\mathrm{d}y = \\
 &= \int_a^b \left( \int_{f(x)}^{g(x)} \,\mathrm{d}y \right) \,\mathrm{d}x = \int_a^b \Bigg[ y \Bigg]_{f(x)}^{g(x)} \,\mathrm{d}x = \\
 &= \underbrace{\int_a^b \Big(g(x) - f(x) \Big) \,\mathrm{d}x}_{\text{bekant från envarre}}
@@ -1932,8 +1932,39 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
 
 \newpage
 \section{Föreläsning X}
+\subsection{Variabelbyte i dubbelintegraler - Sats}
+Om $D$ i $xy$-planet avbildas \underline{bijektivt} på $E$ i $uv$-planet (till varje punkt $(x,y) \in D$ hör en punkt $(u,v) \in E$ och omvänt) med \(\frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)} = 
+\begin{vmatrix}
+	x'_u & x'_v \\
+	y'_u & y'_v
+\end{vmatrix} \neq 0\)
+så är $\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \iint_E f\Big( x(u,v),y(u,v) \Big)\abs{\frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)}}\,\mathrm{d}u\,\mathrm{d}v$
+\subsubsection{Bevisidé}
+Approximera trappfunktionen $\phi$ \newline
+För att integralens värde inte ska ändras måste vi multiplicera med 
+$$
+	\frac{1}{
+	\begin{vmatrix}
+		\frac{\mathrm{d}(u,v)}{\mathrm{d}(x,y)}
+	\end{vmatrix}}
+	= \frac{1}{
+	\begin{vmatrix}
+		u'_x & u'_y \\
+		v'_x & v'_y
+	\end{vmatrix}}
+	= 
+	\begin{vmatrix}
+		x'_u & x'_v \\
+		y'_u & y'_v
+	\end{vmatrix} 
+	= \frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)}
+$$
 
-Kommer snart!
+Jämför med envarre: $\mathrm{d}x = \frac{\mathrm{d}x}{\mathrm{d}t}\,\mathrm{d}t$ \newline
+
+Belopp på determinant i flervarre för att vi alltid sätter gränser från undre till övre värde
+
+\subsection{Exempel}
 
 
 
