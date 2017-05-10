@@ -247,7 +247,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 	\lim_{\rho \rightarrow \infty} \overbrace{\frac{1}{\rho}}^{\rightarrow 0} \underbrace{\sin(\varphi)}_\text{Begränsad} = 0
 \end{equation}
 
-\underline{OBS!} 2-variabelfunktioner som uttryckta i polärakoordinater inte beror på $\varphi$ har rotationssymmetriska grafer kring z-axeln
+\paragraph{OBS!} 2-variabelfunktioner som uttryckta i polärakoordinater inte beror på $\varphi$ har rotationssymmetriska grafer kring z-axeln
 
 \begin{figure}[ht]
 \usetikzlibrary{3d}
@@ -1385,7 +1385,7 @@ Variabelbyte \((x,y) = (\rho\cos{\varphi},\rho\sin{\varphi})\) till polärakoord
 En linjär avbildning \(\bar{f}(\bar{x}) = \overbrace{A}^{\text{konstant m}\times\text{n matris}}\underbrace{\bar{x}}_{\text{kolon}}\) har \(\bar{f}'(\bar{x}) = A\)
 \newline
 
-\underline{OBS!} För \(m=1 \quad (\bar{f} = f)\) fås specialfallet \(\bar{f}'(\bar{x}) = (f'_{x_1}, \cdots ,f'_{x_n}) = \nabla f\) \newline
+\paragraph{OBS!} För \(m=1 \quad (\bar{f} = f)\) fås specialfallet \(\bar{f}'(\bar{x}) = (f'_{x_1}, \cdots ,f'_{x_n}) = \nabla f\) \newline
 
 Tidigare kedjeregeln för varje \(f_j\big(\bar{g}(\bar{x})\big)\) i \(\bar{f}\big(\bar{g}(\bar{x})\big) = (\bar{f} \bullet \bar{g})(\bar{x}) \Rightarrow\) \underline{den mest allmänna} kedjeregeln kan skrivas
 \[
@@ -1536,7 +1536,70 @@ A\bar{x}+\bar{C} & [bl\dot{a}]
   \caption{Arean efter skalning (+\(\bar{C}\) påverkar ej arean)} \label{fig:7.4}
 \end{figure}
 
+$\Omega$ liten $\Rightarrow \bar{f} \approx A\bar{x} + \bar{C}$ i $\Omega \Rightarrow$ area av $\bar{f}(\Omega) \approx$ arean av $(A\bar{x}+\bar{C})(\Omega)$ \newline
+Vi hade $A = \bar{f}'(a,b)$ funktionaldeterminanten i (a,b) $\abs{\det{\bar{f}(\bar{a})}}$ ger \underline{lokal} area/volym-skalning i 2D/3D nära $\bar{a}$
 
+\newpage
+\subsubsection{Exempel}
+Variabelbyte till polärakoordinater har $\frac{\,\mathrm{d}(x,y)}{\,\mathrm{d}(\rho,\varphi)} = \rho \geq 0$ (se \vref{Rho}) \newline
+Variabelbyte till rymdpolära koordinater i 3D ger
+$$
+	\frac{\,\mathrm{d}(x,y,z)}{\,\mathrm{d}(r,\theta,\varphi)} =
+	\begin{vmatrix}
+		x'_r & x'_\theta & x'_\varphi \\
+		y'_r & y'_\theta & y'_\varphi \\
+		z'_r & z'_\theta & z'_\varphi 
+	\end{vmatrix}
+	= \cdots = r^2\sin{\theta} \geq 0 \text{  (ty }0 \leq \theta \leq \pi )
+$$
+
+\subsubsection{Invers}
+\paragraph{LinAlg} 
+Om $\bar{u} = \bar{f}(\bar{x}) = A\bar{x}$ linjär av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ ($A$ en $n \,\times\, n$ matris, $\bar{u},\bar{x}$ kolonner) och $\det{\bar{f}'} = \det{A} \neq 0$
+$\, \exists$ invers $\bar{x} = A^{-1}\bar{u} = \bar{f}^{-1}(\bar{u})$ med $\det{\bar{f}'^{-1}} = \det{A^{-1}} = \frac{1}{\det{A}} = \frac{1}{\det{\bar{f}'}}$ \newline
+
+För allmänna olinjära $\bar{f}(\bar{x})$ kan man bevisa inversa funktionssatsen \newline
+
+$f \in C^1$ av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ och $\det{f'(\bar{a})} \neq 0 \Rightarrow \exists$ omgivningar $\Omega_1, \, \Omega_2$ av $\bar{a}$ respektive $\bar{f}(\bar{a})$ så att 
+$\bar{f}: \, \Omega_1 \rightarrow \Omega_2$ är bijektiv och därmed inverterbar med invers $\bar{f}^{-1}$. Även $\bar{f}^{-1} \in C^1$ och $\det{(\bar{f}^{-1})'} = \frac{1}{\det{\bar{f}'}}$
+
+\paragraph{OBS!}
+\begin{enumerate}
+\item Säger inget om hur $\bar{f}^{-1}$ hittas bara att en finns
+\item Gäller bara små $\Omega_1, \,\Omega_2$ i allmänhet
+\item Invers kan finnas krign $\bar{a}$ även om $\det{\bar{f}'(\bar{a})} = 0$ men är då ej $C^1$ (från envarren)
+\end{enumerate}
+
+\subsubsection{Exempel}
+$\bar{f}(x,y) = 
+\begin{pmatrix}
+	u(x,y) \\
+	v(x,y)
+\end{pmatrix} =
+\begin{pmatrix}
+	xy \\
+	e^x + 2y
+\end{pmatrix} \in C^1
+$
+ej globalt inverterbar \newline 
+$\exists \, \bar{a} \neq \bar{b}$ med $\bar{f}(\bar{a}) = \bar{f}(\bar{b})$ \newline
+
+Kring t.ex. $(a,b) = (1,0)$ blir $\det{\bar{f}^{-1}(1,0)} = 
+\begin{vmatrix}
+	0 & 1 \\
+	e & 2
+\end{vmatrix} = -e \neq 0 \Rightarrow $ \newline
+
+$\Rightarrow \, \exists$ invers $\bar{f}^{-1}(u,v) = 
+\begin{pmatrix}
+	x(u,v) \\
+	y(u,v)
+\end{pmatrix}$ lokalt kring $\bar{f}(1,0)$ \newline
+
+men vi kan inte uttryckligen hitta $\begin{cases}
+x = \ldots \\
+y = \ldots
+\end{cases}$
 
 
 
@@ -1710,7 +1773,7 @@ Algebraiskt tolkat kan då \(y = h(x) \quad\&\quad z = j(x)\) lösas ut ur syste
 \(x\)-komponent av \(\bar{T}\) är \(2 \neq 0 \Rightarrow\) kring \(P\) (som har \(x = -1\)) kan både \(y \quad\&\quad z\) lösas ut som \(C^1\) funktioner \(y = h(x) \quad\&\quad z = j(x)\) på \(\gamma\). \newline
 Om \(\gamma\) skrivs \(\bar{r}(x) = \Big(x,h(x),j(x)\Big)\) är \(\bar{r}'(x) = \Big(1,h'(x),j'(x)\Big)\) vilket ger att \(\bar{r}'(-1) = \Big(1,h'(-1),j'(-1)\Big)\) är en tangentvektor till \(\gamma\) i \(P \Rightarrow\) \newline
 \(\Rightarrow\) parallell med \((2,4,0) = 2(1,2,0) \Rightarrow h'(-1) = 2 \quad\&\quad j'(-1) = 0\) \newline
-\underline{OBS!} \(z\)-komponent av \(\bar{r} = 0 \Rightarrow z\) ingen bra parameter för \(\gamma\) kring \(P\)
+\paragraph{OBS!} \(z\)-komponent av \(\bar{r} = 0 \Rightarrow z\) ingen bra parameter för \(\gamma\) kring \(P\)
 
 
 
@@ -2079,10 +2142,8 @@ $\begin{cases}
 \subsection{Integrationsordningar}
 Det finns $6$ olika integrationsordningar, ovan \vref{subsec:intordn} tog vi $z\rightarrow y\rightarrow x$.
 
-\begin{enumerate}
 Med $z$ först har vi kvar projektionen $D_{xy}$ av $D$
 
-\item 
 $$
 z\rightarrow y\rightarrow x \text{ ger } (1)
 \begin{cases}
@@ -2093,8 +2154,8 @@ x \leq &y \leq 1 \end{array}\right\}	D_{xy} \\
 \end{cases}
 $$
 
-\item \label{eq:10.1}
-$$
+
+$$ \label{eq:10.1}
 z\rightarrow x\rightarrow y \text{ ger } (2)
 \begin{cases} 
 &\left.\begin{array}{rcl}
@@ -2111,7 +2172,7 @@ z = (y-x)^2 \Rightarrow \sqrt{z} = \pm (y-x) \Rightarrow y = x+\sqrt{z} \\
 z = (1-x)^2 \Rightarrow x = 1 - \sqrt{z}
 \end{cases}$
 
-\item 
+
 $$
 y\rightarrow z\rightarrow x \text{ ger } (3)
 \begin{cases}
@@ -2122,7 +2183,7 @@ x \leq &z \leq (1-x)^2 \end{array}\right\} D_{xz} \\
 \end{cases}
 $$
 
-\item 
+
 $$
 y\rightarrow x\rightarrow z \text{ ger } (4)
 \begin{cases}
@@ -2135,8 +2196,9 @@ $$
 
 
 Med $x$ först har vi kvar projektionen $D_{yz}$ av $D$
-\item \label{eq:10.2}
-$$
+
+
+$$ \label{eq:10.2}
 x\rightarrow z\rightarrow y \text{ ger } (5)
 \begin{cases}
 &\left.\begin{array}{rcl}
@@ -2146,7 +2208,7 @@ x \leq &z \leq y^2 \end{array}\right\}	D_{yz} \\
 \end{cases}
 $$
 
-\item 
+
 $$
 x\rightarrow y\rightarrow z \text{ ger } (6)
 \begin{cases}
@@ -2156,8 +2218,8 @@ x\rightarrow y\rightarrow z \text{ ger } (6)
 &0 \leq x \leq y - \sqrt{z}
 \end{cases}
 $$
-\end{enumerate}
 
+\newpage
 \begin{figure}[ht]
 \resizebox{4cm}{4cm}{
 \begin{tikzpicture}
@@ -2186,7 +2248,6 @@ $$
   \caption{$D_{xy}$} \label{fig:10.3}
 \end{figure}
 
-\newpage
 \begin{figure}[ht]
 \resizebox{4cm}{4cm}{
 \begin{tikzpicture}
