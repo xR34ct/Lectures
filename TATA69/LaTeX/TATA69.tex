@@ -36,6 +36,8 @@
 
 \newcommand{\svar}[1]{\underline{\underline{#1}}}
 
+\newcommand{\de}[1]{\,\mathrm{d}#1}
+
 \DeclarePairedDelimiter \abs{\lvert}{\rvert}
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
 
@@ -1544,7 +1546,7 @@ $\Omega$ liten $\Rightarrow \bar{f} \approx A\bar{x} + \bar{C}$ i $\Omega \Right
 Vi hade $A = \bar{f}'(a,b)$ funktionaldeterminanten i (a,b) $\abs{\det{\bar{f}(\bar{a})}}$ ger \underline{lokal} area/volym-skalning i 2D/3D nära $\bar{a}$
 
 \newpage
-\subsubsection{Exempel}
+\subsubsection{Exempel} \label{sec:rymdpol}
 Variabelbyte till polärakoordinater har $\frac{\,\mathrm{d}(x,y)}{\,\mathrm{d}(\rho,\varphi)} = \rho \geq 0$ (se \vref{Rho}) \newline
 Variabelbyte till rymdpolära koordinater i 3D ger
 $$
@@ -2352,9 +2354,300 @@ $$
 \newpage
 \section{Föreläsning XI}
 
-Kommer snart!
+\subsection{Cylinderkoordinater \texorpdfstring{$\rho$}{rå}, \texorpdfstring{$\varphi$}{phi} och z}
+
+i 3D är $x$,$y$ bytt mot polära koordinater men $z$ behålls $\frac{d(x,y,z)}{d(\rho,\varphi,z)} = \rho \,\geq\, 0$
+
+\subsubsection{Exempel}
+
+Beräkna volymen $V=\iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ av $K$ som begränsas av konen $z=\sqrt{x^2+y^2}$ och halvsfären $x^2+y^2+z^2 = 2 \,,\, z \geq 0$ \newline
+
+$K$ ges av $\sqrt{x^2+y^2} \leq z \leq \sqrt{2-x^2-y^2} \; (x,y) \in D$ , en cirkel med radie $=1$ \newline
+
+Skärningen av konen \& sfären:
+$$
+	\sqrt{x^2+y^2} = \sqrt{2-x^2-y^2} \Rightarrow
+	x^2 + y^2 = 2 - x^2 - y^2 \Rightarrow
+	x^2 + y^2 = 1 \Rightarrow
+	\text{ radie } = 1
+$$
+
+I cylindriska koordinater ges $K$ av: 
+$\begin{cases}
+	&0 \leq \rho \leq 1 \\
+	&0 \leq \varphi \leq 2\pi \\
+	&\rho \leq z \leq \sqrt{2-\rho^2}
+\end{cases}$
+
+\begin{gather*}
+	\Rightarrow V = \iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z = 
+	= \int_0^{2\pi} \int_0^1 \int_\rho^{\sqrt{2-\rho^2}} \abs{\frac{d(x,y,z)}{d(\rho,\varphi,z)}} \,\mathrm{d}z\,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
+	\int_0^{2\pi} \int_0^1 \rho \Big[ z \Big]_\rho^{\sqrt{2-\rho^2}} \,\mathrm{d}\rho\,\mathrm{d}\varphi = 
+	\int_0^{2\pi} \int_0^1 \Big( \rho\sqrt{2-\rho^2} - \rho^2 \Big) \,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
+	= \int_0^{2\pi} \Big[ -\frac{1}{3}(2-\rho)^{\frac{3}{2}} -\frac{1}{3}\rho^3 \Big]_0^1 \,\mathrm{d}\varphi = \\
+	= \int_0^{2\pi} \Big( -\frac{1}{3}(2-1)^{\frac{3}{2}} - \frac{1}{3}1^3 + \frac{1}{3}(2-0)^{\frac{3}{2}}+\frac{1}{3}0^3 \Big) \,\mathrm{d}\varphi = \\
+	= \frac{2\sqrt{2}-2}{3} \underbrace{\int_0^{2\pi} \,\mathrm{d}\varphi}_{=2\pi} = 
+	\svar{\frac{4\pi}{3}(\sqrt{2}-1)}
+\end{gather*}
+
+\newpage
+
+Om vi istället tar konstanta gränser på z och variabla på $\rho$ måste vi dela upp integralen i två bitar
+
+$$
+	\text{Konen:} 
+	\begin{cases}
+		&0 \leq z \leq 1 \\
+		&0 \leq \rho \leq z \\
+		&0 \leq \varphi \leq 2\pi
+	\end{cases}
+	\text{ och Sfären:}
+	\begin{cases}
+		&1 \leq z \leq \sqrt{2} \\
+		&0 \leq \rho \leq \sqrt{2-z^2} \\
+		&0 \leq \varphi \leq 2\pi
+	\end{cases}
+$$
+
+\begin{gather*}
+	\Rightarrow V = \int_0^{2\pi}\int_0^1\int_0^z \rho \,\mathrm{d}\rho\,\mathrm{d}z\,\mathrm{d}\varphi + \int_0^{2\pi}\int_1^{\sqrt{2}}\int_0^{\sqrt{2-z^2}} \rho \,\mathrm{d}\rho\,\mathrm{d}z\,\mathrm{d}\varphi = \\
+	= \int_0^{2\pi}\int_0^1 \Big[ \frac{\rho^2}{2} \Big]_0^z \,\mathrm{d}z\,\mathrm{d}\varphi + \int_0^{2\pi}\int_1^{\sqrt{2}} \Big[ \frac{\rho^2}{2} \Big]_0^{\sqrt{2-z^2}} \,\mathrm{d}z\,\mathrm{d}\varphi = \\
+	= \int_0^{2\pi}\int_0^1 \frac{z^2}{2} \,\mathrm{d}z\,\mathrm{d}\varphi + \int_0^{2\pi}\int_1^{\sqrt{2}} \frac{2-z^2}{2} \,\mathrm{d}z\,\mathrm{d}\varphi = \\
+	= \int_0^{2\pi} \underbrace{\Big[ \frac{z^3}{6} \Big]_0^1}_{=\frac{1}{6}}\,\mathrm{d}\varphi + \int_0^{2\pi} \underbrace{\Big[ z-\frac{z^3}{6} \Big]_1^{\sqrt{2}}}_{=\sqrt{2}-\frac{2\sqrt{2}}{6}-1+\frac{1}{6}} \,\mathrm{d}\varphi = \\
+	= \Big( \frac{4\sqrt{2}}{6} - \frac{4}{6} \Big) \int_0^{2\pi}\,\mathrm{d}\varphi = 
+	\svar{\frac{4\pi}{3}(\sqrt{2}-1)}
+\end{gather*}
+
+\newpage
+\subsubsection{Exempel}
+Härled volymen av ett klot \newline
+
+Rymdpolära koordinater $
+\begin{cases}
+	&0 \leq r \leq R \\
+	&0 \leq \theta \leq \pi \\
+	&0 \leq \varphi \leq 2\pi
+\end{cases}$
+ , $R$ är radien
+
+$\frac{d(x,y,z)}{d(r,\theta,\varphi)} = \text{\vref{sec:rymdpol}} = r^2\sin{\theta}$
+
+\begin{gather*}
+ 	V = \iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z =
+ 	\int_0^{2\pi}\int_0^\pi\int_0^R \abs{\frac{d(x,y,z)}{d(r,\theta,\varphi)}} \,\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\varphi = \\
+ 	= \int_0^{2\pi}\int_0^\pi \Big[ \frac{r^3}{3} \Big]_0^R \sin{\theta} \,\mathrm{d}\theta\,\mathrm{d}\varphi =
+ 	\frac{R^3}{3} \int_0^{2\pi} \underbrace{\Big[ -\cos{\theta} \Big]}0^\pi_{-(-1)-(-1)} \,\mathrm{d}\varphi =  \\
+ 	\frac{2R^3}{3} \Big[ \varphi \Big]_0^{2\pi} =
+ 	\svar{\frac{4\pi R^3}{3}}
+\end{gather*}
+
+\newpage
+\subsection{Tyngdpunkt/masscentrum}
+\paragraph{Envarre 2} (Forsling-Neymark 7.5): \newline
+
+\underline{Tyngdpunkten} $(x_T,y_T,z_T)$ hos en 3-dimensionell kropp $K$ med massdensitet $\rho(x,y,z)$ $\left[\si{\kilogram\per\metre^3}\right]$ ges av
+
+\begin{align*}
+	x_T &= \frac{1}{m} \iiint_K x\rho(x,y,z) \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z \\
+	y_T &= \frac{1}{m} \iiint_K y\rho(x,y,z) \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z \\
+	z_T &= \frac{1}{m} \iiint_K z\rho(x,y,z) \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z
+\end{align*}
+
+där $m=\iiint\rho(x,y,z) \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ är kroppens totala massa
+
+\paragraph{OBS} att $\rho(x,y,z)$ får variera över $K$
+
+I F-N skrivs $\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ som $\,\mathrm{d}V$ \newline
+Om $\rho(x,y,z)$ är konstant blir $x_T = \frac{\iiint_K x\,\mathrm{d}V}{\iiint_K\,\mathrm{d}V} = \frac{\iiint_K x\,\mathrm{d}V}{V}$ pss. för $y$ och $z$ \newline
 
 
+En tunn skiva $D$ kan modelleras $2$-dimensionellt och har tyngdpunkt $(x_T,y_T) = \Big(\frac{1}{m}\iint_Dx\rho(x,y)\,\mathrm{d}x\,\mathrm{d}y \,,\, \frac{1}{m}\iint_Dy\rho(x,y)\,\mathrm{d}x\,\mathrm{d}y\Big)$
+där $\rho(x,y)$ är ytdensiteten $\left[\si{\kilogram\per\metre^2}\right]$ och $m = \iint_D\rho(x,y) \,\mathrm{d}x\,\mathrm{d}y$ är den totala massan
+
+\subsubsection{Exempel}
+Beräkna $t_p$ på en halvcirkelskiva med konstant $\rho(x,y) = k$
+
+$
+\begin{cases}
+	x_T = 0 \quad \text{(symmetri)}  & -a \leq x \leq a \\
+	y_T = \, ??? & 0 \leq y \leq a
+\end{cases}$\newline
+ 
+massa $m = \iint_D k\,\mathrm{d}x\,\mathrm{d}y = 
+k \iint_D\,\mathrm{d}x\,\mathrm{d}y =
+k * area(D) = 
+k \frac{\pi a^2}{2}$
+
+$$
+	\Rightarrow y_T = \frac{1}{m}\iint_D y\,\mathrm{d}x\,\mathrm{d}y =
+	\frac{2}{k\pi a^2} k \iint_D y\,\mathrm{d}x\,\mathrm{d}y =
+$$
+$$
+	= \left/\begin{array}{rcl}
+	&\text{polära koordinater $r \,,\, \varphi$ ($\rho$ upptagen)} \\
+	&0 \leq r \leq a \,,\, 0 \leq \varphi \leq \pi \,\, \frac{d(x,y)}{d(r,\varphi)}
+	\end{array}\right/ =
+$$
+$$
+	= \frac{2}{\pi a^2} \int_0^\pi\int_0^a r\sin{\varphi} r \,\mathrm{d}r\,\mathrm{d}\varphi =
+	\frac{2}{\pi a^2} \int_0^\pi \left[ \frac{r^3}{3} \right]_0^a \sin{\varphi} \,\mathrm{d}\varphi =
+	\frac{2}{\pi a^2} \frac{a^3}{3} \Big[ -\cos{\varphi} \Big]_0^\pi =
+	\frac{4a^3}{\pi a^23} =
+	\svar{\frac{4a}{3\pi}}
+$$
+
+\newpage
+\subsubsection{Exempel}
+
+\underline{3D} Bestäm $t_p$ för en fylld kon \newline
+$
+\begin{cases}
+	x_T = 0 \quad \text{(symmetri)} \\
+	\sqrt{x^2+y^2} \leq z \leq 1 \\
+	y_T = 0 \quad \text{(symmetri)}
+\end{cases}$ om $
+\left.\begin{array}{rcl}
+	a/ &\,\, \rho = 1 \\
+	b/ &\,\, \rho = 1 + x^2 + y^2 + z^2
+\end{array}\right.$ \newline
+
+$K$ i cylinderkoordinater $(r,\varphi,z)$ 
+$$
+(1)
+\begin{cases}
+	0 \leq z \leq 1 \\
+	0 \leq r \leq \sqrt{x^2+y^2} \\
+	0 \leq \varphi \leq 2\pi
+\end{cases}
+\text{ eller } (2)
+\begin{cases}
+	0 \leq r \leq 1 \\
+	r \leq z \leq 1 \\
+	0 \leq \varphi \leq 2\pi
+\end{cases}
+$$
+Vi kommer att använda oss av $(1)$ i detta exempel \newline
+
+a/
+$$
+	m = \int_0^{2\pi}\int_0^1\int_0^z r \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
+	\int_0^{2\pi}\int_0^1 \underbrace{\left[\frac{r^2}{2}\right]_0^z}_{\frac{z^2}{2}} \,\mathrm{d}z\,\mathrm{d}\varphi =
+	\int_0^{2\pi} \left[\frac{z^3}{6}\right]_0^1 \,\mathrm{d}\varphi =
+	\frac{1}{6} \Big[\varphi\Big]_0^{2\pi} =
+	\frac{\pi}{3}
+$$
+$$
+	z_T = \frac{1}{m} \int_0^{2\pi}\int_0^1\int_0^z z \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
+	\frac{3}{\pi} \int_0^{2\pi}\int_0^1 z\underbrace{\left[\frac{r^2}{2}\right]_0^z}_\frac{z^3}{2} \,\mathrm{d}z\,\mathrm{d}\varphi =
+	\frac{3}{\pi} \int_0^{2\pi} \left[\frac{z^4}{8}\right]_0^1 \,\mathrm{d}\varphi =
+	\frac{3}{\pi} * \frac{1}{8} * 2\pi = 
+	\svar{\frac{3}{4}}
+$$
+
+b/
+$$
+	\rho(x,y,z) = 1 + x^2 + y^2 + z^2 = 1 + r^2 + z^2 \text{ i cylindriska koordinater}
+$$
+\begin{align*}
+	\Rightarrow m = \int_0^{2\pi}\int_0^1\int_0^z (1+r^2+z^2)r \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
+	\int_0^{2\pi}\int_0^1 \left[\frac{r^2}{2} + \frac{r^4}{4} + \frac{z^2r^2}{2}\right]_0^z \,\mathrm{d}z\,\mathrm{d}\varphi = \\
+	= \int_0^{2\pi}\int_0^1 \left(\frac{z^2}{2} + \frac{3z^4}{4}\right) \,\mathrm{d}z\,\mathrm{d}\varphi =
+	\int_0^{2\pi} \left[\frac{z^3}{6} + \frac{3z^5}{20}\right]_0^1 \,\mathrm{d}\varphi =
+	\left(\frac{1}{6}*\frac{3}{20}\right)2\pi =
+	\frac{19\pi}{30}
+\end{align*}
+\begin{align*}
+	\Rightarrow z = \frac{1}{m} \iiint_K z(1+r^2+z^2)r \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
+	\frac{30}{19\pi} \int_0^{2\pi}\int_0^1 z\left[\frac{r^2}{2} + \frac{r^4}{4} + \frac{z^2r^2}{2}\right]_0^2 \,\mathrm{d}z\,\mathrm{d}\varphi = \\
+	= \frac{3+}{19\pi} \int_0^{2\pi}\int_0^1 \left(\frac{z^3}{2} + \frac{3z^5}{4}\right) \,\mathrm{d}z\,\mathrm{d}\varphi =
+	\frac{30}{19\pi} \int_0^{2\pi} \left[\frac{z^4}{8} + \frac{3z^6}{24}\right]_0^1 \,\mathrm{d}\varphi = 
+	\frac{30}{19\pi} * \frac{1}{4} * 2\pi = 
+\end{align*}
+$$= \svar{\frac{15}{19}} > \frac{3}{4} \text{ rimligt}$$
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Föreläsning XII}
+
+\subsection{Generaliserade multipelintegraler}
+
+\paragraph{Envarre Def}
+t.ex. $\int_a^\infty f(x) \de{x}$ skrivs om som ett gränsvärde $\lim_{b\rightarrow\infty}\int_a^bf(x)\de{x}$ om gränsvärdet $\exists$
+
+\paragraph{Flervarre Def}
+Hur definierar man $I = \iint_D f(x,y) \de{x}\de{y}$ om $D$ är obegränsad eller om $f(x,y)$ är obegränsad i $D$??
+
+\subsubsection{Exempel}
+Vad blir 
+
+\begin{equation}\label{eq:12.1}
+	I = \iint_{\mathbb{R}^2} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} \text{ ??}
+\end{equation}
+$\mathbb{R}^2$ är en obegränsad mängd
+
+
+\begin{enumerate}
+\item \underline{Om $f(x,y) \geq 0$ i $D$} (eller om $f(x,y) \leq 0 $ i hela $D$) \newline
+
+Ta mängder $D_1 \subset D_2 \subset D_3 \subset ... \subset D_n \subset ...$ så att $D_n \rightarrow D$ (uttömmande följd) 
+och så att $D_n$ är en begränsad mängd och $f$ är begränsad på varje $D_n$ \newline
+
+$\Rightarrow I_n = \iint_{D_n} f(x,y)\de{x}\de{y}$ är inte generaliserad
+
+\subsubsection{Exempel}
+
+$D: 
+\begin{cases}
+	0 \leq x \leq 1 \\
+	0 \leq y \leq 1
+\end{cases}$ men $f$ är obegränsad i origo \newline
+
+Allmänt är $I_1 \leq I_2 \leq I_3 \leq ... \leq I_n \leq ...$ eftersom $f \geq 0$ i $D$
+
+\subsubsection{Definition}
+
+$$
+	I = \iint_D f(x,y) \de{x}\de{y} = \lim_{n \rightarrow \infty} I_n \text{ om gränsvärde } \exists
+$$
+Den generella integralen $I$ är då \underline{konvergent}, annars \underline{divergent}
+
+\newpage
+
+Man kan bevisa att:
+
+\begin{enumerate}
+\item Gränsvärde är oberoende av \underline{hur} den uttömmande följden $D_1 \subset D_2 \subset ...$ väljs (annars dålig definition)
+\item $I$ kan beräknas med upprepade eventuellt generaliserade enkelintegraler
+\item Variabelbyten är tillåtna på vanligt sätt
+\end{enumerate}
+
+\subsubsection{I exempel \texorpdfstring{\eqref{eq:12.1}}{12.1} ovan}
+
+$$
+	I = \iint_{\mathbb{R}^2} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} \;,\; \frac{1}{(1+x^2+y^2)^2} > 0 \; \forall\, x,y \,\in\,\mathbb{R}^2
+$$
+$\Rightarrow$ kan räkna på med alla kända metoder \newline
+
+Med $D_n: x^2 + y^2 \leq n^2$ och polära koordinater $
+\begin{cases}
+	0 &\leq \rho \leq n \\
+	0 &\leq \varphi \leq 2\pi
+\end{cases}$
+får vi 
+
+$$
+	I_n = \iint_{D_n} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} = 
+	\int
+$$
+
+\end{enumerate}
 
 
 
@@ -2366,7 +2659,7 @@ Kommer snart!
 \fancyhf{}
 \rhead{\textit{Adnan Avdagic}}
 \lhead{Appendix}
-\pagenumbering{gobble}
+\pagenumbering{gobble}{}
 \section{Appendix}
 \begin{appendix}
 	\listoffigures
