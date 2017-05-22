@@ -23,6 +23,7 @@
 \usepackage{letltxmacro}
 \usepackage{varioref}
 \usepackage{pgfplots}
+\usepackage{amsthm}
 
 \usetkzobj{all}
 
@@ -37,6 +38,9 @@
 
 \DeclarePairedDelimiter \abs{\lvert}{\rvert}
 \DeclarePairedDelimiter \norm{\lVert}{\rVert}
+
+\let\olddet\det
+\renewcommand*{\det}[1]{\olddet(#1)}
 
 \everymath{\displaystyle}
 
@@ -1068,7 +1072,7 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 \section{Föreläsning VI}
 \subsection{Lokala max och min}
 \subsubsection{Definition}
-\(f(x,y)\) har ett lokalt minimum i \((a,b)\) om \(f(x,y) \geq f(a,b) \forall (x,y)\) i någon omgivning u av \((a,b)\). Om \((f,y) \geq f(a,b)\) i \(u \forall (x,y) = (a,b)\) har vi ett strängt lokalt minimum.
+\(f(x,y)\) har ett lokalt minimum i \((a,b)\) om \(f(x,y) \geq f(a,b) \forall (x,y)\) i någon omgivning u av \((a,b)\). Om \(f(x,y) \geq f(a,b)\) i \(u \forall (x,y) = (a,b)\) har vi ett strängt lokalt minimum.
 Motsvarande för lokalt maximum och \(\geq 3\) variabler.
 
 \subsubsection{Hur hittas lokala max \& min?}
@@ -1087,7 +1091,7 @@ $$
 $$
 Motsvarande för $\geq 3$ variabler
 
-En punkt $\bar{a}$ där $\nabla f(\bar{a} = \bar{0}$ kallas \underline{stationär}. Den kan vara lok max, min eller sadelpunkt.
+En punkt $\bar{a}$ där $\nabla f(\bar{a}) = \bar{0}$ kallas \underline{stationär}. Den kan vara lok max, min eller sadelpunkt.
 
 \newpage
 \subsection{Avgör om max, min eller sadelpunkt (\texorpdfstring{$\bar{a}$}{a} stationär)?} \label{sec:Hessian}
@@ -1134,8 +1138,8 @@ $\Rightarrow$ Taylors formel för $f(x,y) \in C^{p+1}$
 	+ \frac{1}{p!}\Big(h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y})^p * f(a,b) + \mathcal{R}_p \text{ , där man kan visa } \mathcal{R}_p = \mathcal{O}\left(\sqrt{h^2 + k^2}^{p+1}\right)
 \end{split}
 \]
-För $p=2$ och $n$ variabler, $\bar{a} = (a_1, \ldots ,a_n) , \bar{h} = (h_1, \ldots ,h_n) \left(\Rightarrow h^{-t} \text{ kolonn } \right)$ fås 
-$f(\bar{a}+\bar{h}) = f(\bar{a}) + \bar{h} * \nabla f(\bar{a}) + \underbrace{\frac{1}{2}\bar{h}(Hf)(\bar{a})h^{-t}}_{Q(h)} + \mathcal{O}\left(\abs{h^3}\right)$
+För $p=2$ och $n$ variabler, $\bar{a} = (a_1, \ldots ,a_n) , \bar{h} = (h_1, \ldots ,h_n) \left(\Rightarrow h^{-1} \text{ kolonn } \right)$ fås 
+$f(\bar{a}+\bar{h}) = f(\bar{a}) + \bar{h} * \nabla f(\bar{a}) + \underbrace{\frac{1}{2}\bar{h}(Hf)(\bar{a})h^{-1}}_{Q(h)} + \mathcal{O}\left(\abs{h^3}\right)$
 \newpage
 $Q(\bar{h})$ är en kvadratisk form (lin.alg). I $2$ variabler, se \eqref{eq:6.2}, i $3$ variabler:
 $$
@@ -1145,17 +1149,17 @@ I stationär punkt $\bar{a} \Big(\nabla f(\bar{a}) = \bar{0}\Big)$
 $$
 	f(\bar{a}+\bar{h}) = f(\bar{a}) + \frac{1}{2}Q(\bar{h}) + \mathcal{O}(\abs{h^3}) \approx f(\bar{a}) + \frac{1}{2}Q(\bar{h}) \text{ om } \abs{\bar{h}} \text{ liten}
 $$
-$\Rightarrow Q(\bar{h})$ avgör $f$:s utseende nära stationär punkt. \newline Om t.ex. $Q(\bar{h}) = 0 \forall \bar{h} \neq 0$ är $f(\bar{a}+\bar{h}) = f(\bar{a}) \Rightarrow$ strängt lokalt min i $\bar{a}$
+$\Rightarrow Q(\bar{h})$ avgör $f$:s utseende nära stationär punkt. \newline Om t.ex. $Q(\bar{h}) = 0 \,\forall\, \bar{h} \neq 0$ är $f(\bar{a}+\bar{h}) = f(\bar{a}) \Rightarrow$ strängt lokalt min i $\bar{a}$
 
 \subsubsection{Fyra fall fås}
 \begin{enumerate}
 \item Q positivt definit $\Rightarrow$ strängt lokalt min
 $$
-	Q(\bar{h}) > 0 \quad\forall \bar{h} \neq 0
+	Q(\bar{h}) > 0 \quad\forall\, \bar{h} \neq 0
 $$
 \item Q negativt definit $\Rightarrow$ strängt lokalt max
 $$
-	Q(\bar{h}) > 0 \quad\forall \bar{h} \neq 0
+	Q(\bar{h}) < 0 \quad\forall\, \bar{h} \neq 0
 $$
 \item Q indefinit $\Rightarrow$ sadelpunkt
 $$
@@ -1182,7 +1186,7 @@ $$
 	, \lambda_j \text{ egenvärden till } Hf
 $$
 $$
-	Q = \bar{h}*(Hf)*h^{-t} = \underbrace{\bar{h}TD}_{\hat{\bar{h}}}\underbrace{T^th^{-t}}_{\hat{\bar{h}}^t} = \hat{\bar{h}}D\hat{\bar{h}}^t = \lambda_1\hat{h}^2_1 + \lambda_2\hat{h}^2_2 + \ldots + \lambda_n\hat{h}^2_n
+	Q = \bar{h}*(Hf)*\bar{h}^{-1} = \underbrace{\bar{h}T}_{\hat{\bar{h}}}D\underbrace{T^Th^{-1}}_{\hat{\bar{h}}^T} = \hat{\bar{h}}D\hat{\bar{h}}^t = \lambda_1\hat{h}^2_1 + \lambda_2\hat{h}^2_2 + \ldots + \lambda_n\hat{h}^2_n
 $$
 
 \paragraph{De fyra fallen}
@@ -1215,7 +1219,7 @@ $$ \lambda_j \geq 0, \quad \forall j \quad\exists\lambda_k = 0 \text{ pos.semide
 	\end{pmatrix}
 \end{equation}
 $$
-	\det(Hf - \lambda I) = 0 \Rightarrow \cdots \Rightarrow \lambda_1 = 3, \lambda_{2,3} = 1 \pm \sqrt{2}
+	\det{Hf - \lambda I} = 0 \Rightarrow \cdots \Rightarrow \lambda_1 = 3, \lambda_{2,3} = 1 \pm \sqrt{2}
 $$
 $$
 	\Rightarrow Q = 
@@ -1252,13 +1256,13 @@ tecken $+, +, -$, samma som på $\lambda_1$ , $\lambda_2$ , $\lambda_3 \Rightarr
 \paragraph{De fyra fallen}
 \begin{enumerate}
 \item Bara $+ \Rightarrow$ pos.def
-\item Bara $- \Rightarrow$ pos.def
+\item Bara $- \Rightarrow$ neg.def
 \item $+$ \& $-$ (\&/eller 0) $\Rightarrow$ indef
-\item $+$ \& $0$ (färre $+$ än variabler) $\Rightarrow$ pos.semidef
+\item $+$ \& $0$ (färre $+$ än antalet variabler) $\Rightarrow$ pos.semidef
 \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Exempel 1}
+\subsubsection{Exempel}
 Hitta alla stationära punkter till $f(x,y) = x^3 + 6xy + 3y^2 - 9x$ och avgör om de är max, min eller sadelpunkter.
 
 $$
@@ -1270,7 +1274,7 @@ $$
 	\end{array}\right.
 $$
 $$
-	[2] \Rightarrow y = -x in i [1] \Rightarrow 3x^2 - 6x - 9 = 0 \Rightarrow \underbrace{x=3}_{y=-3} \text{ eller } \underbrace{x=1}_{y=1}
+	[2] \Rightarrow y = -x \text{ in i }[1] \Rightarrow 3x^2 - 6x - 9 = 0 \Rightarrow \underbrace{x=3}_{y=-3} \text{ eller } \underbrace{x=1}_{y=1}
 $$
 
 Två stationära punkter: $(3,-3)$ \& $(-1,1)$ max/min?
@@ -1290,7 +1294,7 @@ $$
 		h \\ 
 		k
 	\end{pmatrix}
-	\Rightarrow \cdots \Rightarrow \lambda_{1,2} = 12 \pm 6\sqrt{2} > 0 \Rightarrow \text{pos.def} \Rightarrow \text{lok.min} \\
+	\Rightarrow \cdots \Rightarrow \lambda_{1,2} = 12 \pm \sqrt{62} > 0 \Rightarrow \text{pos.def} \Rightarrow \text{lok.min} \\
 	I(-1,1): Q &= 
 	\begin{pmatrix}
 		h & k
@@ -1560,14 +1564,14 @@ $\, \exists$ invers $\bar{x} = A^{-1}\bar{u} = \bar{f}^{-1}(\bar{u})$ med $\det{
 
 För allmänna olinjära $\bar{f}(\bar{x})$ kan man bevisa inversa funktionssatsen \newline
 
-$f \in C^1$ av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ och $\det{f'(\bar{a})} \neq 0 \Rightarrow \exists$ omgivningar $\Omega_1, \, \Omega_2$ av $\bar{a}$ respektive $\bar{f}(\bar{a})$ så att 
-$\bar{f}: \, \Omega_1 \rightarrow \Omega_2$ är bijektiv och därmed inverterbar med invers $\bar{f}^{-1}$. Även $\bar{f}^{-1} \in C^1$ och $\det{(\bar{f}^{-1})'} = \frac{1}{\det{\bar{f}'}}$
+\begin{proof}$f \in C^1$ av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ och $\det{f'(\bar{a})} \neq 0 \Rightarrow \exists$ omgivningar $\Omega_1, \, \Omega_2$ av $\bar{a}$ respektive $\bar{f}(\bar{a})$ så att 
+$\bar{f}: \, \Omega_1 \rightarrow \Omega_2$ är bijektiv och därmed inverterbar med invers $\bar{f}^{-1}$. Även $\bar{f}^{-1} \in C^1$ och $\det{(\bar{f}^{-1})'} = \frac{1}{\det{\bar{f}'}}$\end{proof}
 
 \paragraph{OBS!}
 \begin{enumerate}
 \item Säger inget om hur $\bar{f}^{-1}$ hittas bara att en finns
 \item Gäller bara små $\Omega_1, \,\Omega_2$ i allmänhet
-\item Invers kan finnas krign $\bar{a}$ även om $\det{\bar{f}'(\bar{a})} = 0$ men är då ej $C^1$ (från envarren)
+\item Invers kan finnas kring $\bar{a}$ även om $\det{\bar{f}'(\bar{a})} = 0$ men är då ej $C^1$ (från envarren)
 \end{enumerate}
 
 \subsubsection{Exempel}
@@ -1864,7 +1868,7 @@ Samma svar såklart!
 
 \newpage
 \subsection{Översikt, definition av dubbelintegraler}
-Att integrera en variable i taget kallas \underline{upprepade enkelintegraler}
+Att integrera en variabel i taget kallas \underline{upprepade enkelintegraler}
 \subsubsection{Steg 1}
 
 \begin{figure}[ht] 
@@ -1891,7 +1895,9 @@ $$
 \subsubsection{Steg 2} \label{sec:Steg 2}
 Om $\phi_1 \leq f \leq \phi_2$ på $\triangle$, $\phi_1, \, \phi_2$ trappfunktioner, så kallas $I(\phi_1)$ en undersumma till $f$ på $\triangle$ och $I(\phi_2)$ en översumma. 
 $f$ kallas \underline{integrerbar} över $\triangle$ om $\forall \epsilon > 0 \, \exists$ sådana $\phi_1, \, \phi_2$ med $I(\phi_2) - I(\phi_1) < \epsilon$.
-Man kan bevisa att då finns ett unikt tal $k$ så att $I(\phi_1) \leq k \leq I(\phi_2) \forall$ sådana $\phi_1, \, \phi_2, \, k$ kallas dubbelintegralen av $f$ över $\triangle$, skrivs
+Man kan bevisa att då finns ett unikt tal $k$ så att $I(\phi_1) \leq k \leq I(\phi_2) \forall$ sådana $\phi_1, \, \phi_2$ \newline
+
+$k$ kallas dubbelintegralen av $f$ över $\triangle$, skrivs
 $$
 	k = \iint_\triangle f(x,y) \,\mathrm{d}x\,\mathrm{d}y
 $$
@@ -1937,11 +1943,12 @@ Enklast att börja med att integrera över $y$
 
 \begin{align*}
 	I &= \int_0^{\frac{\pi}{2}} \left(\int_{y=0}^{y=1} x\sin{xy} \,\mathrm{d}y \right) \,\mathrm{d}x = \int_0^{\frac{\pi}{2}} \Bigg[ -\cos{xy} \Bigg]_{y=0}^{y=1} \,\mathrm{d}x = \\
-	  &= \int_0^{\frac{\pi}{2}} \Bigg( -\cos{x} + 1 \Bigg) \,\mathrm{d}x = \Bigg[ -\sin{x} + x \Bigg]_0^{\frac{\pi}{2}} = -1 + \frac{\pi}{2}
+	  &= \int_0^{\frac{\pi}{2}} \Bigg( -\cos{x} + 1 \Bigg) \,\mathrm{d}x = \Bigg[ -\sin{x} + x \Bigg]_0^{\frac{\pi}{2}} = \svar{-1 + \frac{\pi}{2}}
 \end{align*}
 
 \subsubsection{Exempel}
-Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mathrm{d}x$    $\int e^{y^2} \,\mathrm{d}y = ???$ Enklare att börja med $x$
+Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mathrm{d}x$  \newline
+ $\int e^{y^2} \,\mathrm{d}y = ???$ Enklare att börja med $x$
 
 \begin{figure}[ht] 
 \begin{tikzpicture}
@@ -1965,12 +1972,12 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
     \node at (axis cs: 0.5,0.5) {$D$};
 	\end{axis}
 \end{tikzpicture}
-  \caption{$D={(x,y) \, | \, 0 \leq y \leq 1 \, 0 \leq x \leq \sqrt{y}}$} \label{fig:9.4}
+  \caption{$D=\{(x,y) \, | \, 0 \leq y \leq 1 \,,\, 0 \leq x \leq \sqrt{y}\}$} \label{fig:9.4}
 \end{figure}
 
 \begin{align*}
 	\Rightarrow I &= \int_0^1 \left( \int_0^{\sqrt{y}} xe^{y^2} \,\mathrm{d}x \right) \,\mathrm{d}y = \int_0^1 e^{y^2} \left[\frac{x^2}{2}\right]_0^{\sqrt{2}} \,\mathrm{d}y = \\
-	              &= \int_0^1 e^{y^2} \frac{y}{2} \,\mathrm{d}y = \frac{1}{2} \int_0^1 ye^{y^2} \,\mathrm{d}y = \frac{1}{4} \Bigg[ e^{y^2} \Bigg]_0^1 = \frac{e-1}{4}
+	              &= \int_0^1 e^{y^2} \frac{y}{2} \,\mathrm{d}y = \frac{1}{2} \int_0^1 ye^{y^2} \,\mathrm{d}y = \frac{1}{4} \Bigg[ e^{y^2} \Bigg]_0^1 = \svar{\frac{e-1}{4}}
 \end{align*}
 
 \newpage
@@ -2032,7 +2039,7 @@ Belopp på determinant i flervarre för att vi alltid sätter gränser från und
 
 \subsubsection{Exempel}
 
-$$I = \iint_D \frac{\mathrm{d}x\,\mathrm{d}y}{5+x^2+y^2} \; , \; D=\Big\{(x,y) \, | \, x^2+y^2 \leq 3 \, x \leq 0 \, y \geq 0\Big\}$$
+$$I = \iint_D \frac{\mathrm{d}x\,\mathrm{d}y}{5+x^2+y^2} \; , \; D=\Big\{(x,y) \, | \, x^2+y^2 \leq 3 \,,\, x \leq 0 \,,\, y \geq 0\Big\}$$
 
 $$\text{Byt till polära koordinater: } \left\{
 \begin{array}{rcl}
@@ -2144,26 +2151,26 @@ Det finns $6$ olika integrationsordningar, ovan \vref{subsec:intordn} tog vi $z\
 
 Med $z$ först har vi kvar projektionen $D_{xy}$ av $D$
 
-$$
-z\rightarrow y\rightarrow x \text{ ger } (1)
+\begin{equation}
+z\rightarrow y\rightarrow x \text{ ger }
 \begin{cases}
 &\left.\begin{array}{rcl}
 0 \leq &x \leq 1 \\
 x \leq &y \leq 1 \end{array}\right\}	D_{xy} \\
 &0 \leq z \leq (y-x)^2
 \end{cases}
-$$
+\end{equation}
 
 
-$$ \label{eq:10.1}
-z\rightarrow x\rightarrow y \text{ ger } (2)
+\begin{equation} \label{eq:10.1}
+z\rightarrow x\rightarrow y \text{ ger }
 \begin{cases} 
 &\left.\begin{array}{rcl}
 0 \leq &y \leq 1 \\
 0 \leq &x \leq y \end{array}\right\}	D_{xy} \\
 &0 \leq z \leq (y-x)^2
 \end{cases}
-$$
+\end{equation}
 
 
 Med $y$ först har vi kvar projektionen $D_{xz}$ av $D$ \newline
@@ -2173,51 +2180,51 @@ z = (1-x)^2 \Rightarrow x = 1 - \sqrt{z}
 \end{cases}$
 
 
-$$
-y\rightarrow z\rightarrow x \text{ ger } (3)
+\begin{equation}
+y\rightarrow z\rightarrow x \text{ ger }
 \begin{cases}
 &\left.\begin{array}{rcl}
 0 \leq &x \leq 1 \\
 x \leq &z \leq (1-x)^2 \end{array}\right\} D_{xz} \\
 &x+\sqrt{z} \leq y \leq 1
 \end{cases}
-$$
+\end{equation}
 
 
-$$
-y\rightarrow x\rightarrow z \text{ ger } (4)
+\begin{equation}
+y\rightarrow x\rightarrow z \text{ ger }
 \begin{cases}
 &\left.\begin{array}{rcl}
 0 \leq &z \leq 1 \\
 0 \leq &x \leq 1-\sqrt{z} \end{array}\right\} D_{xz} \\
 &x+\sqrt{z} \leq y \leq 1
 \end{cases}
-$$
+\end{equation}
 
 
 Med $x$ först har vi kvar projektionen $D_{yz}$ av $D$
 
 
-$$ \label{eq:10.2}
-x\rightarrow z\rightarrow y \text{ ger } (5)
+\begin{equation} \label{eq:10.2}
+x\rightarrow z\rightarrow y \text{ ger }
 \begin{cases}
 &\left.\begin{array}{rcl}
 0 \leq &y \leq 1 \\
 x \leq &z \leq y^2 \end{array}\right\}	D_{yz} \\
 &0 \leq x \leq y - \sqrt{z}
 \end{cases}
-$$
+\end{equation}
 
 
-$$
-x\rightarrow y\rightarrow z \text{ ger } (6)
+\begin{equation}
+x\rightarrow y\rightarrow z \text{ ger }
 \begin{cases}
 &\left.\begin{array}{rcl}
 0 \leq &z \leq 1 \\
 \sqrt{z} \leq &y \leq 1 \end{array}\right\}	D_{yz} \\
 &0 \leq x \leq y - \sqrt{z}
 \end{cases}
-$$
+\end{equation}
 
 \newpage
 \begin{figure}[ht]
@@ -2306,7 +2313,7 @@ $$
 \newpage
 Test av \eqref{eq:10.2} 
 \begin{align*}
-	I &= \int_0^1 \int_0^{y^2} \int_0^{y-\sqrt{z}} z \,\mathrm{d}x\,\mathrm{d}\,\mathrm{d}z\,\mathrm{d}y =
+	I &= \int_0^1 \int_0^{y^2} \int_0^{y-\sqrt{z}} z \,\mathrm{d}x\,\mathrm{d}z\,\mathrm{d}y =
 	\int_0^1 \int_0^{y^2} z \Big[x\Big]_0^{y-\sqrt{z}} \,\mathrm{d}z\,\mathrm{d}y=
 	\int_0^1 \int_0^{y^2} z(y-\sqrt{z}) \,\mathrm{d}z\,\mathrm{d}y = \\
 	&= \int_0^1 \Big[ \frac{z^2y}{2} - \frac{2z^{\frac{5}{2}}}{5} \Big]_0^{y^2} \,\mathrm{d}y =
