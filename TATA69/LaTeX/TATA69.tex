@@ -2362,7 +2362,8 @@ i 3D är $x$,$y$ bytt mot polära koordinater men $z$ behålls $\frac{d(x,y,z)}{
 
 Beräkna volymen $V=\iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ av $K$ som begränsas av konen $z=\sqrt{x^2+y^2}$ och halvsfären $x^2+y^2+z^2 = 2 \,,\, z \geq 0$ \newline
 
-$K$ ges av $\sqrt{x^2+y^2} \leq z \leq \sqrt{2-x^2-y^2} \; (x,y) \in D$ , en cirkel med radie $=1$ \newline
+$K$ ges av $\sqrt{x^2+y^2} \leq z \leq \sqrt{2-x^2-y^2} \newline
+(x,y) \in D$ , en cirkel med radie $=1$ \newline
 
 Skärningen av konen \& sfären:
 $$
@@ -2381,7 +2382,7 @@ $\begin{cases}
 
 \begin{gather*}
 	\Rightarrow V = \iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z = 
-	= \int_0^{2\pi} \int_0^1 \int_\rho^{\sqrt{2-\rho^2}} \abs{\frac{d(x,y,z)}{d(\rho,\varphi,z)}} \,\mathrm{d}z\,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
+	\int_0^{2\pi} \int_0^1 \int_\rho^{\sqrt{2-\rho^2}} \abs{\frac{d(x,y,z)}{d(\rho,\varphi,z)}} \,\mathrm{d}z\,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
 	\int_0^{2\pi} \int_0^1 \rho \Big[ z \Big]_\rho^{\sqrt{2-\rho^2}} \,\mathrm{d}\rho\,\mathrm{d}\varphi = 
 	\int_0^{2\pi} \int_0^1 \Big( \rho\sqrt{2-\rho^2} - \rho^2 \Big) \,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
 	= \int_0^{2\pi} \Big[ -\frac{1}{3}(2-\rho)^{\frac{3}{2}} -\frac{1}{3}\rho^3 \Big]_0^1 \,\mathrm{d}\varphi = \\
@@ -2436,7 +2437,7 @@ $\frac{d(x,y,z)}{d(r,\theta,\varphi)} = \text{\vref{sec:rymdpol}} = r^2\sin{\the
  	V = \iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z =
  	\int_0^{2\pi}\int_0^\pi\int_0^R \abs{\frac{d(x,y,z)}{d(r,\theta,\varphi)}} \,\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\varphi = \\
  	= \int_0^{2\pi}\int_0^\pi \Big[ \frac{r^3}{3} \Big]_0^R \sin{\theta} \,\mathrm{d}\theta\,\mathrm{d}\varphi =
- 	\frac{R^3}{3} \int_0^{2\pi} \underbrace{\Big[ -\cos{\theta} \Big]}0^\pi_{-(-1)-(-1)} \,\mathrm{d}\varphi =  \\
+ 	\frac{R^3}{3} \int_0^{2\pi} \underbrace{\Big[ -\cos{\theta} \Big]_0^\pi}_{-(-1)-(-1)} \,\mathrm{d}\varphi =  \\
  	\frac{2R^3}{3} \Big[ \varphi \Big]_0^{2\pi} =
  	\svar{\frac{4\pi R^3}{3}}
 \end{gather*}
@@ -2557,7 +2558,7 @@ $$
 	\frac{19\pi}{30}
 \end{align*}
 \begin{align*}
-	\Rightarrow z = \frac{1}{m} \iiint_K z(1+r^2+z^2)r \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
+	\Rightarrow z_T = \frac{1}{m} \iiint_K z(1+r^2+z^2)r \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
 	\frac{30}{19\pi} \int_0^{2\pi}\int_0^1 z\left[\frac{r^2}{2} + \frac{r^4}{4} + \frac{z^2r^2}{2}\right]_0^2 \,\mathrm{d}z\,\mathrm{d}\varphi = \\
 	= \frac{3+}{19\pi} \int_0^{2\pi}\int_0^1 \left(\frac{z^3}{2} + \frac{3z^5}{4}\right) \,\mathrm{d}z\,\mathrm{d}\varphi =
 	\frac{30}{19\pi} \int_0^{2\pi} \left[\frac{z^4}{8} + \frac{3z^6}{24}\right]_0^1 \,\mathrm{d}\varphi = 
@@ -2642,10 +2643,15 @@ Med $D_n: x^2 + y^2 \leq n^2$ och polära koordinater $
 \end{cases}$
 får vi 
 
-$$
+\begin{align*}
 	I_n = \iint_{D_n} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} = 
-	\int
-$$
+	\int_0^{2\pi}\int_0^n \frac{\rho}{(1+\rho^2)^2} \de{\rho}\de{\varphi} =
+	\int_0^{2\pi} \left[-\frac{1}{2(1+\rho^2)}\right]_0^n \de{\varphi} = \\
+	= \int_0^{2\pi} \left(- \frac{1}{2(1+n^2) - \frac{1}{2}}\right) \de{\varphi} =
+	\frac{1}{2}\left(1-\frac{1}{1+n^2}\right)\Big[\varphi\Big]_0^{2\pi} = \\
+	= \pi\left(1 - \overbrace{\frac{1}{1+n^2}}^{\rightarrow \infty}\right)
+	\Rightarrow \pi \text{ då $n \rightarrow \infty \Rightarrow I = \pi$ konvergent}
+\end{align*}
 
 \end{enumerate}
 
