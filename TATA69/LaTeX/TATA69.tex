@@ -2577,7 +2577,7 @@ $$= \svar{\frac{15}{19}} > \frac{3}{4} \text{ rimligt}$$
 \newpage
 \section{Föreläsning XII}
 
-\subsection{Generaliserade multipelintegraler}
+\paragraph{Generaliserade multipelintegraler}
 
 \paragraph{Envarre Def}
 t.ex. $\int_a^\infty f(x) \de{x}$ skrivs om som ett gränsvärde $\lim_{b\rightarrow\infty}\int_a^bf(x)\de{x}$ om gränsvärdet $\exists$
@@ -2585,7 +2585,7 @@ t.ex. $\int_a^\infty f(x) \de{x}$ skrivs om som ett gränsvärde $\lim_{b\righta
 \paragraph{Flervarre Def}
 Hur definierar man $I = \iint_D f(x,y) \de{x}\de{y}$ om $D$ är obegränsad eller om $f(x,y)$ är obegränsad i $D$??
 
-\subsubsection{Exempel}
+\paragraph{Exempel}
 Vad blir 
 
 \begin{equation}\label{eq:12.1}
@@ -2594,7 +2594,9 @@ Vad blir
 $\mathbb{R}^2$ är en obegränsad mängd
 
 
-\begin{enumerate}
+\paragraph{Två olika fall, 1. \texorpdfstring{$f$}{f} växlar ej tecken eller 2. \texorpdfstring{$f$}{f} växlar tecken}
+
+\subsection{\texorpdfstring{$f$}{f} växlar ej tecken i \texorpdfstring{$D$}{D}} \label{subsec:nonchanging}
 \item \underline{Om $f(x,y) \geq 0$ i $D$} (eller om $f(x,y) \leq 0 $ i hela $D$) \newline
 
 Ta mängder $D_1 \subset D_2 \subset D_3 \subset ... \subset D_n \subset ...$ så att $D_n \rightarrow D$ (uttömmande följd) 
@@ -2643,7 +2645,8 @@ Med $D_n: x^2 + y^2 \leq n^2$ och polära koordinater $
 \end{cases}$
 får vi 
 
-\begin{align*}
+\begin{gather}\label{eq:12.2}
+\begin{split}
 	I_n = \iint_{D_n} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} = 
 	\int_0^{2\pi}\int_0^n \frac{\rho}{(1+\rho^2)^2} \de{\rho}\de{\varphi} =
 	\int_0^{2\pi} \left[-\frac{1}{2(1+\rho^2)}\right]_0^n \de{\varphi} = \\
@@ -2651,7 +2654,106 @@ får vi
 	\frac{1}{2}\left(1-\frac{1}{1+n^2}\right)\Big[\varphi\Big]_0^{2\pi} = \\
 	= \pi\left(1 - \overbrace{\frac{1}{1+n^2}}^{\rightarrow \infty}\right)
 	\Rightarrow \pi \text{ då $n \rightarrow \infty \Rightarrow I = \pi$ konvergent}
-\end{align*}
+\end{split}
+\end{gather}
+
+Alternativt kan man skriva $\mathbb{R}^2: \{\rho\,,\,\varphi \,|\, 0\leq \rho < \infty \,,\, 0 \leq \varphi \leq 2\pi \}$
+
+\begin{gather*}
+	I = \int_0^{2\pi} \int_0^\infty \frac{\rho}{(1+\rho^2)^2} \de{\rho}\de{\varphi} =
+	\int_0^{2\pi} \left[-\frac{1}{2}\frac{1}{1+\rho^2}\right]_0^\infty = \\
+	=-\frac{1}{2}\int_0^{2\pi} \left(\lim_{b\rightarrow\infty}\left(\underbrace{\frac{1}{1+b^2}}_{=0}\right) - \frac{1}{1+0^2}\right)\de{\varphi} =
+	\frac{1}{2}\int_0^{2\pi}\de{\varphi} = 
+	\svar{\pi}
+\end{gather*}
+
+\newpage
+\subsubsection{Exempel Dubbelintegral}
+
+Beräkna $I=\iint_D \frac{\de{x}\de{y}}{(x+y)^2}$ , $D \,: 
+\begin{cases}
+	& 0 \leq x \leq 1 \\
+	& 0 \leq y \leq 1
+\end{cases}$ \newline
+
+$f(x,y) = \frac{1}{(x+y)^2}$ obegränsad vid origo $\Rightarrow \,I$ generaliserad \newline
+\underline{$f \geq 0$ i $D$} (MÅSTE kommenteras) $\Rightarrow$ vi kan använda upprepade enkelintegraler
+
+\begin{gather*}
+	I = \int_0^1\int_0^1 \frac{\de{x}}{(x+y)^2}\de{y} =
+	\int_0^1 \left[-\frac{1}{x+y}\right]_0^1 \de{y} =
+	\int_0^1 \left(-\frac{1}{1+y} + \frac{1}{0+y}\right) \de{y} = \\
+	= \Big[ -\ln{\abs{1+y}} + \ln{\abs{y}}\Big]_0^1 =
+	- \ln{2} + \ln{1} + \ln{1} - \lim_{a\rightarrow0^+}\underbrace{\ln{a}}_{\rightarrow\infty} \Rightarrow \svar{\text{ existerar ej}}
+\end{gather*}
+
+\subsubsection{Exempel Trippelintegral}
+För en generaliserad trippelintegral fungerar det på samma sätt \newline
+Beräkna $I=\iiint_D \frac{\de{x}\de{y}\de{z}}{(x^2+y^2+z^2)^{\alpha/2}}$ \newline
+$\alpha$ konstant, $D: \{x,y,z \,|\, 1\leq x^2+y^2+z^2 <\infty\}$ ($\mathbb{R}^3$ minus enhetsklotet) \newline
+$\frac{1}{(x^2+y^2+z^2)^{\alpha/2}}$ \underline{$> 0$ i $D$} $\Rightarrow$ räkna på vanligt sätt
+
+Rymdpolära koordinater $
+\begin{cases}
+	& 1 \leq r < \infty \\
+	& 0 \leq \theta \leq \pi \\
+	& 0 \leq \varphi \leq 2\pi
+\end{cases}
+\,,\, \frac{\de{(x,y,z)}}{\de{(r,\theta,\varphi)}} = r^2\sin{\theta}$
+
+\begin{gather*}
+	I = \int_0^{2\pi}\int_0^\pi\int_1^\infty \frac{1}{r^\alpha}r^2\sin{\theta}\de{r}\de{\theta}\de{\varphi} =
+	\int_1^\infty r^{2-\alpha} \Big[-\cos{\theta}\Big]_0^\pi\Big[\varphi\Big]_0^{2\pi} \de{r} \overset{\,\mathrm{\alpha\neq3}}{=}
+	4\pi\Big[\frac{r^{3-\alpha}}{3-\alpha}\Big]_1^\infty = \\
+	= \frac{4\pi}{3-\alpha} \Big(\underbrace{\lim_{b\rightarrow\infty}b^{3-\alpha}}_{\substack{\rightarrow\infty \text{ om } 3-\alpha > 0 \\\rightarrow 0 \text{ om } 3-\alpha < 0}}-1\Big)
+	= 
+	\begin{cases}
+		\text{divergent} & \text{om } \alpha < 3 \\
+		\frac{4\pi}{\alpha -3} & \text{om } \alpha > 3 \text{ (konvergent)}
+	\end{cases}
+\end{gather*}
+$\alpha = 3$ ger $4\pi\int_1^\infty \frac{\de{r}}{r} = 4\pi \Big[\ln{r}\Big]_1^\infty$ \underline{ divergent } $(\ln{b} \rightarrow \infty \text{ då } b\rightarrow\infty)$\newline
+
+\svar{Svar:} $I=
+\begin{cases}
+	\frac{4\pi}{\alpha - 3} & \text{om } \alpha > 3 \\
+	\text{divergent} & \text{om } \alpha \leq 3
+\end{cases}$
+
+\newpage
+
+Liksom för generaliserade enkelintegraler finns jämförelsesatser t.ex. \newline
+
+$0 \leq f \leq g$ i $D$ och $\iint_D g \de{x}\de{y}$ konvergent $\Rightarrow \iint_D f\de{x}\de{y}$ konvergent
+
+\subsubsection{Exempel på jämförelsesatser}
+
+\begin{gather*}
+	\iint_{\mathbb{R}^2} \frac{\de{x}\de{y}}{(1+x^2+y^2+x^4)^2} \text{ är konvergent ty} \\
+	0 \leq \frac{1}{(1+x^2+y^2+x^4)^2} \leq \frac{1}{(1+x^2+y^2)^2} \text{ och} \\
+	\iint_{\mathbb{R}^2} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} \text{ är konvergent, bevisat i ekvation \eqref{eq:12.2}}
+\end{gather*}
+
+\subsection{\texorpdfstring{$f$}{f} växlar tecken i \texorpdfstring{$D$}{D}}
+$f(x,y)$ växlar tecken i $D$. I detta fall \underline{definieras} $I=\iint_D f(x,y)\de{x}\de{y}$ ($f$ eller $D$ obegränsad) som konvergent om 
+$\iint_D\underbrace{\abs{f(x,y)}}_{\geq 0}\de{x}\de{y}$ är konvergent (vilket definierades i \vref{subsec:nonchanging}). 
+Upprepade enkelintegraler för $I$ får bara användas om man \underline{vet} att $I$ är konvergent, det kan \underline{INTE} användas för att se \underline{om} $I$ är konvergent,
+direkt sådan beräkning \underline{kan ge fel svar}. \newline Exempel på detta finns på s.272 i P-B, en divergent $I$ som ger olika ändliga svar beroende på om $x$ eller $y$ integreras först.
+
+\subsubsection{Två möjliga metoder}
+
+\begin{enumerate}
+\item Visa först att $\iint_D\abs{f(x,y)}\de{x}\de{y}$ är konvergent (som i \vref{subsec:nonchanging}) och beräkna därefter $I$ på vanligt sätt
+
+\item Dela upp $D$ i $D_1 \,\&\, D_2$ med $f \geq 0$ i $D_1 \,\&\, f\leq 0$ i $D_2$
+
+$$
+	I = \underbrace{\iint_{D_1}\overbrace{f(x,y)}^{\geq 0}\de{x}\de{y}}_{I_1} - \underbrace{\iint_{D_2}\overbrace{-f(x,y)}^{\geq 0}\de{x}\de{y}}_{I_2}
+$$
+
+$I_1 \,\&\, I_2$ beräknas var för sig enligt \vref{subsec:nonchanging} \newline
+$I = I_1 - I_2$ men $\iint_D\abs{f(x,y)}\de{x}\de{y} = I_1 + I_2$ vilket slutligen ger oss \newline 
+$I_1 \,\&\, I_2$ konvergenta $\iff I$ konvergent
 
 \end{enumerate}
 
