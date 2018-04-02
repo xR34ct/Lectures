@@ -137,7 +137,10 @@ Olika värden från olika riktningar \newline
 Innanför varje liten cirkel kring origo har f värden nära 0 och nära $\frac{1}{2}$.
 Vi säger därför att gränsvärde ej existerar. Se \vref{fig:2.1}
 
-\begin{figure}[ht] 
+
+
+
+\begin{figure}[ht]
 \begin{tikzpicture}
    \tkzInit[xmax=5,ymax=5,xmin=-5,ymin=-5]
    \tkzAxeXY
@@ -157,10 +160,10 @@ Vi säger därför att gränsvärde ej existerar. Se \vref{fig:2.1}
 \newpage
 \subsubsection{Definition}
 
-Funktionen \(\bar{f}\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) har gränsvärdet \(\bar{b} \in \mathbb{R}^m\) då 
-\(\bar{x} \rightarrow \bar{a} \in \mathbb{R}^n\) om \(\forall \epsilon >0 \quad \exists \delta >0\) 
-så att \(|\bar{f}(x)-\bar{b}|<\epsilon\) om \(0<|\bar{x}-\bar{a}|<\delta\) och \(\bar{x}\in D_f\). 
-Skrivs 
+Funktionen \(\bar{f}\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) har gränsvärdet \(\bar{b} \in \mathbb{R}^m\) då
+\(\bar{x} \rightarrow \bar{a} \in \mathbb{R}^n\) om \(\forall \epsilon >0 \quad \exists \delta >0\)
+så att \(|\bar{f}(x)-\bar{b}|<\epsilon\) om \(0<|\bar{x}-\bar{a}|<\delta\) och \(\bar{x}\in D_f\).
+Skrivs
 \[
 \lim_{\bar{x} \rightarrow \bar{a}} \bar{f}(\bar{x})=\bar{b}
 \]
@@ -186,7 +189,7 @@ Undersökning/beräkning av gränsvärden
 \item Sådana test kan \underline{INTE} visa att gränsvärde existerar, andra metoder behövs, som \eqref{eq:2.1} eller \eqref{eq:2.3}, eller polära koordinater
 \end{itemize}
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
    \tkzInit[xmax=4,ymax=4,xmin=0,ymin=0]
    \tkzAxeXY
@@ -231,7 +234,7 @@ Viktigt för gränsvärden: \( (x,y) \rightarrow (0,0) \iff \rho \rightarrow 0 \
 \paragraph{Exempel \eqref{eq:2.3} med polära koordinater}
 
 \[
-	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} = 
+	\lim_{(x,y) \rightarrow (0,0)} \frac{x^3}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow 0} \frac{\rho^3\cos^3(\varphi)}{\rho^2} =
 	\lim_{\rho \rightarrow 0} \overbrace{\rho}^{\rightarrow 0}\underbrace{\cos^3(\varphi)}_\text{begränsad} = 0
 \]
 
@@ -251,7 +254,7 @@ $\abs{\bar{x}} \rightarrow \infty \iff \rho \rightarrow \infty$
 \subsubsection{Exempel 4}
 
 \begin{equation} \label{eq:2.4}
-	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} = 
+	\lim_{(x,y) \rightarrow \infty} \frac{y}{x^2+y^2} \overset{\,\mathrm{pol.koord}}{=} \lim_{\rho \rightarrow \infty} \frac{\rho \sin(\varphi)}{\rho^2} =
 	\lim_{\rho \rightarrow \infty} \overbrace{\frac{1}{\rho}}^{\rightarrow 0} \underbrace{\sin(\varphi)}_\text{Begränsad} = 0
 \end{equation}
 
@@ -277,18 +280,18 @@ z = \sqrt{x^2+y^2} = \rho
 \)
 
 \subsection{3-variabler mot origo}
-\subsubsection{Exempel 5} 
+\subsubsection{Exempel 5}
 
 \begin{equation} \label{eq:2.5}
 	\lim_{(x,y,z) \rightarrow (0,0,0)} \frac{xyz}{x^2+y^2+2z^2} = \text{ ???}
 \end{equation}
 
 \[
-	0 \leq \abs{\frac{xyz}{x^2+y^2+2z^2}} = \frac{\abs{x}\abs{y}\abs{z}}{x^2+y^2+2z^2} \leq \frac{\abs{x}\abs{y}\abs{z}}{x^2+y^2+z^2} \leq 
+	0 \leq \abs{\frac{xyz}{x^2+y^2+2z^2}} = \frac{\abs{x}\abs{y}\abs{z}}{x^2+y^2+2z^2} \leq \frac{\abs{x}\abs{y}\abs{z}}{x^2+y^2+z^2} \leq
 \]
 
 \[
-	// 
+	//
 	\def\arraystretch{1.1}
 	\begin{blockarray}{r@{\;}l}
 	\abs{x} \leq \sqrt{x^2+y^2+z^2} \\ [\jot]
@@ -320,7 +323,7 @@ z = \sqrt{x^2+y^2} = \rho
 	(4,0,4) coordinate (q);
 \draw[thick,red]
 	(0,0,0) coordinate (o)-- (q);
-\draw[dashed] 
+\draw[dashed]
 	(0,0,4) coordinate (x) -- (q) -- (4,0,0);
 \draw[thick,blue] (o) -- (p);
 \draw[green] let
@@ -354,7 +357,7 @@ z = \sqrt{x^2+y^2} = \rho
 \left\{\begin{array}{rcl}
 	x & = r \sin(\theta) \cos(\varphi) \\
 	y & = r \sin(\theta) \sin(\varphi) \\
-	z & = r \cos(\theta) 
+	z & = r \cos(\theta)
 \end{array}\right.
 \]
 \[
@@ -386,7 +389,7 @@ Polära koordinater i (x,y) och vanliga i z
 \left\{\begin{array}{rcl}
 	x & = r \cos(\varphi) \\
 	y & = r \sin(\varphi) \\
-	z & = z 
+	z & = z
 \end{array}\right.
 \]
 
@@ -433,7 +436,7 @@ Motsvarande för y:
 	f^{\prime}_{y}(x,y) = \lim_{k \rightarrow 0} \frac{f(x,y+k) - f(x,y)}{k}
 \]
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
    \tkzInit[xmax=4,ymax=4,xmin=0,ymin=0]
    \tkzAxeXY
@@ -510,7 +513,7 @@ Bestäm alla \(f(x,y,z)\) som uppfyller
 \begin{split}
 	f_{x}^{\prime} = p(x,y,z) = 3x^2yz \quad (1) \\
 	f_{y}^{\prime} = q(x,y,z) = x^3z + 2ye^z \quad (2) \\
-	f_{z}^{\prime} = r(x,y,z) = x^3y + y^2e^z \quad (3) 
+	f_{z}^{\prime} = r(x,y,z) = x^3y + y^2e^z \quad (3)
 \end{split}
 \end{equation}
 
@@ -525,7 +528,7 @@ Bestäm alla \(f(x,y,z)\) som uppfyller
 	\Rightarrow g(y,z) = y^2e^z + \overbrace{\underbrace{h(z)}_{\text{envarre }f}}^{\text{godtycklig}} \Rightarrow \\
 	\Rightarrow f(x,y,z) = x^3yz+y^2e^z+h(z) \\
 	\underline{\text{Derivera detta m.a.p } z} \\
-	\Rightarrow x^3y+y^2e^z+h^{\prime}(z) = x^3y+y^2e^z \Rightarrow \\									  	
+	\Rightarrow x^3y+y^2e^z+h^{\prime}(z) = x^3y+y^2e^z \Rightarrow \\
 	\Rightarrow h^{\prime}(z) = 0 \Rightarrow h(z) = C \Rightarrow
 \end{split}
 \]
@@ -542,7 +545,7 @@ Bestäm alla \(f(x,y,z)\) som uppfyller
 \begin{split}
 	p_{y}^{\prime} = q_{x}^{\prime} \\
 	p_{z}^{\prime} = r_{x}^{\prime} \\
-	q_{z}^{\prime} = r_{y}^{\prime} 
+	q_{z}^{\prime} = r_{y}^{\prime}
 \end{split}
 \]
 
@@ -560,9 +563,9 @@ Bestäm alla \(f(x,y,z)\) som uppfyller
 \subsection{Differentierbarhet}
 \subsubsection*{Envarre}
 
-Om \(f_{a}^{\prime} = \lim_{h \rightarrow 0} \frac{f(a+h) - f(a)}{h} \quad \exists\) (dvs \(f\) deriverbar i \(a\)) så finns talet \(f_{a}^{\prime} = A\) sådant att \(\frac{f(a+h) - f(a)}{h}-A = 
+Om \(f_{a}^{\prime} = \lim_{h \rightarrow 0} \frac{f(a+h) - f(a)}{h} \quad \exists\) (dvs \(f\) deriverbar i \(a\)) så finns talet \(f_{a}^{\prime} = A\) sådant att \(\frac{f(a+h) - f(a)}{h}-A =
 \frac{1}{h}(f(a+h)-f(a)-Ah) = \rho(h) \rightarrow 0\) \newline \newline
-Vi vet att \(f \in C^1 \Rightarrow f\) deriverbar \(\Rightarrow f\) kontinuerlig 
+Vi vet att \(f \in C^1 \Rightarrow f\) deriverbar \(\Rightarrow f\) kontinuerlig
 
 \subsubsection*{Flervarre}
 \subsubsection{Definition}
@@ -589,11 +592,11 @@ För \(\geq\) 2 variabler gäller
 \begin{enumerate}
 	\item s.56-57 i boken
 	\item \(
-				f_{x}^{\prime}(a,b) = \lim_{h \rightarrow 0} \frac{f(a+h,b) - f(a,b)}{h} \overset{f \text{ diff.bar med }k=0}{=} \lim_{h \rightarrow 0} \frac{Ah + B*0 + \sqrt{h^2 + 0^2}\rho(h,0)}{h} = 
+				f_{x}^{\prime}(a,b) = \lim_{h \rightarrow 0} \frac{f(a+h,b) - f(a,b)}{h} \overset{f \text{ diff.bar med }k=0}{=} \lim_{h \rightarrow 0} \frac{Ah + B*0 + \sqrt{h^2 + 0^2}\rho(h,0)}{h} =
 				\lim_{h \rightarrow 0} A  + \underbrace{\frac{\sqrt{h^2}}{h}}_{\pm \text{ 1 begränsad}} \underbrace{\frac{\rho(h,0)}{h}}_{\rightarrow 0} = A \quad \exists
 			\)
 	\item \(
-				f(a+h,b+k) = f(a,b) + \underbrace{Ah}_{\rightarrow 0} + \underbrace{Bk}_{\rightarrow 0} + \underbrace{\sqrt{h^2 + k^2}}_{\rightarrow 0}\underbrace{\rho(h,k)}_{\rightarrow 0} \rightarrow f(a,b) 
+				f(a+h,b+k) = f(a,b) + \underbrace{Ah}_{\rightarrow 0} + \underbrace{Bk}_{\rightarrow 0} + \underbrace{\sqrt{h^2 + k^2}}_{\rightarrow 0}\underbrace{\rho(h,k)}_{\rightarrow 0} \rightarrow f(a,b)
 				\text{ då } (h,k) \rightarrow (0,0) \Rightarrow f \text{ kontinuerlig}
 			\)
 	\item Motexempel finns i boken s.51
@@ -604,7 +607,7 @@ För \(\geq\) 2 variabler gäller
 
 \subsubsection{Linjär avbildning}
 
-Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk = 
+Den linjära avbildningen \(df_{(a,b)}\) av typ \(\mathbb{R}^2 \rightarrow \mathbb{R}\), som definieras av \(df_{(a,b)}(h,k) = Ah + Bk =
 f_{x}^{\prime}(a,b)h + f_{y}^{\prime}(a,b)k\), kallas \underline{differentialen} av \(f\) i (a,b) \\
 ofta skrivs variablerna \(h=\,\mathrm{d}x\) \& \(k=\,\mathrm{d}y\) så \(df_{(a,b)}(\,\mathrm{d}x,\,\mathrm{d}y) = f_{x}^{\prime}(a,b)\,\mathrm{d}x + f_{y}^{\prime}(a,b)\,\mathrm{d}y\) eller kort \(df = f_{x}^{\prime}\,\mathrm{d}x + f_{y}^{\prime}\,\mathrm{d}y\)
 
@@ -616,16 +619,16 @@ ofta skrivs variablerna \(h=\,\mathrm{d}x\) \& \(k=\,\mathrm{d}y\) så \(df_{(a,
 
 \subsubsection*{Feluppskattning med \(df\)}
 
-Om \(\overline{\Delta x} = (\Delta x_{1},...,\Delta x_{n}) \in \mathbb{R}^n\) och \(f\) är differentierbar fås 
-\(f(\overline{x} + \overline{\Delta x}) - f(\overline{x}) = 
-f_{x_{1}}^{\prime}\Delta x_{1} + ... + f_{x_{n}}^{\prime}\Delta x_{n} + \underbrace{\rho(\Delta x_{1},...,\Delta x_{n})\sqrt{(\Delta x_{1})^2 + ... + (\Delta x_{n})^2}}_{\text{Restterm}} \approx df(\overline{\Delta x})\) 
+Om \(\overline{\Delta x} = (\Delta x_{1},...,\Delta x_{n}) \in \mathbb{R}^n\) och \(f\) är differentierbar fås
+\(f(\overline{x} + \overline{\Delta x}) - f(\overline{x}) =
+f_{x_{1}}^{\prime}\Delta x_{1} + ... + f_{x_{n}}^{\prime}\Delta x_{n} + \underbrace{\rho(\Delta x_{1},...,\Delta x_{n})\sqrt{(\Delta x_{1})^2 + ... + (\Delta x_{n})^2}}_{\text{Restterm}} \approx df(\overline{\Delta x})\)
 
 \subsubsection{Exempel 5}
 
 Bestäm rörelseenergin och uppskatta felet för massan \(m = 1.0 \pm 0.1\si{\kilogram}\) med hastigheten \(v = 4.0 \pm 0.2\si{\metre\per\second}\). \newline
 Formel för rörelseenergi: \(E = \frac{mv^2}{2} \si{\joule}\) \newline
 Utan fel: \(E = \frac{1*1.4^2}{2} = 8.0 \si{\joule}\) \newline
-Fel: 
+Fel:
 \[
 \begin{split}
 	\Delta E = E(m + \Delta m, v + \Delta v) - E(m,v) \approx dE(\Delta m,\Delta v) = \\
@@ -676,20 +679,20 @@ Fel:
 	\]
 	Motsvarande för \(\geq\) 3 variabler
 	\subsubsection*{Exempel 2}
-	Visa att \(xh_{x}^{\prime} - 2yh_{y}^{\prime} = 0 \quad \forall\) 2 variabel funktioner \(h(x,y)\) 
+	Visa att \(xh_{x}^{\prime} - 2yh_{y}^{\prime} = 0 \quad \forall\) 2 variabel funktioner \(h(x,y)\)
 	på formen \(h(x,y) = f(x^2y)\) där \(f\) är en envariabelfunktion. Lösning:
 	\[
 		xh_{x}^{\prime} - 2yh_{y}^{\prime} = xf^{\prime}(x^2y)2xy - 2yf^{\prime}(x^2y)x^2 = 0 \quad \forall f
 	\]
-	
+
 	\newpage
 	\item
 	\[
 	\begin{split}
 		\frac{d}{\,\mathrm{d}x}(f(\bar{g}(x))) = \frac{d}{\,\mathrm{d}x}(f(g_{1}(x),g_{2}(x))) \overset{\text{def av }\frac{d}{\,\mathrm{d}x}}{=} \\
-		= \lim_{l \rightarrow 0} \frac{f(\overbrace{g_{1}(x+l)}^{s+h},\overbrace{g_{2}(x+l)}^{t+k}) - 
+		= \lim_{l \rightarrow 0} \frac{f(\overbrace{g_{1}(x+l)}^{s+h},\overbrace{g_{2}(x+l)}^{t+k}) -
 		f(\overbrace{g_{1}(x)}^{s},\overbrace{g_{2}(x)}^{t})}{l} \underset{\text{diff.bar}}{=} \\
-		= \lim_{l \rightarrow 0} \frac{f_{s}^{\prime}(s,t)h+f_{t}^{\prime}(s,t)k+\sqrt{h^2+k^2}\rho(h,k)}{l} = 
+		= \lim_{l \rightarrow 0} \frac{f_{s}^{\prime}(s,t)h+f_{t}^{\prime}(s,t)k+\sqrt{h^2+k^2}\rho(h,k)}{l} =
 	\end{split}
 	\]
 	\[
@@ -704,7 +707,7 @@ Fel:
 		 f_{t}^{\prime}(s,t)\overbrace{\frac{g_{2}(x+l)-g_{2}(x)}{l}}^{\rightarrow g_{2}^{\prime}(x)}\pm
 		 \sqrt{\underbrace{\left(\frac{h}{l}\right)^2+\left(\frac{k}{l}\right)^2}
 		 _{\rightarrow (g_{1}^{\prime}(x))^2+(g_{2}^{\prime}(x))^2 \text{ begränsad}}}
-		 \overbrace{\rho(h,k)}^{\rightarrow 0} 
+		 \overbrace{\rho(h,k)}^{\rightarrow 0}
 		\right) =
 	\]
 	\[
@@ -735,7 +738,7 @@ Fel:
 \begin{equation} \label{eq:4.1}
 	f_{x}^{\prime} - f_{y}^{\prime} = y-x
 \end{equation}
-med bivillkoret 
+med bivillkoret
 \begin{equation}\label{eq:4.2}
 	f(x,0) = x^2
 \end{equation}
@@ -749,7 +752,7 @@ med bivillkoret
 \[
 \begin{split}
 	\text{Kedjeregeln } \left\{\begin{array}{rcl}
-		f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime} = 
+		f_{s}^{\prime}s_{x}^{\prime} + f_{t}^{\prime}t_{x}^{\prime} =
 		f_{s}^{\prime}*1 + f_{t}^{\prime}y \\
 		f_{s}^{\prime}s_{y}^{\prime} + f_{t}^{\prime}t_{y}^{\prime} =
 		f_{s}^{\prime}*1 + f_{t}^{\prime}x
@@ -834,7 +837,7 @@ Bestäm alla \(f(x,y)\) som uppfyller
 \[
 \left\{\begin{array}{rcl}
 	f_{x}^{\prime} = f_{u}^{\prime}u_{x}^{\prime} + f_{v}^{\prime}v_{x}^{\prime} = f_{u}^{\prime} + yf_{v}^{\prime} \\
-	f_{y}^{\prime} = f_{u}^{\prime}u_{y}^{\prime} + f_{v}^{\prime}v_{y}^{\prime} = xf_{v}^{\prime} 
+	f_{y}^{\prime} = f_{u}^{\prime}u_{y}^{\prime} + f_{v}^{\prime}v_{y}^{\prime} = xf_{v}^{\prime}
 \end{array}\right.
 \]
 
@@ -868,7 +871,7 @@ Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
 \]
 \[
 \begin{split}
-	\Rightarrow x^2f_{uv}'' = 0, \quad \forall (x,y) 
+	\Rightarrow x^2f_{uv}'' = 0, \quad \forall (x,y)
 	\Rightarrow f_{uv}'' = 0 \iff (f_{u}')_{v}' \\
 	\Rightarrow f_{u}^{\prime} = g(u) \text{ , godtycklig funktion }g(u) \\
 	\Rightarrow f = G(u) + h(v) \text{ , godtycklig funktion }h(v)
@@ -894,13 +897,13 @@ Sätt in i \eqref{eq:4.2} \(\Rightarrow\)
 \underline{Gradienten} av \(f(x,y)\) är \underline{vektorn} \(\nabla f =\) grad \(f = (f'_{x},f'_{y})\) \newline
 För \(g(x,y,z)\) är \(\nabla g = (g'_{x},g'_{y},g'_{z})\) och motsvarande för \(\geq\) 4 variabler \newline
 
-\underline{Hessianen} av \(f(x,y)\) resp \(g(x,y,z)\) är \underline{matrisen} 
+\underline{Hessianen} av \(f(x,y)\) resp \(g(x,y,z)\) är \underline{matrisen}
 \[Hf=
 \begin{pmatrix}
 f''_{xx} && f''_{xy} \\
 f''_{yx} && f''_{yy}
-\end{pmatrix}\] 
-\[\text{resp } Hg = 
+\end{pmatrix}\]
+\[\text{resp } Hg =
 \begin{pmatrix}
 g''_{xx} && g''_{xy} && g''_{xz} \\
 g''_{yx} && g''_{yy} && g''_{yz} \\
@@ -925,7 +928,7 @@ Ekvivalent för tangentlinje i \((x,y)\) är på tangenten \(\iff\) \newline
 \[\underbrace{(x-a,y-b)}_{\text{Parallell med }\bar{T}} \bullet \bar{N} = 0 \iff v_2x - v_1y = \underbrace{v_2a - v_1b}_{Konstant}\]
 
 \[
-	\text{Parameterform} 
+	\text{Parameterform}
 	\left\{\begin{array}{rcl}
 		x=a+tv_2 \\
 		y=b+tv_2
@@ -939,7 +942,7 @@ Ekvation för normallinjen: \((x,y)\) är på normalen \(\iff\)
 \]
 
 \[
-	\text{Parameterform} 
+	\text{Parameterform}
 	\left\{\begin{array}{rcl}
 		x=a+tv_1 \\
 		y=b-tv_2
@@ -963,7 +966,7 @@ Ekvation för normallinjen: \((x,y)\) är på normalen \(\iff\)
 \[\bar{r}(t) = \Big(x(t),y(t)\Big) = \Big(\cos{t}, \sin{t}\Big) \quad \text{[enhetscirkeln]}\]
 \[\text{Två punkter på kurvan } \bar{r}(t) \quad \& \quad \bar{r}(t+\Delta t)\]
 \[\begin{split}
-	\text{Låt } \Delta t \rightarrow 0 \Rightarrow \bar{T}(t) = r'(t) = 
+	\text{Låt } \Delta t \rightarrow 0 \Rightarrow \bar{T}(t) = r'(t) =
 	\lim_{\Delta t \rightarrow 0} \frac{\bar{r}(t+\Delta t) - \bar{r}}{\Delta t} = \Big(x'(t),y'(t)\Big) \\
 	= \text{ ger tangentvektorn till kurvan, exempelvis har enhetscirkeln } \\
 \end{split}\]
@@ -971,12 +974,12 @@ Ekvation för normallinjen: \((x,y)\) är på normalen \(\iff\)
 
 \item Nivåkurvor \(f(x,y) = C\)
 \paragraph{}
-Om \(f(x,y) = C\) parametriseras med t som \(\Big(x(t),y(t)\Big)\) ger kedjeregeln 
+Om \(f(x,y) = C\) parametriseras med t som \(\Big(x(t),y(t)\Big)\) ger kedjeregeln
 \[
 	0 = \frac{d}{dt} \overbrace{f\Big(x(t),y(t)\Big)}^{\text{konstant = C}} = f'_xx'(t)+f'_yy'(t) =
 	\underbrace{\Big(f'_x,f'_y\Big)}_{\nabla f} \bullet \underbrace{\Big(x'(t),y'(t)\Big)}_{\bar{T}}
 \]
-\[\Rightarrow \nabla f \text{ är normalvektor till nivåkurvan}\] 
+\[\Rightarrow \nabla f \text{ är normalvektor till nivåkurvan}\]
 
 \subsubsection*{Ex}
 Enhetscirkeln \(\Big[f(x,y)=x^2+y^2=1\Big]\) har \(\nabla f = \Big(2x,2y\Big) = 2\Big(x,y\Big)\)
@@ -984,9 +987,9 @@ Enhetscirkeln \(\Big[f(x,y)=x^2+y^2=1\Big]\) har \(\nabla f = \Big(2x,2y\Big) = 
 \item
 \subsubsection*{Grafer}
 
-\(y=h(x)\) kan föras på 
+\(y=h(x)\) kan föras på
 \begin{itemize}
-\item parameterform: \(t=x\) ger \(\Big(x,y\Big) = \Big(t,h(t)\Big) \) 
+\item parameterform: \(t=x\) ger \(\Big(x,y\Big) = \Big(t,h(t)\Big) \)
 \(\Rightarrow \bar{T} = \Big(x',y'\Big) = \Big(t,h(t)\Big)\)
 
 \item nivåkurveform: sätt \(f(x,y) = y-h(x) = 0\) \newline
@@ -1009,7 +1012,7 @@ Med kedjeregeln visas på liknande sätt som för nivåkurvor att
 \subsubsection{Exempel 1}
 
 Enhetssfären \(g(x,y,z) = x^2 + y^2 + z^2 = 1\) har \(\bar{N} = \nabla g = (2x,2y,2z)\) \newline
-I punkten \(P:\left(\frac{2}{3},\frac{1}{3},\frac{2}{3}\right)\) är 
+I punkten \(P:\left(\frac{2}{3},\frac{1}{3},\frac{2}{3}\right)\) är
 \(\bar{N} = \left(2*\frac{2}{3},2*\frac{1}{3},2*\frac{2}{3}\right)\) och tangentplanet i P är \newline
 \(\left(x-\frac{2}{3},y-\frac{1}{3},z-\frac{2}{3}\right) = \bar{N} = 0 \iff 2x+y+2z = 3\) \newline
 
@@ -1025,8 +1028,8 @@ har i punkten \((1,2,5)\)
 \[\bar{N} = \Big(f'_x(1,2),f'_y(1,2),-1\Big) = \Big(2,4,-1\Big)\]
 
 \subsubsection{Definition}
-\underline{Riktningsderivatan} av \(f(x,y)\) i punkten \((a,b)\) och riktning \(\bar{v} = (v_1,v_2)\) där 
-\(\abs{\bar{v}} = \sqrt{v^2_1+v^2_2} = 1\) är 
+\underline{Riktningsderivatan} av \(f(x,y)\) i punkten \((a,b)\) och riktning \(\bar{v} = (v_1,v_2)\) där
+\(\abs{\bar{v}} = \sqrt{v^2_1+v^2_2} = 1\) är
 \[f'_{\bar{v}}(a,b) = \lim_{t \rightarrow 0}\frac{f(a+tv_1,b+tv_2)-f(a,b)}{t}\]
 
 Mäter hur \(f\) ändras i \(\bar{v}\):s riktning \newline
@@ -1047,9 +1050,9 @@ f'_{\bar{v}} = \nabla f \bullet \bar{v}\]
 \subsubsection{Exempel 4}
 \[ f(x,y,z) = xy^2z^3 \Rightarrow \nabla f = (f'_x,f'_y,f'_z) = (y^2z^3,2xyz^3,3xy^2z^2) \]
 
-I punkten \((a,b,c) = (2,-1,1)\) och i riktningen \(\bar{v} = \frac{1}{\sqrt{5}}(1,0,2)\) från punkten är 
+I punkten \((a,b,c) = (2,-1,1)\) och i riktningen \(\bar{v} = \frac{1}{\sqrt{5}}(1,0,2)\) från punkten är
 
-\[f'_{\bar{v}}(2,-1,1) = \nabla f(a,b,c) \bullet \bar{v} = (1,-4,6) \bullet \frac{1}{\sqrt{5}}(1,0,2) 
+\[f'_{\bar{v}}(2,-1,1) = \nabla f(a,b,c) \bullet \bar{v} = (1,-4,6) \bullet \frac{1}{\sqrt{5}}(1,0,2)
 = \frac{1 * 1 - 4 * 0 + 6 * 2}{\sqrt{5}} = \frac{13}{\sqrt{5}}\]
 
 \subsubsection{Allmänt}
@@ -1080,7 +1083,7 @@ Maximal då \(\alpha =0\), dvs då \(\bar{v}\) väljs åt samma håll som \(\nab
 Motsvarande för lokalt maximum och \(\geq 3\) variabler.
 
 \subsubsection{Hur hittas lokala max \& min?}
-Om \(z=f(x,y)\) har lokalt min i \((a,b)\) \& \(L\) parallell med \(x\)-axeln \(\big(y=b=\)konstant på \(L \big)\) så har på \(L\) envaribelfunktionen \(g(x) = f(x,b)\) ett lokalt min i \(x=a \Rightarrow g'(a) = 0\) men 
+Om \(z=f(x,y)\) har lokalt min i \((a,b)\) \& \(L\) parallell med \(x\)-axeln \(\big(y=b=\)konstant på \(L \big)\) så har på \(L\) envaribelfunktionen \(g(x) = f(x,b)\) ett lokalt min i \(x=a \Rightarrow g'(a) = 0\) men
 \(g'(a) = f'_x(a,b)\) \big(enligt def av derivator\big). Samma i \(y\)-led.
 
 \subsubsection{Sats}
@@ -1102,7 +1105,7 @@ En punkt $\bar{a}$ där $\nabla f(\bar{a}) = \bar{0}$ kallas \underline{station�
 \paragraph{Envarre:} teckentabell eller tecken på $f'(a)$
 \paragraph{Flervarre:} tecken på $H f(\bar{a})$ , motiveras från Taylors formel
 
-Envariabel - maclaurin: 
+Envariabel - maclaurin:
 \begin{equation}\label{eq:6.1}
 	g(t) = g(0) + g'(0)t + t^2\frac{g''(0)}{2} + \cdots + t^{(p)}\frac{g^{(p)}(0)}{p!} + \overbrace{\mathcal{R}_p}^{rest} \Big(*\Big)
 \end{equation}
@@ -1142,7 +1145,7 @@ $\Rightarrow$ Taylors formel för $f(x,y) \in C^{p+1}$
 	+ \frac{1}{p!}\Big(h\frac{\partial}{\partial x} + k\frac{\partial}{\partial y})^p * f(a,b) + \mathcal{R}_p \text{ , där man kan visa } \mathcal{R}_p = \mathcal{O}\left(\sqrt{h^2 + k^2}^{p+1}\right)
 \end{split}
 \]
-För $p=2$ och $n$ variabler, $\bar{a} = (a_1, \ldots ,a_n) , \bar{h} = (h_1, \ldots ,h_n) \left(\Rightarrow h^{-1} \text{ kolonn } \right)$ fås 
+För $p=2$ och $n$ variabler, $\bar{a} = (a_1, \ldots ,a_n) , \bar{h} = (h_1, \ldots ,h_n) \left(\Rightarrow h^{-1} \text{ kolonn } \right)$ fås
 $f(\bar{a}+\bar{h}) = f(\bar{a}) + \bar{h} * \nabla f(\bar{a}) + \underbrace{\frac{1}{2}\bar{h}(Hf)(\bar{a})h^{-1}}_{Q(h)} + \mathcal{O}\left(\abs{h^3}\right)$
 \newpage
 $Q(\bar{h})$ är en kvadratisk form (lin.alg). I $2$ variabler, se \eqref{eq:6.2}, i $3$ variabler:
@@ -1169,7 +1172,7 @@ $$
 $$
 	Q(\bar{h}) > 0 , \text{för vissa } \bar{h} \text{ \& } < 0 \text{ för andra}
 $$
-\item Q positivt semidefinit (motsv. neg semidefinit) 
+\item Q positivt semidefinit (motsv. neg semidefinit)
 Ingen slutsats om max, min eller sadelpunkt kan dras
 $$
 	Q(\bar{h}) \geq 0 \quad\forall \bar{h} \text{ men } \exists\bar{h} \neq 0 \text{ med } Q(\bar{h}) = 0
@@ -1181,12 +1184,12 @@ $$
 \begin{enumerate}
 \item Digonalisering. Spektralsatsen $\Rightarrow Hf = TDT^{-1}$, $T^{-1} = T^T$
 $$
-	D = 
+	D =
 	\begin{pmatrix}
 		\lambda_1 & 0 & 0 \\
 		0 & \ddots & 0 \\
 		0 & 0 & \lambda_n
-	\end{pmatrix} 
+	\end{pmatrix}
 	, \lambda_j \text{ egenvärden till } Hf
 $$
 $$
@@ -1195,19 +1198,19 @@ $$
 
 \paragraph{De fyra fallen}
 \begin{enumerate}
-\item 
+\item
 $$ \lambda_j > 0, \quad \forall j \text{ pos.def} $$
-\item 
+\item
 $$ \lambda_j < 0, \quad \forall j \text{ neg.def} $$
-\item 
+\item
 $$ \exists\lambda_j > 0 \text{ \& } \exists\lambda_k < 0 \text{ indef} $$
-\item 
+\item
 $$ \lambda_j \geq 0, \quad \forall j \quad\exists\lambda_k = 0 \text{ pos.semidef} $$
 \end{enumerate}
 
 \paragraph{Exempel}
 \begin{equation}\label{eq:6.3}
-	Q(h,k,l) = h^2 + 2k^2 + 2l^2 + 2hk - 2hl + 2kl = 
+	Q(h,k,l) = h^2 + 2k^2 + 2l^2 + 2hk - 2hl + 2kl =
 	\begin{pmatrix}
 		h & k & l
 	\end{pmatrix}
@@ -1226,7 +1229,7 @@ $$
 	\det{Hf - \lambda I} = 0 \Rightarrow \cdots \Rightarrow \lambda_1 = 3, \lambda_{2,3} = 1 \pm \sqrt{2}
 $$
 $$
-	\Rightarrow Q = 
+	\Rightarrow Q =
 	\begin{pmatrix}
 		\hat{h} & \hat{k} & \hat{l}
 	\end{pmatrix}
@@ -1286,7 +1289,7 @@ $$
 	f''_{xx} = 6x \quad f''_{xy} = 6 \quad f''_{yy} = 6
 $$
 \begin{align*}
-	I(3,-3): Q &= 
+	I(3,-3): Q &=
 	\begin{pmatrix}
 		h & k
 	\end{pmatrix}
@@ -1295,11 +1298,11 @@ $$
 		6 & 6
 	\end{pmatrix}
 	\begin{pmatrix}
-		h \\ 
+		h \\
 		k
 	\end{pmatrix}
 	\Rightarrow \cdots \Rightarrow \lambda_{1,2} = 12 \pm \sqrt{62} > 0 \Rightarrow \text{pos.def} \Rightarrow \text{lok.min} \\
-	I(-1,1): Q &= 
+	I(-1,1): Q &=
 	\begin{pmatrix}
 		h & k
 	\end{pmatrix}
@@ -1308,7 +1311,7 @@ $$
 		6 & 6
 	\end{pmatrix}
 	\begin{pmatrix}
-		h \\ 
+		h \\
 		k
 	\end{pmatrix}
 	\Rightarrow \lambda_1 = 6\sqrt{2} > 0 \text{ \& } \lambda_2 = -6\sqrt{2} < 0 \Rightarrow \text{indef} \Rightarrow \text{sadelpunkt}
@@ -1327,7 +1330,7 @@ $$
 
 Funktioner av typen \(\mathbb{R} \rightarrow \mathbb{R}^m\) kallas \underline{kurvor} i \(\mathbb{R}^m\). För \(m=3\) är \(\bar{r}(t) = \Big(x(t),y(t),z(t)\Big)\) en kurva i rummet, variabeln t kallas \underline{parametern} \newline
 
-Tangentvektorn är \(\bar{r}'(t) = \Big(x'(t),y'(t),z'(t)\Big)\) (som i 2D). Funktioner av typen \(\mathbb{R}^2 \rightarrow \mathbb{R}^3\) beskriver \underline{ytor i rummet} på parameterform 
+Tangentvektorn är \(\bar{r}'(t) = \Big(x'(t),y'(t),z'(t)\Big)\) (som i 2D). Funktioner av typen \(\mathbb{R}^2 \rightarrow \mathbb{R}^3\) beskriver \underline{ytor i rummet} på parameterform
 \(\bar{r}(s,t) = \Big(x(s,t),y(s,t),z(s,t)\Big)\), s,t parametrar
 
 \subsubsection{Exempel 1 [Plan på parameterform]}
@@ -1335,7 +1338,7 @@ Tangentvektorn är \(\bar{r}'(t) = \Big(x'(t),y'(t),z'(t)\Big)\) (som i 2D). Fun
 \begin{equation} \label{eq:7.1}
 	\bar{r}(s,t) = (1+s+t,2-s,3t) = \underbrace{(1,2,0)}_{\text{en punkt i planet}} + \overbrace{s(1,-1,0) + t(1,0,3)}^{\text{vektorer parallella med planet}}
 \end{equation}
-\(\frac{\partial \bar{r}}{\partial s}\) och \(\frac{\partial \bar{r}}{\partial t}\) är tangentvektorer till ytan, och spänner upp tangentplanet vars normal 
+\(\frac{\partial \bar{r}}{\partial s}\) och \(\frac{\partial \bar{r}}{\partial t}\) är tangentvektorer till ytan, och spänner upp tangentplanet vars normal
 \(\bar{N} = \frac{\partial \bar{r}}{\partial s} * \frac{\partial \bar{r}}{\partial t}\)
 För planet i \eqref{eq:7.1} är \(\frac{\partial \bar{r}}{\partial s} = (1,-1,0) \quad\&\quad \frac{\partial \bar{r}}{\partial t} = (1,0,3)\)
 
@@ -1356,7 +1359,7 @@ Vi får
 För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x_n)\Big)\) av typ \(\mathbb{R}^n \rightarrow \mathbb{R}^m\) definieras \underline{funktionalmatrisen} (Jacobi-matrisen)
 
 \[
-	\bar{f}'(\bar{x}) = \frac{\partial(f_1, \cdots ,f_m)}{\partial(x_1, \cdots ,x_n)} = 
+	\bar{f}'(\bar{x}) = \frac{\partial(f_1, \cdots ,f_m)}{\partial(x_1, \cdots ,x_n)} =
 	\begin{pmatrix}
 		\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
 		\vdots & & \vdots \\
@@ -1366,7 +1369,7 @@ För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x
 
 \subsubsection{Exempel 3}
 \begin{equation} \label{eq:7.3}
-	\bar{f}(\bar{x}) = \Big(f_1(x_1,x_2),f_2(x_1,x_2)\Big) = (x_1+x_2,x_1x_2) \Rightarrow \frac{\partial(f_1,f_2)}{\partial(x_1,x_2)} = 
+	\bar{f}(\bar{x}) = \Big(f_1(x_1,x_2),f_2(x_1,x_2)\Big) = (x_1+x_2,x_1x_2) \Rightarrow \frac{\partial(f_1,f_2)}{\partial(x_1,x_2)} =
 	\begin{pmatrix}
 		1 & 1 \\
 		x_2 & x_1
@@ -1376,7 +1379,7 @@ För \(\bar{f}(\bar{x}) = \Big(f_1(x_1, \cdots ,x_n), \cdots ,f_m(x_1, \cdots ,x
 \subsubsection{Exempel 4}
 Variabelbyte \((x,y) = (\rho\cos{\varphi},\rho\sin{\varphi})\) till polärakoordinater har matris
 \begin{equation} \label{eq:7.4}
-	\frac{\partial(x,y)}{\partial(\rho,\varphi)} = 
+	\frac{\partial(x,y)}{\partial(\rho,\varphi)} =
 	\begin{pmatrix}
 		x'_\rho & x'_\varphi \\
 		y'_\rho & y'_\varphi
@@ -1406,7 +1409,7 @@ Tidigare kedjeregeln för varje \(f_j\big(\bar{g}(\bar{x})\big)\) i \(\bar{f}\bi
 För \underline{\(m=n\)} har \(\bar{f}(\bar{x} \quad \mathbb{R}^n \rightarrow \mathbb{R}^n\) funktionaldeterminant (Jacobi-determinant)
 
 \[
-	\det\bar{f}'(\bar{x}) = \frac{\mathrm{d}(f_1, \ldots ,f_n)}{\mathrm{d}(x_1, \ldots ,x_n)} = 
+	\det\bar{f}'(\bar{x}) = \frac{\mathrm{d}(f_1, \ldots ,f_n)}{\mathrm{d}(x_1, \ldots ,x_n)} =
 	\begin{vmatrix}
 		\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
 		\vdots & & \vdots \\
@@ -1414,7 +1417,7 @@ För \underline{\(m=n\)} har \(\bar{f}(\bar{x} \quad \mathbb{R}^n \rightarrow \m
 	\end{vmatrix}
 \]
 
-I \eqref{eq:7.3} är \(\frac{\mathrm{d}(f_1,f_2)}{\mathrm{d}(x_1,x_2)} = 
+I \eqref{eq:7.3} är \(\frac{\mathrm{d}(f_1,f_2)}{\mathrm{d}(x_1,x_2)} =
 \begin{vmatrix}
 	1 & 1 \\
 	x_2 & x_1
@@ -1423,7 +1426,7 @@ I \eqref{eq:7.3} är \(\frac{\mathrm{d}(f_1,f_2)}{\mathrm{d}(x_1,x_2)} =
 
 \subsection{Linjärisering av \texorpdfstring{\(\bar{f}(\bar{x})\)}{f(x)}}
 
-Antag \(m=n=2\) och skriv \(\bar{f}(x,y) = 
+Antag \(m=n=2\) och skriv \(\bar{f}(x,y) =
 \begin{pmatrix}
 	u(x,y) \\
 	v(x,y)
@@ -1437,14 +1440,14 @@ Taylors formel för \(u \quad\&\quad v\) kring punkten \((a,b)\) ger
 	a+h = x, h = x-a \\
 	b+k = y, k = y-b
 \end{array}\right/
-\bar{f}(x,y) = 
+\bar{f}(x,y) =
 \begin{pmatrix}
 	u(a,b) + u'_x(a,b)(x-a) + u'_y(a,b)(y-b) + rest \\
 	\text{samma för v}
 \end{pmatrix} \approx
 \]
 \[
-\approx 
+\approx
 \begin{pmatrix}
 	u(a,b) \\
 	v(a,b)
@@ -1530,7 +1533,7 @@ Linjär avbildning, \(
 \begin{matrix}
 \bar{f} & [r\ddot{o}d] \\
 A\bar{x}+\bar{C} & [bl\dot{a}]
-\end{matrix}\) 
+\end{matrix}\)
 
 \begin{figure}[ht]
 \usetikzlibrary{patterns}
@@ -1556,19 +1559,19 @@ $$
 	\begin{vmatrix}
 		x'_r & x'_\theta & x'_\varphi \\
 		y'_r & y'_\theta & y'_\varphi \\
-		z'_r & z'_\theta & z'_\varphi 
+		z'_r & z'_\theta & z'_\varphi
 	\end{vmatrix}
 	= \cdots = r^2\sin{\theta} \geq 0 \text{  (ty }0 \leq \theta \leq \pi )
 $$
 
 \subsubsection{Invers}
-\paragraph{LinAlg} 
+\paragraph{LinAlg}
 Om $\bar{u} = \bar{f}(\bar{x}) = A\bar{x}$ linjär av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ ($A$ en $n \,\times\, n$ matris, $\bar{u},\bar{x}$ kolonner) och $\det{\bar{f}'} = \det{A} \neq 0$
 $\, \exists$ invers $\bar{x} = A^{-1}\bar{u} = \bar{f}^{-1}(\bar{u})$ med $\det{\bar{f}'^{-1}} = \det{A^{-1}} = \frac{1}{\det{A}} = \frac{1}{\det{\bar{f}'}}$ \newline
 
 För allmänna olinjära $\bar{f}(\bar{x})$ kan man bevisa inversa funktionssatsen \newline
 
-\begin{proof}$f \in C^1$ av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ och $\det{f'(\bar{a})} \neq 0 \Rightarrow \exists$ omgivningar $\Omega_1, \, \Omega_2$ av $\bar{a}$ respektive $\bar{f}(\bar{a})$ så att 
+\begin{proof}$f \in C^1$ av typ $\mathbb{R}^n \rightarrow \mathbb{R}^n$ och $\det{f'(\bar{a})} \neq 0 \Rightarrow \exists$ omgivningar $\Omega_1, \, \Omega_2$ av $\bar{a}$ respektive $\bar{f}(\bar{a})$ så att
 $\bar{f}: \, \Omega_1 \rightarrow \Omega_2$ är bijektiv och därmed inverterbar med invers $\bar{f}^{-1}$. Även $\bar{f}^{-1} \in C^1$ och $\det{(\bar{f}^{-1})'} = \frac{1}{\det{\bar{f}'}}$\end{proof}
 
 \paragraph{OBS!}
@@ -1579,7 +1582,7 @@ $\bar{f}: \, \Omega_1 \rightarrow \Omega_2$ är bijektiv och därmed inverterbar
 \end{enumerate}
 
 \subsubsection{Exempel}
-$\bar{f}(x,y) = 
+$\bar{f}(x,y) =
 \begin{pmatrix}
 	u(x,y) \\
 	v(x,y)
@@ -1589,16 +1592,16 @@ $\bar{f}(x,y) =
 	e^x + 2y
 \end{pmatrix} \in C^1
 $
-ej globalt inverterbar \newline 
+ej globalt inverterbar \newline
 $\exists \, \bar{a} \neq \bar{b}$ med $\bar{f}(\bar{a}) = \bar{f}(\bar{b})$ \newline
 
-Kring t.ex. $(a,b) = (1,0)$ blir $\det{\bar{f}^{-1}(1,0)} = 
+Kring t.ex. $(a,b) = (1,0)$ blir $\det{\bar{f}^{-1}(1,0)} =
 \begin{vmatrix}
 	0 & 1 \\
 	e & 2
 \end{vmatrix} = -e \neq 0 \Rightarrow $ \newline
 
-$\Rightarrow \, \exists$ invers $\bar{f}^{-1}(u,v) = 
+$\Rightarrow \, \exists$ invers $\bar{f}^{-1}(u,v) =
 \begin{pmatrix}
 	x(u,v) \\
 	y(u,v)
@@ -1631,7 +1634,7 @@ Betyder att till varje x måste det svara \underline{precis ett} \(y\)
 \end{equation}
 två värden på y för varje x, \underline{inte en funktion}
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
    \tkzInit[xmax=4,ymax=4,xmin=-4,ymin=-4]
    \tkzAxeXY
@@ -1661,10 +1664,10 @@ Alltså: \(F'_y = 0\) ger problem
 \end{split}
 \end{equation}
 
-Här kan vi lösa ut 
+Här kan vi lösa ut
 
 \[y = \sqrt[3]{x} = x^\frac{1}{3} = g(x) \quad \forall x \in \mathbb{R}\]
-trots att 
+trots att
 \[F'_y = -3^2 = 0\]
 i origo (men kurvan vänder ej). Dock är
 \[g'(x) = \frac{1}{3x^\frac{2}{3}}\]
@@ -1676,7 +1679,7 @@ Man kan visa
 
 \paragraph{Kommentarer}
 \begin{itemize}
-\item Med \underline{lokalt} menas på någon (eventuellt liten) mängd kring \((a,b)\) på nivåkurvan. I \eqref{eq:8.2} \& \eqref{eq:8.3} ger \((a,b) = (0,0)\) problem, 
+\item Med \underline{lokalt} menas på någon (eventuellt liten) mängd kring \((a,b)\) på nivåkurvan. I \eqref{eq:8.2} \& \eqref{eq:8.3} ger \((a,b) = (0,0)\) problem,
 ingen \(g\) finns i \eqref{eq:8.2} \& \(g \notin C^1\) i \eqref{eq:8.3} men \(F \in C^1\).
 \item Motsvarande gäller att \(x\) kan lösas ut som \(x = h(y)\) om \(F'_x(a,b) \neq 0\)
 \item Med \underline{implicit} menas att satsen bara säger att funktionen \(g\) finns, inte hur \(g\) beräknas \newline
@@ -1713,13 +1716,13 @@ Trots att \(g(x)\) är okänd kan vi få ut \(g'(x)\) på två olika sätt
 \]
 Derivera \(g(x) \Rightarrow\)
 \begin{equation} \label{eq:8.6}
-	3x^2g(x)^2 + 2x^3g(x)g'(x) + 5g(x)^4g'(x)\sin{x} + g(x)^5\cos{x} + g'(x) + 2 = 0 
+	3x^2g(x)^2 + 2x^3g(x)g'(x) + 5g(x)^4g'(x)\sin{x} + g(x)^5\cos{x} + g'(x) + 2 = 0
 \end{equation}
 Lös ut \(g'(x)\), ger samma som i \eqref{eq:8.5} Även \(g''(x)\) kan beräknas genom implicit derivering av \eqref{eq:8.6}
 
 \subsection{3 variabler, 1 funktion}
 
-Ur \(F(x,y,z) = C\) \Big(\(F \in C^1\) , nivåyta geometriskt\Big) kan t.ex. \(z\) lösas ut som en \(C^1\)-funktion av \(x \& y\) , \(z = g(x,y)\) , 
+Ur \(F(x,y,z) = C\) \Big(\(F \in C^1\) , nivåyta geometriskt\Big) kan t.ex. \(z\) lösas ut som en \(C^1\)-funktion av \(x \& y\) , \(z = g(x,y)\) ,
 lokalt kring \((a,b,c)\) på ytan om \(F'_z(a,b,c) \neq 0\) \Big(\(\nabla F\) ej parallell med \(xy\)-planet\Big)
 
 \paragraph{Implicit derivering/kedjeregeln}
@@ -1768,7 +1771,7 @@ Motsvarande om \(x\) eller \(y\) ska lösas ut
 
 Algebraiskt tolkat kan då \(y = h(x) \quad\&\quad z = j(x)\) lösas ut ur systemet som en funktion av \(x\) (lokalt kring \(P\))
 
-\subsubsection{Exempel 6} 
+\subsubsection{Exempel 6}
 \begin{equation}\label{eq:8.8}
 	\begin{Bmatrix}
 		F(x,y,z) = x^4 + yz = 1 & F(-1,0,2) = 1 \\
@@ -1797,7 +1800,7 @@ Volymen av en tunn skiva ges av $dV = A(x)\,\mathrm{d}x$, den hela volymen ges a
 \subsubsection{Exempel}
 Låt D vara mängden $\left\{\begin{array}{rcl} 0 \leq x \leq 2 \\ 0 \leq y \leq x^2\end{array}\right.$ D kan också skrivas $\left\{\begin{array}{rcl} 0 \leq y \leq 4 \\ \sqrt{y} \leq x \leq 2\end{array}\right.$
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
 	\begin{axis}
 	\addplot[name path=f,domain=0:2,blue] {x^2};
@@ -1806,7 +1809,7 @@ Låt D vara mängden $\left\{\begin{array}{rcl} 0 \leq x \leq 2 \\ 0 \leq y \leq
 	\addplot [
         thick,
         color=blue,
-        fill=blue, 
+        fill=blue,
         fill opacity=0.05
 	]
     fill between[
@@ -1824,7 +1827,7 @@ Låt D vara mängden $\left\{\begin{array}{rcl} 0 \leq x \leq 2 \\ 0 \leq y \leq
 Låt $f(x,y) = xy^2$ \newline
 Vad blir volymen mellan ytan $z = xy^2$ och $xy$-planet ovanför D?
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
 	\begin{axis}
 	\addplot[name path=f,domain=0:1,blue] {x^2};
@@ -1833,7 +1836,7 @@ Vad blir volymen mellan ytan $z = xy^2$ och $xy$-planet ovanför D?
     \addplot [
         thick,
         color=blue,
-        fill=blue, 
+        fill=blue,
         fill opacity=0.05
     ]
     fill between[
@@ -1875,7 +1878,7 @@ Samma svar såklart!
 Att integrera en variabel i taget kallas \underline{upprepade enkelintegraler}
 \subsubsection{Steg 1}
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
    \tkzInit[xmax=5,ymax=5,xmin=-1,ymin=-1]
    \tkzAxeXY
@@ -1897,7 +1900,7 @@ $$
 
 \newpage
 \subsubsection{Steg 2} \label{sec:Steg 2}
-Om $\phi_1 \leq f \leq \phi_2$ på $\triangle$, $\phi_1, \, \phi_2$ trappfunktioner, så kallas $I(\phi_1)$ en undersumma till $f$ på $\triangle$ och $I(\phi_2)$ en översumma. 
+Om $\phi_1 \leq f \leq \phi_2$ på $\triangle$, $\phi_1, \, \phi_2$ trappfunktioner, så kallas $I(\phi_1)$ en undersumma till $f$ på $\triangle$ och $I(\phi_2)$ en översumma.
 $f$ kallas \underline{integrerbar} över $\triangle$ om $\forall \epsilon > 0 \, \exists$ sådana $\phi_1, \, \phi_2$ med $I(\phi_2) - I(\phi_1) < \epsilon$.
 Man kan bevisa att då finns ett unikt tal $k$ så att $I(\phi_1) \leq k \leq I(\phi_2) \forall$ sådana $\phi_1, \, \phi_2$ \newline
 
@@ -1913,7 +1916,7 @@ Kort sammanfattning:
 \subsubsection{Steg 3}
 $D$ är en godtycklig mängd, $D \subset \triangle$ \newline
 $$
-	\text{Sätt } f_D = 
+	\text{Sätt } f_D =
 	\begin{cases}
 		f & \quad \text{på } D \\
 		0 & \quad \text{utanför } D \\
@@ -1929,7 +1932,7 @@ $$
 Man visar att $\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y \, \exists$ om $D$ begränsad, $f$ beror på $D$ $\Big( \abs{f(x,y)} \leq M \text{ på } D \Big)$ och $f$ kontinuerlig utom möjligen på en \underline{nollmängd};
 en mängd $N$ som $\forall \epsilon > 0$ kan täckas över med rektanglar med total area $< \epsilon$. T.ex. kan $N$ vara en vanlig kurva (som $D$:s rand). \newline
 
-Vanliga räknelagar gäller, t.ex. 
+Vanliga räknelagar gäller, t.ex.
 
 $$
 	\iint_D \Big(f(x,y)+g(x,y)\Big) \,\mathrm{d}x\,\mathrm{d}y = \iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y + \iint_D g(x,y) \,\mathrm{d}x\,\mathrm{d}y
@@ -1937,7 +1940,7 @@ $$
 
 \newpage
 \subsubsection{Exempel}
-Beräkna $I = \iint_D x\sin{xy} \,\mathrm{d}x\,\mathrm{d}y$   då $D: 
+Beräkna $I = \iint_D x\sin{xy} \,\mathrm{d}x\,\mathrm{d}y$   då $D:
 \begin{cases}
 	0 \leq x \leq \frac{\pi}{2} \\
 	0 \leq y \leq 1 \\
@@ -1954,7 +1957,7 @@ Enklast att börja med att integrera över $y$
 Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mathrm{d}x$  \newline
  $\int e^{y^2} \,\mathrm{d}y = ???$ Enklare att börja med $x$
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
 \begin{tikzpicture}
 	\begin{axis}
 	\addplot[name path=f,domain=0:1,blue] {x^2};
@@ -1964,7 +1967,7 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
     \addplot [
         thick,
         color=blue,
-        fill=blue, 
+        fill=blue,
         fill opacity=0.05
     ]
     fill between[
@@ -1985,7 +1988,7 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
 \end{align*}
 
 \newpage
-\subsection{Definition} 
+\subsection{Definition}
 \underline{Arean} av en mängd $D$ i $xy$-planet är Arean$(D) = \iint_D \,\mathrm{d}x\,\mathrm{d}y$ \label{subsec:Area}
 
 \subsubsection{Exempel}
@@ -2010,7 +2013,7 @@ Beräkna $I = \int_0^1 \left( \int_{x^2}^1 xe^{y^2} \,\mathrm{d}y \right) \,\mat
 \newpage
 \section{Föreläsning X}
 \subsection{Variabelbyte i dubbelintegraler - Sats}
-Om $D$ i $xy$-planet avbildas \underline{bijektivt} på $E$ i $uv$-planet (till varje punkt $(x,y) \in D$ hör en punkt $(u,v) \in E$ och omvänt) med \(\frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)} = 
+Om $D$ i $xy$-planet avbildas \underline{bijektivt} på $E$ i $uv$-planet (till varje punkt $(x,y) \in D$ hör en punkt $(u,v) \in E$ och omvänt) med \(\frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)} =
 \begin{vmatrix}
 	x'_u & x'_v \\
 	y'_u & y'_v
@@ -2018,7 +2021,7 @@ Om $D$ i $xy$-planet avbildas \underline{bijektivt} på $E$ i $uv$-planet (till 
 så är $\iint_D f(x,y) \,\mathrm{d}x\,\mathrm{d}y = \iint_E f\Big( x(u,v),y(u,v) \Big)\abs{\frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)}}\,\mathrm{d}u\,\mathrm{d}v$
 \subsubsection{Bevisidé}
 Approximera trappfunktionen $\phi$ \newline
-För att integralens värde inte ska ändras måste vi multiplicera med 
+För att integralens värde inte ska ändras måste vi multiplicera med
 $$
 	\frac{1}{
 	\begin{vmatrix}
@@ -2029,11 +2032,11 @@ $$
 		u'_x & u'_y \\
 		v'_x & v'_y
 	\end{vmatrix}}
-	= 
+	=
 	\begin{vmatrix}
 		x'_u & x'_v \\
 		y'_u & y'_v
-	\end{vmatrix} 
+	\end{vmatrix}
 	= \frac{\mathrm{d}(x,y)}{\mathrm{d}(u,v)}
 $$
 
@@ -2052,11 +2055,11 @@ $$\text{Byt till polära koordinater: } \left\{
 \end{array}\right.
 \Rightarrow D\text{ övergår i } E$$
 
-$$E: 
+$$E:
 \begin{cases}
 	0 \leq \rho \leq \sqrt{3} \\
 	\frac{\pi}{2} \leq \varphi \leq \pi
-\end{cases} 
+\end{cases}
 \frac{\,\mathrm{d}x\,\mathrm{d}y}{\,\mathrm{d}\rho\,\mathrm{d}\varphi} = \text{se \vref{Rho}} = \rho $$
 
 \begin{align*}
@@ -2120,7 +2123,7 @@ $\,\mathrm{d}x\,\mathrm{d}y$ byts mot $ab\,\mathrm{d}u\,\mathrm{d}v$, sedan kan 
 
 $$\iiint_D f(x,y,z) \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$$
 
-definieras också med över- och undersummor. Ingen rent geometrisk tolkning i 3D ty behövs $4$ axlar för $x,y,z$ och $f$. 
+definieras också med över- och undersummor. Ingen rent geometrisk tolkning i 3D ty behövs $4$ axlar för $x,y,z$ och $f$.
 Fysikaliska tolkningar är att om $f(x,y,z)$ är en densitet/täthet (mass-,laddnigs-,...) så ger integralen det totala värdet på storheten (massa,laddning,...). \newline
 
 \underline{Volymen} av $D$ \underline{definieras} som
@@ -2132,7 +2135,7 @@ kan beräknas med upprepade enkelintegraler
 
 \subsubsection{Exempel} \label{subsec:intordn}
 
-Beräkna $I = \iiint_D z \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ då $D$ ges av 
+Beräkna $I = \iiint_D z \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z$ då $D$ ges av
 $\begin{cases}
 	0 \leq x \leq 1 \\
 	x \leq y \leq 1 \\
@@ -2140,9 +2143,9 @@ $\begin{cases}
 \end{cases}$
 
 \begin{align*}
-	I &= \int_0^1 \left(\int_x^1 \left( \int_0^{(y-x)^2} z\,\mathrm{d}z\right)\,\mathrm{d}y\right)\,\mathrm{d}x = 
+	I &= \int_0^1 \left(\int_x^1 \left( \int_0^{(y-x)^2} z\,\mathrm{d}z\right)\,\mathrm{d}y\right)\,\mathrm{d}x =
 	\int_0^1 \left(\int_x^1 \left[ \frac{z^2}{2} \right]_0^{(y-x)^2}\,\mathrm{d}y\right)\,\mathrm{d}x = \\
-	&= \int_0^1 \left(\left[\frac{(y-x)^5}{10}\right]_x^1\right)\,\mathrm{d}x = 
+	&= \int_0^1 \left(\left[\frac{(y-x)^5}{10}\right]_x^1\right)\,\mathrm{d}x =
 	\int_0^1 \left(\frac{(1-x)^5}{10} - \frac{(x-x)^5}{10}\right)\,\mathrm{d}x = \\
 	&= \left[-\frac{(1-x)^6}{60}\right]_0^1 =
 	0 - \left(-\frac{1}{60}\right) =
@@ -2168,7 +2171,7 @@ x \leq &y \leq 1 \end{array}\right\}	D_{xy} \\
 
 \begin{equation} \label{eq:10.1}
 z\rightarrow x\rightarrow y \text{ ger }
-\begin{cases} 
+\begin{cases}
 &\left.\begin{array}{rcl}
 0 \leq &y \leq 1 \\
 0 \leq &x \leq y \end{array}\right\}	D_{xy} \\
@@ -2243,7 +2246,7 @@ x\rightarrow y\rightarrow z \text{ ger }
     \addplot [
         thick,
         color=blue,
-        fill=blue, 
+        fill=blue,
         fill opacity=0.05
     ]
     fill between[
@@ -2270,7 +2273,7 @@ x\rightarrow y\rightarrow z \text{ ger }
     \addplot [
         thick,
         color=blue,
-        fill=blue, 
+        fill=blue,
         fill opacity=0.05
     ]
     fill between[
@@ -2298,7 +2301,7 @@ x\rightarrow y\rightarrow z \text{ ger }
     \addplot [
         thick,
         color=blue,
-        fill=blue, 
+        fill=blue,
         fill opacity=0.05
     ]
     fill between[
@@ -2315,14 +2318,14 @@ x\rightarrow y\rightarrow z \text{ ger }
 \end{figure}
 
 \newpage
-Test av \eqref{eq:10.2} 
+Test av \eqref{eq:10.2}
 \begin{align*}
 	I &= \int_0^1 \int_0^{y^2} \int_0^{y-\sqrt{z}} z \,\mathrm{d}x\,\mathrm{d}z\,\mathrm{d}y =
 	\int_0^1 \int_0^{y^2} z \Big[x\Big]_0^{y-\sqrt{z}} \,\mathrm{d}z\,\mathrm{d}y=
 	\int_0^1 \int_0^{y^2} z(y-\sqrt{z}) \,\mathrm{d}z\,\mathrm{d}y = \\
 	&= \int_0^1 \Big[ \frac{z^2y}{2} - \frac{2z^{\frac{5}{2}}}{5} \Big]_0^{y^2} \,\mathrm{d}y =
 	\int_0^1 \Big( \frac{y^2}{2} - \frac{2y^5}{5} - \frac{0^2y}{2} - \frac{2*0^{\frac{5}{2}}}{5} \Big) \,\mathrm{d}y = \\
-	&= \int_0^1 \frac{y^5}{10} \,\mathrm{d}y = 
+	&= \int_0^1 \frac{y^5}{10} \,\mathrm{d}y =
 	\Big[ \frac{y^6}{60} \Big] = \svar{\frac{1}{60}}
 \end{align*}
 
@@ -2333,7 +2336,7 @@ $$
 $$
 
 $$
-	\hat{D}_{xz} : 
+	\hat{D}_{xz} :
 	\begin{cases}
 		0 \leq x \leq y \\
 		0 \leq z \leq (y-x)^2
@@ -2342,7 +2345,7 @@ $$
 $$
 
 $$
-	\hat{D}_{xz} : 
+	\hat{D}_{xz} :
 	\begin{cases}
 		0 \leq z \leq y^2 \\
 		0 \leq x \leq y-\sqrt{z}
@@ -2375,7 +2378,7 @@ $$
 	\text{ radie } = 1
 $$
 
-I cylindriska koordinater ges $K$ av: 
+I cylindriska koordinater ges $K$ av:
 $\begin{cases}
 	&0 \leq \rho \leq 1 \\
 	&0 \leq \varphi \leq 2\pi \\
@@ -2383,13 +2386,13 @@ $\begin{cases}
 \end{cases}$
 
 \begin{gather*}
-	\Rightarrow V = \iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z = 
+	\Rightarrow V = \iiint_K \,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z =
 	\int_0^{2\pi} \int_0^1 \int_\rho^{\sqrt{2-\rho^2}} \abs{\frac{d(x,y,z)}{d(\rho,\varphi,z)}} \,\mathrm{d}z\,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
-	\int_0^{2\pi} \int_0^1 \rho \Big[ z \Big]_\rho^{\sqrt{2-\rho^2}} \,\mathrm{d}\rho\,\mathrm{d}\varphi = 
+	\int_0^{2\pi} \int_0^1 \rho \Big[ z \Big]_\rho^{\sqrt{2-\rho^2}} \,\mathrm{d}\rho\,\mathrm{d}\varphi =
 	\int_0^{2\pi} \int_0^1 \Big( \rho\sqrt{2-\rho^2} - \rho^2 \Big) \,\mathrm{d}\rho\,\mathrm{d}\varphi = \\
 	= \int_0^{2\pi} \Big[ -\frac{1}{3}(2-\rho)^{\frac{3}{2}} -\frac{1}{3}\rho^3 \Big]_0^1 \,\mathrm{d}\varphi = \\
 	= \int_0^{2\pi} \Big( -\frac{1}{3}(2-1)^{\frac{3}{2}} - \frac{1}{3}1^3 + \frac{1}{3}(2-0)^{\frac{3}{2}}+\frac{1}{3}0^3 \Big) \,\mathrm{d}\varphi = \\
-	= \frac{2\sqrt{2}-2}{3} \underbrace{\int_0^{2\pi} \,\mathrm{d}\varphi}_{=2\pi} = 
+	= \frac{2\sqrt{2}-2}{3} \underbrace{\int_0^{2\pi} \,\mathrm{d}\varphi}_{=2\pi} =
 	\svar{\frac{4\pi}{3}(\sqrt{2}-1)}
 \end{gather*}
 
@@ -2398,7 +2401,7 @@ $\begin{cases}
 Om vi istället tar konstanta gränser på z och variabla på $\rho$ måste vi dela upp integralen i två bitar
 
 $$
-	\text{Konen:} 
+	\text{Konen:}
 	\begin{cases}
 		&0 \leq z \leq 1 \\
 		&0 \leq \rho \leq z \\
@@ -2417,7 +2420,7 @@ $$
 	= \int_0^{2\pi}\int_0^1 \Big[ \frac{\rho^2}{2} \Big]_0^z \,\mathrm{d}z\,\mathrm{d}\varphi + \int_0^{2\pi}\int_1^{\sqrt{2}} \Big[ \frac{\rho^2}{2} \Big]_0^{\sqrt{2-z^2}} \,\mathrm{d}z\,\mathrm{d}\varphi = \\
 	= \int_0^{2\pi}\int_0^1 \frac{z^2}{2} \,\mathrm{d}z\,\mathrm{d}\varphi + \int_0^{2\pi}\int_1^{\sqrt{2}} \frac{2-z^2}{2} \,\mathrm{d}z\,\mathrm{d}\varphi = \\
 	= \int_0^{2\pi} \underbrace{\Big[ \frac{z^3}{6} \Big]_0^1}_{=\frac{1}{6}}\,\mathrm{d}\varphi + \int_0^{2\pi} \underbrace{\Big[ z-\frac{z^3}{6} \Big]_1^{\sqrt{2}}}_{=\sqrt{2}-\frac{2\sqrt{2}}{6}-1+\frac{1}{6}} \,\mathrm{d}\varphi = \\
-	= \Big( \frac{4\sqrt{2}}{6} - \frac{4}{6} \Big) \int_0^{2\pi}\,\mathrm{d}\varphi = 
+	= \Big( \frac{4\sqrt{2}}{6} - \frac{4}{6} \Big) \int_0^{2\pi}\,\mathrm{d}\varphi =
 	\svar{\frac{4\pi}{3}(\sqrt{2}-1)}
 \end{gather*}
 
@@ -2475,10 +2478,10 @@ $
 	x_T = 0 \quad \text{(symmetri)}  & -a \leq x \leq a \\
 	y_T = \, ??? & 0 \leq y \leq a
 \end{cases}$\newline
- 
-massa $m = \iint_D k\,\mathrm{d}x\,\mathrm{d}y = 
+
+massa $m = \iint_D k\,\mathrm{d}x\,\mathrm{d}y =
 k \iint_D\,\mathrm{d}x\,\mathrm{d}y =
-k * area(D) = 
+k * area(D) =
 k \frac{\pi a^2}{2}$
 
 $$
@@ -2514,7 +2517,7 @@ $
 	b/ &\,\, \rho = 1 + x^2 + y^2 + z^2
 \end{array}\right.$ \newline
 
-$K$ i cylinderkoordinater $(r,\varphi,z)$ 
+$K$ i cylinderkoordinater $(r,\varphi,z)$
 $$
 (1)
 \begin{cases}
@@ -2543,7 +2546,7 @@ $$
 	z_T = \frac{1}{m} \int_0^{2\pi}\int_0^1\int_0^z z \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
 	\frac{3}{\pi} \int_0^{2\pi}\int_0^1 z\underbrace{\left[\frac{r^2}{2}\right]_0^z}_\frac{z^3}{2} \,\mathrm{d}z\,\mathrm{d}\varphi =
 	\frac{3}{\pi} \int_0^{2\pi} \left[\frac{z^4}{8}\right]_0^1 \,\mathrm{d}\varphi =
-	\frac{3}{\pi} * \frac{1}{8} * 2\pi = 
+	\frac{3}{\pi} * \frac{1}{8} * 2\pi =
 	\svar{\frac{3}{4}}
 $$
 
@@ -2563,8 +2566,8 @@ $$
 	\Rightarrow z_T = \frac{1}{m} \iiint_K z(1+r^2+z^2)r \,\mathrm{d}r\,\mathrm{d}z\,\mathrm{d}\varphi =
 	\frac{30}{19\pi} \int_0^{2\pi}\int_0^1 z\left[\frac{r^2}{2} + \frac{r^4}{4} + \frac{z^2r^2}{2}\right]_0^2 \,\mathrm{d}z\,\mathrm{d}\varphi = \\
 	= \frac{3+}{19\pi} \int_0^{2\pi}\int_0^1 \left(\frac{z^3}{2} + \frac{3z^5}{4}\right) \,\mathrm{d}z\,\mathrm{d}\varphi =
-	\frac{30}{19\pi} \int_0^{2\pi} \left[\frac{z^4}{8} + \frac{3z^6}{24}\right]_0^1 \,\mathrm{d}\varphi = 
-	\frac{30}{19\pi} * \frac{1}{4} * 2\pi = 
+	\frac{30}{19\pi} \int_0^{2\pi} \left[\frac{z^4}{8} + \frac{3z^6}{24}\right]_0^1 \,\mathrm{d}\varphi =
+	\frac{30}{19\pi} * \frac{1}{4} * 2\pi =
 \end{align*}
 $$= \svar{\frac{15}{19}} > \frac{3}{4} \text{ rimligt}$$
 
@@ -2588,7 +2591,7 @@ t.ex. $\int_a^\infty f(x) \de{x}$ skrivs om som ett gränsvärde $\lim_{b\righta
 Hur definierar man $I = \iint_D f(x,y) \de{x}\de{y}$ om $D$ är obegränsad eller om $f(x,y)$ är obegränsad i $D$??
 
 \paragraph{Exempel}
-Vad blir 
+Vad blir
 
 \begin{equation}\label{eq:12.1}
 	I = \iint_{\mathbb{R}^2} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} \text{ ??}
@@ -2601,14 +2604,14 @@ $\mathbb{R}^2$ är en obegränsad mängd
 \subsection{\texorpdfstring{$f$}{f} växlar ej tecken i \texorpdfstring{$D$}{D}} \label{subsec:nonchanging}
 \item \underline{Om $f(x,y) \geq 0$ i $D$} (eller om $f(x,y) \leq 0 $ i hela $D$) \newline
 
-Ta mängder $D_1 \subset D_2 \subset D_3 \subset ... \subset D_n \subset ...$ så att $D_n \rightarrow D$ (uttömmande följd) 
+Ta mängder $D_1 \subset D_2 \subset D_3 \subset ... \subset D_n \subset ...$ så att $D_n \rightarrow D$ (uttömmande följd)
 och så att $D_n$ är en begränsad mängd och $f$ är begränsad på varje $D_n$ \newline
 
 $\Rightarrow I_n = \iint_{D_n} f(x,y)\de{x}\de{y}$ är inte generaliserad
 
 \subsubsection{Exempel}
 
-$D: 
+$D:
 \begin{cases}
 	0 \leq x \leq 1 \\
 	0 \leq y \leq 1
@@ -2645,11 +2648,11 @@ Med $D_n: x^2 + y^2 \leq n^2$ och polära koordinater $
 	0 &\leq \rho \leq n \\
 	0 &\leq \varphi \leq 2\pi
 \end{cases}$
-får vi 
+får vi
 
 \begin{gather}\label{eq:12.2}
 \begin{split}
-	I_n = \iint_{D_n} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} = 
+	I_n = \iint_{D_n} \frac{\de{x}\de{y}}{(1+x^2+y^2)^2} =
 	\int_0^{2\pi}\int_0^n \frac{\rho}{(1+\rho^2)^2} \de{\rho}\de{\varphi} =
 	\int_0^{2\pi} \left[-\frac{1}{2(1+\rho^2)}\right]_0^n \de{\varphi} = \\
 	= \int_0^{2\pi} \left(- \frac{1}{2(1+n^2) - \frac{1}{2}}\right) \de{\varphi} =
@@ -2665,14 +2668,14 @@ Alternativt kan man skriva $\mathbb{R}^2: \{\rho\,,\,\varphi \,|\, 0\leq \rho < 
 	I = \int_0^{2\pi} \int_0^\infty \frac{\rho}{(1+\rho^2)^2} \de{\rho}\de{\varphi} =
 	\int_0^{2\pi} \left[-\frac{1}{2}\frac{1}{1+\rho^2}\right]_0^\infty = \\
 	=-\frac{1}{2}\int_0^{2\pi} \left(\lim_{b\rightarrow\infty}\left(\underbrace{\frac{1}{1+b^2}}_{=0}\right) - \frac{1}{1+0^2}\right)\de{\varphi} =
-	\frac{1}{2}\int_0^{2\pi}\de{\varphi} = 
+	\frac{1}{2}\int_0^{2\pi}\de{\varphi} =
 	\svar{\pi}
 \end{gather*}
 
 \newpage
 \subsubsection{Exempel Dubbelintegral}
 
-Beräkna $I=\iint_D \frac{\de{x}\de{y}}{(x+y)^2}$ , $D \,: 
+Beräkna $I=\iint_D \frac{\de{x}\de{y}}{(x+y)^2}$ , $D \,:
 \begin{cases}
 	& 0 \leq x \leq 1 \\
 	& 0 \leq y \leq 1
@@ -2708,7 +2711,7 @@ Rymdpolära koordinater $
 	\int_1^\infty r^{2-\alpha} \Big[-\cos{\theta}\Big]_0^\pi\Big[\varphi\Big]_0^{2\pi} \de{r} \overset{\,\mathrm{\alpha\neq3}}{=}
 	4\pi\Big[\frac{r^{3-\alpha}}{3-\alpha}\Big]_1^\infty = \\
 	= \frac{4\pi}{3-\alpha} \Big(\underbrace{\lim_{b\rightarrow\infty}b^{3-\alpha}}_{\substack{\rightarrow\infty \text{ om } 3-\alpha > 0 \\\rightarrow 0 \text{ om } 3-\alpha < 0}}-1\Big)
-	= 
+	=
 	\begin{cases}
 		\text{divergent} & \text{om } \alpha < 3 \\
 		\frac{4\pi}{\alpha -3} & \text{om } \alpha > 3 \text{ (konvergent)}
@@ -2737,8 +2740,8 @@ $0 \leq f \leq g$ i $D$ och $\iint_D g \de{x}\de{y}$ konvergent $\Rightarrow \ii
 \end{gather*}
 
 \subsection{\texorpdfstring{$f$}{f} växlar tecken i \texorpdfstring{$D$}{D}}
-$f(x,y)$ växlar tecken i $D$. I detta fall \underline{definieras} $I=\iint_D f(x,y)\de{x}\de{y}$ ($f$ eller $D$ obegränsad) som konvergent om 
-$\iint_D\underbrace{\abs{f(x,y)}}_{\geq 0}\de{x}\de{y}$ är konvergent (vilket definierades i \vref{subsec:nonchanging}). 
+$f(x,y)$ växlar tecken i $D$. I detta fall \underline{definieras} $I=\iint_D f(x,y)\de{x}\de{y}$ ($f$ eller $D$ obegränsad) som konvergent om
+$\iint_D\underbrace{\abs{f(x,y)}}_{\geq 0}\de{x}\de{y}$ är konvergent (vilket definierades i \vref{subsec:nonchanging}).
 Upprepade enkelintegraler för $I$ får bara användas om man \underline{vet} att $I$ är konvergent, det kan \underline{INTE} användas för att se \underline{om} $I$ är konvergent,
 direkt sådan beräkning \underline{kan ge fel svar}. \newline Exempel på detta finns på s.272 i P-B, en divergent $I$ som ger olika ändliga svar beroende på om $x$ eller $y$ integreras först.
 
@@ -2754,7 +2757,7 @@ $$
 $$
 
 $I_1 \,\&\, I_2$ beräknas var för sig enligt \vref{subsec:nonchanging} \newline
-$I = I_1 - I_2$ men $\iint_D\abs{f(x,y)}\de{x}\de{y} = I_1 + I_2$ vilket slutligen ger oss \newline 
+$I = I_1 - I_2$ men $\iint_D\abs{f(x,y)}\de{x}\de{y} = I_1 + I_2$ vilket slutligen ger oss \newline
 $I_1 \,\&\, I_2$ konvergenta $\iff I$ konvergent
 
 \end{enumerate}
